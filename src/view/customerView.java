@@ -20,7 +20,7 @@ public class customerView extends javax.swing.JFrame {
     private String action;
     private int selectedId = 0;
     private int id;
-    private String jenisKelamin;
+    private String jenisKelamin, temp;
     
     public customerView() {
        setComponent(false);
@@ -38,6 +38,8 @@ public class customerView extends javax.swing.JFrame {
        alamatInput.setEnabled(value);
        jenisKelamin1RBtn.setEnabled(value);
        jenisKelamin2RBtn.setEnabled(value);
+       jenisKelamin1RBtn.setSelected(value);
+       jenisKelamin2RBtn.setSelected(value);
        saveBtn.setEnabled(value);
        cancelBtn.setEnabled(value);
     }
@@ -50,11 +52,9 @@ public class customerView extends javax.swing.JFrame {
     }
     
     public void showCustomer(){
-        //customerTable.setModel(customerControl.showCustomer);
+        customerTable.setModel(customerControl.showDataCustomer());
     }
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -248,6 +248,11 @@ public class customerView extends javax.swing.JFrame {
         });
 
         cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -270,6 +275,11 @@ public class customerView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        customerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(customerTable);
 
         javax.swing.GroupLayout containerPanel4Layout = new javax.swing.GroupLayout(containerPanel4);
@@ -409,6 +419,7 @@ public class customerView extends javax.swing.JFrame {
         switch(getAnswer){
             case 0:
                 try{
+                    customerControl.deleteDataCustomer(idInput.getText());
                     //customerControl.deleteCustomer(selectedId);
                     clearText();
                     showCustomer();
@@ -426,15 +437,16 @@ public class customerView extends javax.swing.JFrame {
         setComponent(false);
         
         try{
+           //TableCustomer customer = customerControl.showDataCustomer() pake showCustomerbySearch
             //TableCustomer customer = customerControl.showCustomer(searchInput.getText());
-          //  if(customer.getRowCount() == 0){
-//                clearText();
-//                editBtn.setEnabled(false);
-//                deleteBtn.setEnabled(false);
-//                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
-//            }else{
-//                tableCustomer.setModel(customer);
-//            }
+            if(customer.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                customerTable.setModel(customer);
+            }
         }catch(Exception e){
             System.out.println("Error : "+e.getMessage());
         }
@@ -445,10 +457,9 @@ public class customerView extends javax.swing.JFrame {
            
             Customer c = new Customer(idInput.getText(), namaInput.getText(), Integer.parseInt(telpInput.getText()) , alamatInput.getText(), jenisKelamin );               
             if(action.equals("Tambah")){
-//              customerControl.insertDataCustomer(c);
+                customerControl.insertDataCustomer(c);
             }else{
-                
-                //customerControl.updateDataCustomer(c);
+                customerControl.updateDataCustomer(c, idInput.getText());
             }
             clearText();
             showCustomer();
@@ -465,6 +476,39 @@ public class customerView extends javax.swing.JFrame {
     private void jenisKelamin2RBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisKelamin2RBtnActionPerformed
         jenisKelamin = "Perempuan";
     }//GEN-LAST:event_jenisKelamin2RBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        setComponent(false);
+        clearText();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void customerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTableMouseClicked
+        setComponent(false);
+        editBtn.setEnabled(true);
+        deleteBtn.setEnabled(true);
+        
+        int clickedRow = customerTable.getSelectedRow();
+        TableModel table = customerTable.getModel();
+        
+        
+        idInput.setText(table.getValueAt(clickedRow, 0).toString());
+        namaInput.setText(table.getValueAt(clickedRow, 1).toString());
+        telpInput.setText(table.getValueAt(clickedRow, 2).toString());
+        alamatInput.setText(table.getValueAt(clickedRow, 3).toString());
+        
+        temp = table.getValueAt(clickedRow, 4).toString();
+        if(temp.equalsIgnoreCase("Laki-laki")){
+            jenisKelamin1RBtn.setEnabled(false);
+            jenisKelamin2RBtn.setEnabled(false);
+            jenisKelamin1RBtn.setSelected(true);
+            jenisKelamin2RBtn.setSelected(false);
+        }else{
+            jenisKelamin1RBtn.setEnabled(false);
+            jenisKelamin2RBtn.setEnabled(false);
+            jenisKelamin1RBtn.setSelected(false);
+            jenisKelamin2RBtn.setSelected(true);
+        }
+    }//GEN-LAST:event_customerTableMouseClicked
 
     /**
      * @param args the command line arguments
