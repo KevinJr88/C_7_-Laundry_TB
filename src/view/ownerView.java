@@ -29,6 +29,7 @@ public class ownerView extends javax.swing.JFrame {
         sidebarPan = new javax.swing.JPanel();
         Laundry_logo = new javax.swing.JLabel();
         headerPan = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
         containerPan = new javax.swing.JPanel();
         idLabel = new javax.swing.JLabel();
         idInput = new javax.swing.JTextField();
@@ -79,15 +80,25 @@ public class ownerView extends javax.swing.JFrame {
 
         headerPan.setBackground(new java.awt.Color(255, 255, 153));
 
+        titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(0, 255, 255));
+        titleLabel.setText("Owner Operation Page");
+
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
         headerPanLayout.setHorizontalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(headerPanLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 81, Short.MAX_VALUE)
+            .addGroup(headerPanLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         containerPan.setBackground(new java.awt.Color(255, 255, 255));
@@ -391,5 +402,6 @@ public class ownerView extends javax.swing.JFrame {
     private javax.swing.JTable tableEmployee;
     private javax.swing.JTextField telpInput;
     private javax.swing.JLabel telpLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
