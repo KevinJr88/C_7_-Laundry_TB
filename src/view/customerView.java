@@ -18,17 +18,24 @@ public class customerView extends javax.swing.JFrame {
 
     private CustomerControl customerControl;
     private String action;
-    private int selectedId = 0;
-    private int id;
+    private String id;
     private String jenisKelamin, temp;
     
+    
+    
     public customerView() {
-       setComponent(false);
-       idInput.setEnabled(false);
-       customerControl = new CustomerControl();
-       showCustomer();
-       clearText();
-    }
+        try{
+          initComponents();
+          setComponent(false);
+          idInput.setEnabled(false);
+          customerControl = new CustomerControl();
+          showCustomer();
+          clearText();
+        }catch(Exception e){
+            System.out.println("error CustomerView");
+        }    
+      
+     }
     
     public void setComponent(boolean value){
        editBtn.setEnabled(value);
@@ -236,6 +243,11 @@ public class customerView extends javax.swing.JFrame {
         jLabel5.setText("Jenis Kelamin");
 
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -274,7 +286,15 @@ public class customerView extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         customerTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 customerTableMouseClicked(evt);
@@ -408,8 +428,8 @@ public class customerView extends javax.swing.JFrame {
         deleteBtn.setEnabled(false);
         clearText();
         searchInput.setText("");
-        
-        //id = kendaraanControl.generateIDMobil();
+        id = customerControl.generateIDCustomer();
+        idInput.setText(id);
         action = "Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -434,22 +454,7 @@ public class customerView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInputActionPerformed
-        setComponent(false);
-        
-        try{
-           //TableCustomer customer = customerControl.showDataCustomer() pake showCustomerbySearch
-            //TableCustomer customer = customerControl.showCustomer(searchInput.getText());
-            if(customer.getRowCount() == 0){
-                clearText();
-                editBtn.setEnabled(false);
-                deleteBtn.setEnabled(false);
-                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
-            }else{
-                customerTable.setModel(customer);
-            }
-        }catch(Exception e){
-            System.out.println("Error : "+e.getMessage());
-        }
+       
     }//GEN-LAST:event_searchInputActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
@@ -509,6 +514,24 @@ public class customerView extends javax.swing.JFrame {
             jenisKelamin2RBtn.setSelected(true);
         }
     }//GEN-LAST:event_customerTableMouseClicked
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+         setComponent(false);
+        
+        try{
+           TableCustomer customer = customerControl.showDataBySearch(searchInput.getText());
+            if(customer.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                customerTable.setModel(customer);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
      * @param args the command line arguments

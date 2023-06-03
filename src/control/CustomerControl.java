@@ -39,4 +39,11 @@ public class CustomerControl {
     public void deleteDataCustomer(String id){
         cDao.deleteCustomer(id);
     }
+    
+     public String generateIDCustomer(){
+        String temp = null;
+        temp = cDao.generateIDCustomer();
+        return temp;
+    }
+    
 }
