@@ -77,7 +77,7 @@ public class CustomerDAO {
     public Customer searchCustomer(String id){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT * FROM Employee WHERE id_customer = '" + id + "'";
+        String sql = "SELECT * FROM Customer WHERE id_customer = '" + id + "'";
         System.out.println("Searching customer...");
         Customer c = null;
         
@@ -104,6 +104,41 @@ public class CustomerDAO {
         }
         dbcon.closeConnection();
         return c;
+    }
+    
+    public List<Customer> searchCustomerAll(String x){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT * FROM Customer WHERE(id_customer LIKE "
+                + "'%" + x + "%'"
+                + "OR nama_customer LIKE '%" + x + "%'"
+                + "OR no_telp LIKE '%" + x + "%'"
+                + "OR alamat LIKE '%" + x + "%'"
+                + "OR jenis_kelamin LIKE '%" + x + "%)";
+        
+        System.out.println("Mengambil data customer...");
+        List<Customer> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery(sql);
+             
+             if(rs!=null){
+                 while(rs.next()){
+                     Customer c = new Customer(rs.getString("c.id_customer"),
+                        rs.getString("c.nama.customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
+                    list.add(c);
+                 }
+             }
+             rs.close();
+             statement.close();
+        } catch(Exception e){
+            System.out.println("Error reading customer...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        return list;
     }
     
     public void updateCustomer(Customer c, String id){

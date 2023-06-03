@@ -25,6 +25,13 @@ public class CustomerControl {
         return tableCustomer;
     }
     
+    public TableCustomer showDataBySearch(String query){
+        List<Customer> dataCustomer = cDao.searchCustomerAll(query);
+        TableCustomer tableCustomer = new TableCustomer(dataCustomer);
+        
+        return tableCustomer;
+    }
+    
     public void updateDataCustomer(Customer c, String id){
         cDao.updateCustomer(c, id);
     }
