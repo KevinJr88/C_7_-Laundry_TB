@@ -58,9 +58,9 @@ public class ServiceDAO {
                     Service s = new Service(
                             rs.getString("id_layanan"),
                             rs.getString("nama_layanan"),
-                            rs.getInt("kecepatan"),
+                            Integer.parseInt(rs.getString("kecepatan")),
                             rs.getString("jasa_antar"),
-                            rs.getInt("biaya")
+                            Integer.parseInt(rs.getString("biaya"))
                     );
                     list.add(s);
                 }
@@ -75,20 +75,20 @@ public class ServiceDAO {
         return list;
     }
     
-    public void updateService(Service s, String id){
+    public void updateService(Service s){
         con = dbcon.makeConnection();
         
         String sql = "UPDATE service SET nama_layanan = '" + s.getNama_layanan() + "', "
                 + "kecepatan = '" + s.getKecepatan() + "', "
                 + "jasa_antar = '" + s.getJasa_antar() + "', "
                 + "biaya = '" + s.getBiaya() + "'"
-                + "WHERE id_layanan = '" + id + "'";
+                + "WHERE id_layanan = '" + s.getId_layanan() + "'";
         System.out.println("Editing Service...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Edited "+result+" Servce " + id);
+            System.out.println("Edited "+result+" Servce " + s.getId_layanan());
             statement.close();
         } catch(Exception e){
             System.out.println("Error editing service...");
