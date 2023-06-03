@@ -25,8 +25,8 @@ public class ServiceControl {
         return tableService;
     }
     
-    public void updateDataService(Service s){
-        sDao.updateService(s);
+    public void updateDataService(Service s, String id){
+        sDao.updateService(s, id);
     }
     
     public void deleteDataService(String id){

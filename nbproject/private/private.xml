@@ -6,18 +6,23 @@
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/EmployeeDAO.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/WorkOrderControl.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/Customer.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableCustomer.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableService.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/CustomerDAO.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/workoderView.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/Customer.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/connection/DbConnection.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/ServiceControl.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/WorkOrderDAO.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/WorkOrder.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/Employee.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/WorkOrder.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/historyView.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/Service.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/ServiceDAO.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/loginView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableWorkOrder.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/CustomerControl.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableEmployee.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/EmployeeControl.java</file>
         </group>
     </open-files>
