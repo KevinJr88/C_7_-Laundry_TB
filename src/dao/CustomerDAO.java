@@ -109,12 +109,12 @@ public class CustomerDAO {
     public List<Customer> searchCustomerAll(String x){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT * FROM Customer WHERE(id_customer LIKE "
+        String sql = "SELECT * FROM Customer as c WHERE(c.id_customer LIKE "
                 + "'%" + x + "%'"
-                + "OR nama_customer LIKE '%" + x + "%'"
-                + "OR no_telp LIKE '%" + x + "%'"
-                + "OR alamat LIKE '%" + x + "%'"
-                + "OR jenis_kelamin LIKE '%" + x + "%)";
+                + "OR c.nama_customer LIKE '%" + x + "%'"
+                + "OR c.no_telp LIKE '%" + x + "%'"
+                + "OR c.alamat LIKE '%" + x + "%'"
+                + "OR c.jenis_kelamin LIKE '%" + x + "%')";
         
         System.out.println("Mengambil data customer...");
         List<Customer> list = new ArrayList();
@@ -126,7 +126,7 @@ public class CustomerDAO {
              if(rs!=null){
                  while(rs.next()){
                      Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama.customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     list.add(c);
                  }
