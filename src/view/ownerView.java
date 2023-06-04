@@ -53,6 +53,7 @@ public class ownerView extends javax.swing.JFrame {
         telpInput.setText("");
         passInput.setText("");
         idInput.setText("");
+        searchInput.setText("");
     }
      
      public void showCustomer(){
@@ -544,15 +545,15 @@ public class ownerView extends javax.swing.JFrame {
         setComponent(false);
         
         try{
-           //TableEmployee employee = employeeControl.show;
-//            if(customer.getRowCount() == 0){
-//                clearText();
-//                editBtn.setEnabled(false);
-//                deleteBtn.setEnabled(false);
-//                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
-//            }else{
-//                customerTable.setModel(customer);
-//            }
+           TableEmployee employee = employeeControl.showDataBySearch(searchInput.getText());
+            if(employee.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                employeeTable.setModel(employee);
+            }
         }catch(Exception e){
             System.out.println("Error : "+e.getMessage());
         }
