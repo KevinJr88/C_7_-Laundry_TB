@@ -108,6 +108,42 @@ public class EmployeeDAO {
         return e;
     }
     
+    public List<Employee> searchEmployeeAll(String x){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT * FROM Employee as e WHERE(e.id_karyawan LIKE "
+                + "'%" + x + "%'"
+                + "OR e.nama_karyawan LIKE '%" + x + "%'"
+                + "OR e.password LIKE '%" + x + "%'"
+                + "OR e.no_telepon LIKE '%" + x + "%'"
+                + "OR e.status LIKE '%" + x + "%'"
+                + "OR e.posisi LIKE '%" + x + "%')";
+        
+        System.out.println("Mengambil data employee...");
+        List<Employee> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery(sql);
+             
+             if(rs!=null){
+                 while(rs.next()){
+                     Employee e = new Employee(rs.getString("e.id_karyawan"), rs.getString("e.nama_karyawan"),
+                        rs.getString("e.password"), Integer.parseInt(rs.getString("e.no_telepon")),
+                        rs.getString("e.status"), rs.getString("e.posisi"));
+                    list.add(e);
+                 }
+             }
+             rs.close();
+             statement.close();
+        } catch(Exception e1){
+            System.out.println("Error reading employee...");
+            System.out.println(e1);
+        }
+        dbcon.closeConnection();
+        return list;
+    }
+    
     public void updateEmployee(Employee e, String id){
         con = dbcon.makeConnection();
         

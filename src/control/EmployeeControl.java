@@ -25,6 +25,13 @@ public class EmployeeControl {
         return tableEmployee;
     }
     
+    public TableEmployee showDataBySearch(String query){
+        List<Employee> dataEmployee = eDao.searchEmployeeAll(query);
+        TableEmployee tableEmployee = new TableEmployee(dataEmployee);
+        
+        return tableEmployee;
+    }
+    
     public void updateDataEmployee(Employee e, String id){
         eDao.updateEmployee(e, id);
     }
