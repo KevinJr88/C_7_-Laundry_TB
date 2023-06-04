@@ -526,17 +526,17 @@ public class ownerView extends javax.swing.JFrame {
         temp1 = table.getValueAt(clickedRow, 4).toString();
         
         if(temp1.equalsIgnoreCase("Aktif")){
-            statDd.setSelectedIndex(1);
+            statDd.setSelectedIndex(0);
         }else{
-            statDd.setSelectedIndex(2);
+            statDd.setSelectedIndex(1);
         }
         
         temp1 = table.getValueAt(clickedRow, 5).toString();
         
         if(temp1.equalsIgnoreCase("Kurir")){
-            jabDd.setSelectedIndex(2);
-        }else{
             jabDd.setSelectedIndex(1);
+        }else{
+            jabDd.setSelectedIndex(0);
         }
     }//GEN-LAST:event_employeeTableMouseClicked
 
