@@ -24,7 +24,7 @@ public class EmployeeDAO {
         
         String sql = "INSERT INTO Employee(id_karyawan, nama_karyawan, password, no_telepon, status, posisi)"
                 + "VALUES ('" + e.getId_karyawan() + "', '" + e.getNama_karyawan() + "', '"
-                + e.getPassword() + "', '" + e.getStatus() + "', '" + e.getPosisi() + "')";
+                + e.getPassword() + "', '" + e.getNo_telepon() + "', '" + e.getStatus() + "', '" + e.getPosisi() + "')";
         
         System.out.println("Adding Employee...");
         

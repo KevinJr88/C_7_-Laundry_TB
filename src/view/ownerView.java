@@ -470,19 +470,19 @@ public class ownerView extends javax.swing.JFrame {
         try{
            temp = statDd.getSelectedIndex();
            switch(temp){
-               case 1:
+               case 0:
                    status = "Aktif";
                    break;
-               case 2:
+               case 1:
                    status = "Tidak Aktif";
                    break;
            }
            temp = jabDd.getSelectedIndex();
            switch(temp){
-               case 1:
+               case 0:
                    posisi = "Petugas Kasir";
                    break;
-               case 2:
+               case 1:
                    posisi = "Kurir";
                    break;
            }
