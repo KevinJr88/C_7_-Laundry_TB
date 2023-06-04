@@ -108,6 +108,42 @@ public class EmployeeDAO {
         return e;
     }
     
+    public List<Employee> searchEmployeeAll(String x){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT * FROM Employee as e WHERE(e.id_karyawan LIKE "
+                + "'%" + x + "%'"
+                + "OR e.nama_karyawan LIKE '%" + x + "%'"
+                + "OR e.password LIKE '%" + x + "%'"
+                + "OR e.no_telepon LIKE '%" + x + "%'"
+                + "OR e.status LIKE '%" + x + "%'"
+                + "OR e.posisi LIKE '%" + x + "%')";
+        
+        System.out.println("Mengambil data employee...");
+        List<Employee> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery(sql);
+             
+             if(rs!=null){
+                 while(rs.next()){
+                     Employee e = new Employee(rs.getString("e.id_karyawan"), rs.getString("e.nama_karyawan"),
+                        rs.getString("e.password"), Integer.parseInt(rs.getString("e.no_telepon")),
+                        rs.getString("e.status"), rs.getString("e.posisi"));
+                    list.add(e);
+                 }
+             }
+             rs.close();
+             statement.close();
+        } catch(Exception e1){
+            System.out.println("Error reading employee...");
+            System.out.println(e1);
+        }
+        dbcon.closeConnection();
+        return list;
+    }
+    
     public void updateEmployee(Employee e, String id){
         con = dbcon.makeConnection();
         
@@ -147,4 +183,41 @@ public class EmployeeDAO {
         }
         dbcon.closeConnection();
     }
+    
+    
+     public String generateIDKaryawan(){
+       con = dbcon.makeConnection();
+       
+       String sql = "SELECT id_karyawan FROM employee ORDER BY id_karyawan DESC LIMIT 1";
+       System.out.println("Mencari customer ...");
+       int id = 0;
+       String temp,temp2=null;
+       
+       try{
+           Statement statement = con.createStatement();
+           ResultSet rs = statement.executeQuery(sql);
+           
+           if(rs.next()){
+                temp = rs.getString("id_karyawan");
+                id = Integer.parseInt(temp.split("-")[1]);
+                id++;
+                temp2 = "EMP-"+ id;
+               
+           }else{
+               temp2 = "EMP-1";
+           }
+           
+           System.out.println("CEK " + temp2);
+           
+           rs.close();
+           statement.close();
+       } catch(Exception e){
+           System.out.println("Error membaca database ...");
+           System.out.println(e);
+       }
+       dbcon.closeConnection();
+       return temp2;
+   }
 }
+
+
