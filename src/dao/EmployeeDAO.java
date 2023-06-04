@@ -147,4 +147,41 @@ public class EmployeeDAO {
         }
         dbcon.closeConnection();
     }
+    
+    
+     public String generateIDKaryawan(){
+       con = dbcon.makeConnection();
+       
+       String sql = "SELECT id_karyawan FROM employee ORDER BY id_karyawan DESC LIMIT 1";
+       System.out.println("Mencari customer ...");
+       int id = 0;
+       String temp,temp2=null;
+       
+       try{
+           Statement statement = con.createStatement();
+           ResultSet rs = statement.executeQuery(sql);
+           
+           if(rs.next()){
+                temp = rs.getString("id_karyawan");
+                id = Integer.parseInt(temp.split("-")[1]);
+                id++;
+                temp2 = "EMP-"+ id;
+               
+           }else{
+               temp2 = "EMP-1";
+           }
+           
+           System.out.println("CEK " + temp2);
+           
+           rs.close();
+           statement.close();
+       } catch(Exception e){
+           System.out.println("Error membaca database ...");
+           System.out.println(e);
+       }
+       dbcon.closeConnection();
+       return temp2;
+   }
 }
+
+

@@ -32,4 +32,10 @@ public class EmployeeControl {
     public void deleteDataEmployee(String id){
         eDao.deleteEmployee(id);
     }
+    
+    public String generateIDKaryawan(){
+        String temp = null;
+        temp = eDao.generateIDKaryawan();
+        return temp;
+    }
 }
