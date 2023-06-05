@@ -454,6 +454,8 @@ public class ownerView extends javax.swing.JFrame {
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         setComponent(true);
         action = "Ubah";
+        addBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed

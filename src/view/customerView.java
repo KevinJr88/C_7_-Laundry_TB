@@ -503,13 +503,9 @@ public class customerView extends javax.swing.JFrame {
         
         temp = table.getValueAt(clickedRow, 4).toString();
         if(temp.equalsIgnoreCase("Laki-laki")){
-            jenisKelamin1RBtn.setEnabled(false);
-            jenisKelamin2RBtn.setEnabled(false);
             jenisKelamin1RBtn.setSelected(true);
             jenisKelamin2RBtn.setSelected(false);
         }else{
-            jenisKelamin1RBtn.setEnabled(false);
-            jenisKelamin2RBtn.setEnabled(false);
             jenisKelamin1RBtn.setSelected(false);
             jenisKelamin2RBtn.setSelected(true);
         }
