@@ -35,19 +35,13 @@ public class checkoutView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         customerLabel = new javax.swing.JLabel();
         feeLabel = new javax.swing.JLabel();
-        feeInput = new javax.swing.JTextField();
-        statLabel = new javax.swing.JLabel();
-        sudahRadBtn = new javax.swing.JRadioButton();
+        totInput = new javax.swing.JTextField();
         customerDd = new javax.swing.JComboBox<>();
-        noRadBtn = new javax.swing.JRadioButton();
-        saveBtn = new javax.swing.JButton();
+        selesaiBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
-        statLabel1 = new javax.swing.JLabel();
-        belumRadBtn = new javax.swing.JRadioButton();
-        yesRadBtn1 = new javax.swing.JRadioButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        hargaArea = new javax.swing.JTextArea();
         feeLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,7 +62,7 @@ public class checkoutView extends javax.swing.JFrame {
 
         titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 102));
-        titleLabel.setText("Checkout Page");
+        titleLabel.setText("Pick Up Page");
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
@@ -117,59 +111,15 @@ public class checkoutView extends javax.swing.JFrame {
 
         feeLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         feeLabel.setForeground(new java.awt.Color(0, 0, 0));
-        feeLabel.setText("Jumlah Bayar");
+        feeLabel.setText("Total Harga");
 
-        feeInput.setText("jTextField1");
-
-        statLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        statLabel.setForeground(new java.awt.Color(0, 0, 0));
-        statLabel.setText("Status Lunas");
-
-        sudahRadBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        sudahRadBtn.setForeground(new java.awt.Color(0, 0, 0));
-        sudahRadBtn.setText("Sudah");
-        sudahRadBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sudahRadBtnActionPerformed(evt);
-            }
-        });
+        totInput.setText("jTextField1");
 
         customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        noRadBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        noRadBtn.setForeground(new java.awt.Color(0, 0, 0));
-        noRadBtn.setText("No");
-        noRadBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noRadBtnActionPerformed(evt);
-            }
-        });
-
-        saveBtn.setText("Save");
+        selesaiBtn.setText("Selesai");
 
         cancelBtn.setText("Cancel");
-
-        statLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        statLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        statLabel1.setText("Status diambil");
-
-        belumRadBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        belumRadBtn.setForeground(new java.awt.Color(0, 0, 0));
-        belumRadBtn.setText("Belum");
-        belumRadBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                belumRadBtnActionPerformed(evt);
-            }
-        });
-
-        yesRadBtn1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        yesRadBtn1.setForeground(new java.awt.Color(0, 0, 0));
-        yesRadBtn1.setText("Yes");
-        yesRadBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yesRadBtn1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,26 +129,15 @@ public class checkoutView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(feeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(feeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(noRadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yesRadBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sudahRadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(belumRadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(statLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(feeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(228, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveBtn)
+                .addComponent(selesaiBtn)
                 .addGap(29, 29, 29)
                 .addComponent(cancelBtn)
                 .addContainerGap())
@@ -211,35 +150,34 @@ public class checkoutView extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(customerLabel)
                 .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(statLabel)
-                        .addComponent(statLabel1)))
+                .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(feeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(feeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yesRadBtn1)
-                    .addComponent(sudahRadBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(feeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(noRadBtn)
-                    .addComponent(belumRadBtn))
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveBtn)
+                    .addComponent(selesaiBtn)
                     .addComponent(cancelBtn))
                 .addContainerGap())
         );
 
-        hargaArea.setColumns(20);
-        hargaArea.setRows(5);
-        jScrollPane2.setViewportView(hargaArea);
-
         feeLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         feeLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        feeLabel1.setText("Total Harga");
+        feeLabel1.setText("Rincian");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
@@ -247,26 +185,26 @@ public class checkoutView extends javax.swing.JFrame {
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(containerPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane2)))
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(feeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(feeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 33, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(feeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(feeLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,22 +229,6 @@ public class checkoutView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void sudahRadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sudahRadBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sudahRadBtnActionPerformed
-
-    private void noRadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noRadBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noRadBtnActionPerformed
-
-    private void belumRadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_belumRadBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_belumRadBtnActionPerformed
-
-    private void yesRadBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesRadBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yesRadBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,27 +266,21 @@ public class checkoutView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton belumRadBtn;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JComboBox<String> customerDd;
     private javax.swing.JLabel customerLabel;
-    private javax.swing.JTextField feeInput;
     private javax.swing.JLabel feeLabel;
     private javax.swing.JLabel feeLabel1;
-    private javax.swing.JTextArea hargaArea;
     private javax.swing.JPanel headerPan;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JRadioButton noRadBtn;
-    private javax.swing.JButton saveBtn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton selesaiBtn;
     private javax.swing.JPanel sidebarPan;
-    private javax.swing.JLabel statLabel;
-    private javax.swing.JLabel statLabel1;
-    private javax.swing.JRadioButton sudahRadBtn;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JRadioButton yesRadBtn1;
+    private javax.swing.JTextField totInput;
     // End of variables declaration//GEN-END:variables
 }
