@@ -4,17 +4,60 @@
  */
 package view;
 
-/**
- *
- * @author julia
- */
-public class ownerView extends javax.swing.JFrame {
+import control.CustomerControl;
+import control.EmployeeControl;
 
+
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import model.Employee;
+
+
+import table.TableEmployee;
+public class ownerView extends javax.swing.JFrame {
+    
+    
+    private EmployeeControl employeeControl;
+    private String action;
+    private String id, status, posisi, temp1;
+    private int temp;
     /**
      * Creates new form ownerView
      */
     public ownerView() {
         initComponents();
+          setComponent(false);
+          idInput.setEnabled(false);
+          employeeControl = new EmployeeControl();
+          showCustomer();
+          clearText();
+    }
+    
+    public void setComponent(boolean value){
+       editBtn.setEnabled(value);
+       deleteBtn.setEnabled(value);
+      
+       namaInput.setEnabled(value);
+       telpInput.setEnabled(value);
+       passInput.setEnabled(value);
+       statDd.setEnabled(value);
+       jabDd.setEnabled(value);
+       
+       saveBtn.setEnabled(value);
+       cancelBtn.setEnabled(value);
+    }
+    
+     public void clearText(){
+        namaInput.setText("");
+        telpInput.setText("");
+        passInput.setText("");
+        idInput.setText("");
+        searchInput.setText("");
+    }
+     
+     public void showCustomer(){
+        employeeTable.setModel(employeeControl.showDataEmployee());
     }
 
     /**
@@ -29,6 +72,7 @@ public class ownerView extends javax.swing.JFrame {
         sidebarPan = new javax.swing.JPanel();
         Laundry_logo = new javax.swing.JLabel();
         headerPan = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
         containerPan = new javax.swing.JPanel();
         idLabel = new javax.swing.JLabel();
         idInput = new javax.swing.JTextField();
@@ -49,7 +93,7 @@ public class ownerView extends javax.swing.JFrame {
         jabLabel = new javax.swing.JLabel();
         jabDd = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableEmployee = new javax.swing.JTable();
+        employeeTable = new javax.swing.JTable();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
 
@@ -79,15 +123,25 @@ public class ownerView extends javax.swing.JFrame {
 
         headerPan.setBackground(new java.awt.Color(255, 255, 153));
 
+        titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(0, 255, 255));
+        titleLabel.setText("Owner Operation Page");
+
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
         headerPanLayout.setHorizontalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(headerPanLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 81, Short.MAX_VALUE)
+            .addGroup(headerPanLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         containerPan.setBackground(new java.awt.Color(255, 255, 255));
@@ -109,6 +163,11 @@ public class ownerView extends javax.swing.JFrame {
         opPan.setBackground(new java.awt.Color(51, 204, 255));
 
         addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +177,11 @@ public class ownerView extends javax.swing.JFrame {
         });
 
         editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout opPanLayout = new javax.swing.GroupLayout(opPan);
         opPan.setLayout(opPanLayout);
@@ -146,6 +210,11 @@ public class ownerView extends javax.swing.JFrame {
         searchBtn.setBackground(new java.awt.Color(153, 255, 255));
         searchBtn.setForeground(new java.awt.Color(0, 0, 0));
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -182,7 +251,12 @@ public class ownerView extends javax.swing.JFrame {
         statDd.setBackground(new java.awt.Color(255, 255, 255));
         statDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         statDd.setForeground(new java.awt.Color(0, 0, 0));
-        statDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        statDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif", " " }));
+        statDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statDdActionPerformed(evt);
+            }
+        });
 
         jabLabel.setForeground(new java.awt.Color(0, 0, 0));
         jabLabel.setText("Jabatan");
@@ -190,12 +264,17 @@ public class ownerView extends javax.swing.JFrame {
         jabDd.setBackground(new java.awt.Color(255, 255, 255));
         jabDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jabDd.setForeground(new java.awt.Color(0, 0, 0));
-        jabDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jabDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Petugas Kasir", "Kurir" }));
+        jabDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jabDdActionPerformed(evt);
+            }
+        });
 
-        tableEmployee.setBackground(new java.awt.Color(255, 255, 255));
-        tableEmployee.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        tableEmployee.setForeground(new java.awt.Color(0, 0, 0));
-        tableEmployee.setModel(new javax.swing.table.DefaultTableModel(
+        employeeTable.setBackground(new java.awt.Color(255, 255, 255));
+        employeeTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        employeeTable.setForeground(new java.awt.Color(0, 0, 0));
+        employeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -205,12 +284,35 @@ public class ownerView extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
-        ));
-        jScrollPane1.setViewportView(tableEmployee);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        employeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(employeeTable);
 
         saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout containerPanLayout = new javax.swing.GroupLayout(containerPan);
         containerPan.setLayout(containerPanLayout);
@@ -239,13 +341,13 @@ public class ownerView extends javax.swing.JFrame {
                                 .addComponent(idInput)
                                 .addComponent(namaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                                 .addComponent(telpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(229, 229, 229)
+                .addGap(232, 232, 232)
                 .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jabDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -322,12 +424,142 @@ public class ownerView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+         int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    
+                    employeeControl.deleteDataEmployee(idInput.getText());
+                    clearText();
+                    showCustomer();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idInputActionPerformed
+
+    private void statDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statDdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statDdActionPerformed
+
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        setComponent(true);
+        action = "Ubah";
+        addBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        setComponent(true);
+        editBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
+        clearText();
+        searchInput.setText("");
+        id = employeeControl.generateIDKaryawan();
+        idInput.setText(id);
+        action = "Tambah";
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        try{
+           temp = statDd.getSelectedIndex();
+           switch(temp){
+               case 0:
+                   status = "Aktif";
+                   break;
+               case 1:
+                   status = "Tidak Aktif";
+                   break;
+           }
+           temp = jabDd.getSelectedIndex();
+           switch(temp){
+               case 0:
+                   posisi = "Petugas Kasir";
+                   break;
+               case 1:
+                   posisi = "Kurir";
+                   break;
+           }
+            Employee e = new Employee(idInput.getText(), namaInput.getText(), passInput.getText(), Integer.parseInt(telpInput.getText()), status, posisi);
+           
+            if(action.equals("Tambah")){
+                employeeControl.insertDataEmployee(e);
+            }else{
+                employeeControl.updateDataEmployee(e, idInput.getText());
+            }
+            clearText();
+            showCustomer();
+            setComponent(false);
+        }catch (Exception e){
+            System.out.println("Gagal menyimpan data");
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void jabDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabDdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jabDdActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        setComponent(false);
+        clearText();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
+        setComponent(false);
+        editBtn.setEnabled(true);
+        deleteBtn.setEnabled(true);
+        
+        int clickedRow = employeeTable.getSelectedRow();
+        TableModel table = employeeTable.getModel();
+        
+        
+        idInput.setText(table.getValueAt(clickedRow, 0).toString());
+        namaInput.setText(table.getValueAt(clickedRow, 1).toString());
+        passInput.setText(table.getValueAt(clickedRow, 2).toString());
+        telpInput.setText(table.getValueAt(clickedRow, 3).toString());
+        temp1 = table.getValueAt(clickedRow, 4).toString();
+        
+        if(temp1.equalsIgnoreCase("Aktif")){
+            statDd.setSelectedIndex(0);
+        }else{
+            statDd.setSelectedIndex(1);
+        }
+        
+        temp1 = table.getValueAt(clickedRow, 5).toString();
+        
+        if(temp1.equalsIgnoreCase("Kurir")){
+            jabDd.setSelectedIndex(1);
+        }else{
+            jabDd.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_employeeTableMouseClicked
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        setComponent(false);
+        
+        try{
+           TableEmployee employee = employeeControl.showDataBySearch(searchInput.getText());
+            if(employee.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                employeeTable.setModel(employee);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,6 +603,7 @@ public class ownerView extends javax.swing.JFrame {
     private javax.swing.JPanel containerPan;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
+    private javax.swing.JTable employeeTable;
     private javax.swing.JPanel headerPan;
     private javax.swing.JTextField idInput;
     private javax.swing.JLabel idLabel;
@@ -388,8 +621,8 @@ public class ownerView extends javax.swing.JFrame {
     private javax.swing.JPanel sidebarPan;
     private javax.swing.JComboBox<String> statDd;
     private javax.swing.JLabel statLabel;
-    private javax.swing.JTable tableEmployee;
     private javax.swing.JTextField telpInput;
     private javax.swing.JLabel telpLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

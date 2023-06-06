@@ -4,19 +4,64 @@
  */
 package view;
 
-/**
- *
- * @author Yeetman47
- */
-public class Customer extends javax.swing.JFrame {
+import control.CustomerControl;
 
-    /**
-     * Creates new form Customer
-     */
-    public Customer() {
-        initComponents();
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import model.Customer;
+
+
+import table.TableCustomer;
+
+public class customerView extends javax.swing.JFrame {
+
+    private CustomerControl customerControl;
+    private String action;
+    private String id;
+    private String jenisKelamin, temp;
+    
+    
+    
+    public customerView() {
+        try{
+          initComponents();
+          setComponent(false);
+          idInput.setEnabled(false);
+          customerControl = new CustomerControl();
+          showCustomer();
+          clearText();
+        }catch(Exception e){
+            System.out.println("error CustomerView");
+        }    
+      
+     }
+    
+    public void setComponent(boolean value){
+       editBtn.setEnabled(value);
+       deleteBtn.setEnabled(value);
+       namaInput.setEnabled(value);
+       telpInput.setEnabled(value);
+       alamatInput.setEnabled(value);
+       jenisKelamin1RBtn.setEnabled(value);
+       jenisKelamin2RBtn.setEnabled(value);
+       jenisKelamin1RBtn.setSelected(value);
+       jenisKelamin2RBtn.setSelected(value);
+       saveBtn.setEnabled(value);
+       cancelBtn.setEnabled(value);
     }
-
+    
+    public void clearText(){
+        namaInput.setText("");
+        telpInput.setText("");
+        alamatInput.setText("");
+        idInput.setText("");
+    }
+    
+    public void showCustomer(){
+        customerTable.setModel(customerControl.showDataCustomer());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,9 +76,9 @@ public class Customer extends javax.swing.JFrame {
         headerPan = new javax.swing.JPanel();
         containerPanel4 = new javax.swing.JPanel();
         opPanel4 = new javax.swing.JPanel();
-        addBtn4 = new javax.swing.JButton();
-        deleteBtn4 = new javax.swing.JButton();
-        editBtn4 = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        editBtn = new javax.swing.JButton();
         idLabel = new javax.swing.JLabel();
         idInput = new javax.swing.JTextField();
         namaLabel = new javax.swing.JLabel();
@@ -42,15 +87,15 @@ public class Customer extends javax.swing.JFrame {
         alamatInput = new javax.swing.JTextField();
         telpLabel = new javax.swing.JLabel();
         telpInput = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jenisKelamin1RBtn = new javax.swing.JRadioButton();
+        jenisKelamin2RBtn = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         searchBtn = new javax.swing.JButton();
         searchInput = new javax.swing.JTextField();
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        customerTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,11 +129,26 @@ public class Customer extends javax.swing.JFrame {
 
         opPanel4.setBackground(new java.awt.Color(255, 255, 153));
 
-        addBtn4.setText("Add");
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
-        deleteBtn4.setText("Delete");
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
-        editBtn4.setText("Edit");
+        editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout opPanel4Layout = new javax.swing.GroupLayout(opPanel4);
         opPanel4.setLayout(opPanel4Layout);
@@ -96,11 +156,11 @@ public class Customer extends javax.swing.JFrame {
             opPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opPanel4Layout.createSequentialGroup()
                 .addContainerGap(324, Short.MAX_VALUE)
-                .addComponent(addBtn4)
+                .addComponent(addBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteBtn4)
+                .addComponent(deleteBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editBtn4)
+                .addComponent(editBtn)
                 .addContainerGap())
         );
         opPanel4Layout.setVerticalGroup(
@@ -108,9 +168,9 @@ public class Customer extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opPanel4Layout.createSequentialGroup()
                 .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(opPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn4)
-                    .addComponent(deleteBtn4)
-                    .addComponent(editBtn4))
+                    .addComponent(addBtn)
+                    .addComponent(deleteBtn)
+                    .addComponent(editBtn))
                 .addContainerGap())
         );
 
@@ -121,6 +181,11 @@ public class Customer extends javax.swing.JFrame {
         idInput.setBackground(new java.awt.Color(255, 255, 255));
         idInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         idInput.setForeground(new java.awt.Color(0, 0, 0));
+        idInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idInputActionPerformed(evt);
+            }
+        });
 
         namaLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -129,6 +194,11 @@ public class Customer extends javax.swing.JFrame {
         namaInput.setBackground(new java.awt.Color(255, 255, 255));
         namaInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaInput.setForeground(new java.awt.Color(0, 0, 0));
+        namaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaInputActionPerformed(evt);
+            }
+        });
 
         alamatLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         alamatLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -146,37 +216,67 @@ public class Customer extends javax.swing.JFrame {
         telpInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         telpInput.setForeground(new java.awt.Color(0, 0, 0));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jenKelGroup.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setText("Laki-laki");
+        jenisKelamin1RBtn.setBackground(new java.awt.Color(255, 255, 255));
+        jenKelGroup.add(jenisKelamin1RBtn);
+        jenisKelamin1RBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jenisKelamin1RBtn.setForeground(new java.awt.Color(0, 0, 0));
+        jenisKelamin1RBtn.setText("Laki-laki");
+        jenisKelamin1RBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenisKelamin1RBtnActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jenKelGroup.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Perempuan");
+        jenisKelamin2RBtn.setBackground(new java.awt.Color(255, 255, 255));
+        jenKelGroup.add(jenisKelamin2RBtn);
+        jenisKelamin2RBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jenisKelamin2RBtn.setForeground(new java.awt.Color(0, 0, 0));
+        jenisKelamin2RBtn.setText("Perempuan");
+        jenisKelamin2RBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenisKelamin2RBtnActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Jenis Kelamin");
 
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput.setForeground(new java.awt.Color(0, 0, 0));
         searchInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        searchInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchInputActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
-        jTable2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        jTable2.setForeground(new java.awt.Color(0, 0, 0));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        customerTable.setBackground(new java.awt.Color(255, 255, 255));
+        customerTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerTable.setForeground(new java.awt.Color(0, 0, 0));
+        customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -186,8 +286,21 @@ public class Customer extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        customerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(customerTable);
 
         javax.swing.GroupLayout containerPanel4Layout = new javax.swing.GroupLayout(containerPanel4);
         containerPanel4.setLayout(containerPanel4Layout);
@@ -196,9 +309,7 @@ public class Customer extends javax.swing.JFrame {
             .addComponent(jScrollPane2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanel4Layout.createSequentialGroup()
                 .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(containerPanel4Layout.createSequentialGroup()
-                        .addComponent(opPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 115, Short.MAX_VALUE))
+                    .addComponent(opPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(containerPanel4Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,10 +326,10 @@ public class Customer extends javax.swing.JFrame {
                                     .addComponent(telpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(253, 253, 253)
                                 .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jenisKelamin1RBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jenisKelamin2RBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(saveBtn)
                     .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,9 +360,9 @@ public class Customer extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(namaLabel))
                     .addGroup(containerPanel4Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(jenisKelamin1RBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(jenisKelamin2RBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -298,6 +409,126 @@ public class Customer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        setComponent(true);
+        action = "Ubah";
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInputActionPerformed
+
+    private void namaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaInputActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        setComponent(true);
+        editBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
+        clearText();
+        searchInput.setText("");
+        id = customerControl.generateIDCustomer();
+        idInput.setText(id);
+        action = "Tambah";
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+         int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    customerControl.deleteDataCustomer(idInput.getText());
+                    //customerControl.deleteCustomer(selectedId);
+                    clearText();
+                    showCustomer();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void searchInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInputActionPerformed
+       
+    }//GEN-LAST:event_searchInputActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+         try{
+           
+            Customer c = new Customer(idInput.getText(), namaInput.getText(), Integer.parseInt(telpInput.getText()) , alamatInput.getText(), jenisKelamin );               
+            if(action.equals("Tambah")){
+                customerControl.insertDataCustomer(c);
+            }else{
+                customerControl.updateDataCustomer(c, idInput.getText());
+            }
+            clearText();
+            showCustomer();
+            setComponent(false);
+        }catch (Exception e){
+            System.out.println("Gagal menyimpan data");
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void jenisKelamin1RBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisKelamin1RBtnActionPerformed
+        jenisKelamin = "Laki-laki";
+    }//GEN-LAST:event_jenisKelamin1RBtnActionPerformed
+
+    private void jenisKelamin2RBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisKelamin2RBtnActionPerformed
+        jenisKelamin = "Perempuan";
+    }//GEN-LAST:event_jenisKelamin2RBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        setComponent(false);
+        clearText();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void customerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTableMouseClicked
+        setComponent(false);
+        editBtn.setEnabled(true);
+        deleteBtn.setEnabled(true);
+        
+        int clickedRow = customerTable.getSelectedRow();
+        TableModel table = customerTable.getModel();
+        
+        
+        idInput.setText(table.getValueAt(clickedRow, 0).toString());
+        namaInput.setText(table.getValueAt(clickedRow, 1).toString());
+        telpInput.setText(table.getValueAt(clickedRow, 2).toString());
+        alamatInput.setText(table.getValueAt(clickedRow, 3).toString());
+        
+        temp = table.getValueAt(clickedRow, 4).toString();
+        if(temp.equalsIgnoreCase("Laki-laki")){
+            jenisKelamin1RBtn.setSelected(true);
+            jenisKelamin2RBtn.setSelected(false);
+        }else{
+            jenisKelamin1RBtn.setSelected(false);
+            jenisKelamin2RBtn.setSelected(true);
+        }
+    }//GEN-LAST:event_customerTableMouseClicked
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+         setComponent(false);
+        
+        try{
+           TableCustomer customer = customerControl.showDataBySearch(searchInput.getText());
+            if(customer.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                customerTable.setModel(customer);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,63 +546,44 @@ public class Customer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(customerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(customerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(customerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(customerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Customer().setVisible(true);
+                new customerView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JButton addBtn1;
-    private javax.swing.JButton addBtn2;
-    private javax.swing.JButton addBtn3;
-    private javax.swing.JButton addBtn4;
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JButton cancelBtn;
-    private javax.swing.JPanel containerPanel;
-    private javax.swing.JPanel containerPanel1;
-    private javax.swing.JPanel containerPanel2;
-    private javax.swing.JPanel containerPanel3;
     private javax.swing.JPanel containerPanel4;
+    private javax.swing.JTable customerTable;
     private javax.swing.JButton deleteBtn;
-    private javax.swing.JButton deleteBtn1;
-    private javax.swing.JButton deleteBtn2;
-    private javax.swing.JButton deleteBtn3;
-    private javax.swing.JButton deleteBtn4;
     private javax.swing.JButton editBtn;
-    private javax.swing.JButton editBtn1;
-    private javax.swing.JButton editBtn2;
-    private javax.swing.JButton editBtn3;
-    private javax.swing.JButton editBtn4;
     private javax.swing.JPanel headerPan;
     private javax.swing.JTextField idInput;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.ButtonGroup jenKelGroup;
+    private javax.swing.JRadioButton jenisKelamin1RBtn;
+    private javax.swing.JRadioButton jenisKelamin2RBtn;
     private javax.swing.JTextField namaInput;
     private javax.swing.JLabel namaLabel;
-    private javax.swing.JPanel opPanel;
-    private javax.swing.JPanel opPanel1;
-    private javax.swing.JPanel opPanel2;
-    private javax.swing.JPanel opPanel3;
     private javax.swing.JPanel opPanel4;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
