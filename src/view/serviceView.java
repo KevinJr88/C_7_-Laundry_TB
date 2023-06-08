@@ -29,13 +29,13 @@ public class serviceView extends javax.swing.JFrame {
     public serviceView() {
         initComponents();
         setComponent(false);
-        idInput.setEnabled(false);
         serviceControl = new ServiceControl();
         showService();
         clearText();
     }
     
     public void setComponent(boolean value){
+       idInput.setEnabled(value);
        editBtn.setEnabled(value);
        deleteBtn.setEnabled(value);
        namaInput.setEnabled(value);
@@ -466,8 +466,6 @@ public class serviceView extends javax.swing.JFrame {
         deleteBtn.setEnabled(false);
         clearText();
         searchInput.setText("");
-        //id = customerControl.generateIDCustomer();
-        //idInput.setText(id);
         action = "Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
 
