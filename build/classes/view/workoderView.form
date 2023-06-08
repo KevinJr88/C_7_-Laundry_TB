@@ -167,6 +167,13 @@
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+<<<<<<< HEAD
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="cancelBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
+=======
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
@@ -178,6 +185,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="saveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> cbf4c507dcb9569fceed2a7b4e49b4df71149aae
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
