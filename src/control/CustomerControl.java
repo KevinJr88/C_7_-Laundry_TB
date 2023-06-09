@@ -46,4 +46,8 @@ public class CustomerControl {
         return temp;
     }
     
+    public List<Customer> showListCustomer(){
+        List<Customer> kendaraan = cDao.showCustomer();
+        return kendaraan;
+    }
 }

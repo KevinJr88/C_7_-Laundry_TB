@@ -100,7 +100,6 @@ public class serviceView extends javax.swing.JFrame {
         deliLabel = new javax.swing.JLabel();
         yesRadBtn = new javax.swing.JRadioButton();
         noRadBtn = new javax.swing.JRadioButton();
-        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,9 +118,9 @@ public class serviceView extends javax.swing.JFrame {
 
         headerPan.setBackground(new java.awt.Color(51, 255, 255));
 
+        titleLabel.setText("Service Page");
         titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 102));
-        titleLabel.setText("Service Page");
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
@@ -152,6 +151,11 @@ public class serviceView extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Edit");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -191,10 +195,10 @@ public class serviceView extends javax.swing.JFrame {
             }
         });
 
-        searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        searchInput.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        searchInput.setForeground(new java.awt.Color(0, 0, 0));
 
         serviceTable.setBackground(new java.awt.Color(255, 255, 255));
         serviceTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -233,8 +237,8 @@ public class serviceView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel6.setText("Tambah service");
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -253,21 +257,21 @@ public class serviceView extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
+        idLabel.setText("ID");
         idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         idLabel.setForeground(new java.awt.Color(0, 0, 0));
-        idLabel.setText("ID");
 
         idInput.setText("jTextField1");
 
+        namaLabel.setText("Nama");
         namaLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaLabel.setForeground(new java.awt.Color(0, 0, 0));
-        namaLabel.setText("Nama");
 
         namaInput.setText("jTextField1");
 
+        cepatLabel.setText("Kecepatan");
         cepatLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         cepatLabel.setForeground(new java.awt.Color(0, 0, 0));
-        cepatLabel.setText("Kecepatan");
 
         cepatInput.setText("jTextField1");
         cepatInput.addActionListener(new java.awt.event.ActionListener() {
@@ -276,9 +280,9 @@ public class serviceView extends javax.swing.JFrame {
             }
         });
 
+        feeLabel.setText("Biaya");
         feeLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         feeLabel.setForeground(new java.awt.Color(0, 0, 0));
-        feeLabel.setText("Biaya");
 
         feeInput.setText("jTextField1");
         feeInput.addActionListener(new java.awt.event.ActionListener() {
@@ -287,9 +291,9 @@ public class serviceView extends javax.swing.JFrame {
             }
         });
 
+        deliLabel.setText("Jasa Antar");
         deliLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         deliLabel.setForeground(new java.awt.Color(0, 0, 0));
-        deliLabel.setText("Jasa Antar");
 
         yesNoGroup.add(yesRadBtn);
         yesRadBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -337,23 +341,15 @@ public class serviceView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(noRadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,8 +497,20 @@ public class serviceView extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-         setComponent(false);
-        
+        setComponent(false);
+         try{
+           TableService service = serviceControl.showDataBySearch(searchInput.getText());
+            if(service.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                serviceTable.setModel(service);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
         
     }//GEN-LAST:event_searchBtnActionPerformed
 
@@ -522,12 +530,34 @@ public class serviceView extends javax.swing.JFrame {
         if(temp.equalsIgnoreCase("Ya")){
             yesRadBtn.setSelected(true);
             noRadBtn.setSelected(false);
+            jasaAntar = "Iya";
         }else{
-             yesRadBtn.setSelected(false);
+            yesRadBtn.setSelected(false);
             noRadBtn.setSelected(true);
+            jasaAntar = "Tidak";
         }
         feeInput.setText(table.getValueAt(clickedRow, 4).toString());
     }//GEN-LAST:event_serviceTableMouseClicked
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    serviceControl.deleteDataService(idInput.getText());
+                    
+                    clearText();
+                    showService();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -570,7 +600,6 @@ public class serviceView extends javax.swing.JFrame {
     private javax.swing.JTextField cepatInput;
     private javax.swing.JLabel cepatLabel;
     private javax.swing.JPanel containerPanel;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel deliLabel;
     private javax.swing.JButton editBtn;
