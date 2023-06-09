@@ -499,66 +499,28 @@ public class workorderView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        setComponent(true);
-        editBtn.setEnabled(false);
-        deleteBtn.setEnabled(false);
-        clearText();
-        searchInput.setText("");
-        action = "Tambah";
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        setComponent(true);
-        action = "Ubah";
+       
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        setComponent(false);
+        
 
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void serviceTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_serviceTableMouseClicked
-        setComponent(false);
-        editBtn.setEnabled(true);
-        deleteBtn.setEnabled(true);
-
-        int clickedRow = serviceTable.getSelectedRow();
-        TableModel table = serviceTable.getModel();
-
-        idInput.setText(table.getValueAt(clickedRow, 0).toString());
-        bobotInput.setText(table.getValueAt(clickedRow, 1).toString());
-        telpInput.setText(table.getValueAt(clickedRow, 2).toString());
-        temp = table.getValueAt(clickedRow, 3).toString();
-        if(temp.equalsIgnoreCase("Ya")){
-            yesRadBtn.setSelected(true);
-            noRadBtn.setSelected(false);
-        }else{
-            yesRadBtn.setSelected(false);
-            noRadBtn.setSelected(true);
-        }
-        alamatInput.setText(table.getValueAt(clickedRow, 4).toString());
+        
     }//GEN-LAST:event_serviceTableMouseClicked
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        setComponent(false);
-        clearText();
+        
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        try{
-            Service s = new Service(idInput.getText(), bobotInput.getText(), Integer.parseInt(telpInput.getText()), jasaAntar, Integer.parseInt(alamatInput.getText()));
-
-            if(action.equals("Tambah")){
-                serviceControl.insertDataService(s);
-            }else{
-                serviceControl.updateDataService(s, idInput.getText());
-            }
-            clearText();
-            showService();
-            setComponent(false);
-        }catch (Exception e){
-            System.out.println("Gagal menyimpan data");
-        }
+       
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void telpInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telpInputActionPerformed
