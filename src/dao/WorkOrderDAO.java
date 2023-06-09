@@ -54,7 +54,8 @@ public class WorkOrderDAO {
                 + "OR wo.tanggal_selesai LIKE '%" + query + "%'"
                 + "OR wo.bobot LIKE '%" + query + "%'"
                 + "OR wo.status LIKE '%" + query + "%'"
-                + "OR wo.id_transaksi LIKE '%" + query + "%)";
+                + "OR s.nama_layanan LIKE '%" + query + "%'"
+                + "OR c.nama_customer LIKE '%" + query + "%)";
                 // TAMBAH APA LAGI YANG BISA JADIIN KATA KUNCI
                 
         System.out.println("Mengambil data work order...");
