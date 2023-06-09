@@ -56,6 +56,7 @@ public class customerView extends javax.swing.JFrame {
         telpInput.setText("");
         alamatInput.setText("");
         idInput.setText("");
+        searchInput.setText("");
     }
     
     public void showCustomer(){

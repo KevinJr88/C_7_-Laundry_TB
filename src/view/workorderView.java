@@ -19,6 +19,7 @@ import model.Customer;
 import model.Service;
 import model.WorkOrder;
 
+import table.TableWorkOrder;
 
 
 public class workorderView extends javax.swing.JFrame {
@@ -26,7 +27,8 @@ public class workorderView extends javax.swing.JFrame {
     private ServiceControl sc;
     private WorkOrderControl wc;
     private  static Employee employee;
-    
+    List<Customer> listCustomer;
+    List<Service> listService;
     
     public void setEmployee(Employee employee){
         this.employee = employee;
@@ -35,12 +37,52 @@ public class workorderView extends javax.swing.JFrame {
     public workorderView(Employee employee) {
         setEmployee(employee);
         initComponents();
+        setComponent(false);
         cc = new CustomerControl();
         sc = new ServiceControl();
         wc = new WorkOrderControl();
+        showWorkOrder();
+        setCustomerToDropDown();
+        clearText();
         
+    }
+    
+    public void setComponent(boolean value){
+       editBtn.setEnabled(value);
+       deleteBtn.setEnabled(value);
+       saveBtn.setEnabled(value);
+       cancelBtn.setEnabled(value);
+       
+       
+    }
+    
+    public void clearText(){
+        bobotInput.setText("");
+        customerDd.setSelectedItem(ABORT);
+        layananDd.setSelectedItem(ABORT);
         
-        
+            
+    }
+    
+    
+    public void showWorkOrder(){
+        workOrderTable.setModel(wc.showWorkOrderNotDone(""));
+    }
+    
+    public void setCustomerToDropDown(){
+        //listCustomer  ;
+//         listKendaraan = kendaraanControl.showListKendaraan();
+//        for(int i=0; i<listKendaraan.size(); i++){
+//            selectMerkKendaraan.addItem(String.valueOf(listKendaraan.get(i)));
+//        }
+    }
+    
+    public void setServiceToDropDown(){
+        //listCustomer  ;
+//         listKendaraan = kendaraanControl.showListKendaraan();
+//        for(int i=0; i<listKendaraan.size(); i++){
+//            selectMerkKendaraan.addItem(String.valueOf(listKendaraan.get(i)));
+//        }
     }
 
     /**
@@ -63,7 +105,7 @@ public class workorderView extends javax.swing.JFrame {
         searchBtn = new javax.swing.JButton();
         searchInput = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        serviceTable = new javax.swing.JTable();
+        workOrderTable = new javax.swing.JTable();
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -172,7 +214,7 @@ public class workorderView extends javax.swing.JFrame {
         searchInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         searchInput.setForeground(new java.awt.Color(0, 0, 0));
 
-        serviceTable.setModel(new javax.swing.table.DefaultTableModel(
+        workOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -183,15 +225,15 @@ public class workorderView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        serviceTable.setBackground(new java.awt.Color(255, 255, 255));
-        serviceTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        serviceTable.setForeground(new java.awt.Color(0, 0, 0));
-        serviceTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        workOrderTable.setBackground(new java.awt.Color(255, 255, 255));
+        workOrderTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        workOrderTable.setForeground(new java.awt.Color(0, 0, 0));
+        workOrderTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                serviceTableMouseClicked(evt);
+                workOrderTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(serviceTable);
+        jScrollPane1.setViewportView(workOrderTable);
 
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +293,11 @@ public class workorderView extends javax.swing.JFrame {
         bobotInput.setText("jTextField1");
         bobotInput.setBackground(new java.awt.Color(255, 255, 255));
         bobotInput.setForeground(new java.awt.Color(0, 0, 0));
+        bobotInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bobotInputActionPerformed(evt);
+            }
+        });
 
         layananLabel.setText("Jenis Layanan");
         layananLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -260,6 +307,11 @@ public class workorderView extends javax.swing.JFrame {
         layananDd.setBackground(new java.awt.Color(255, 255, 255));
         layananDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananDd.setForeground(new java.awt.Color(0, 0, 0));
+        layananDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                layananDdActionPerformed(evt);
+            }
+        });
 
         tanggalLabel.setText("Tanggal");
         tanggalLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -398,9 +450,9 @@ public class workorderView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_searchBtnActionPerformed
 
-    private void serviceTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_serviceTableMouseClicked
+    private void workOrderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_workOrderTableMouseClicked
         
-    }//GEN-LAST:event_serviceTableMouseClicked
+    }//GEN-LAST:event_workOrderTableMouseClicked
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         
@@ -413,6 +465,14 @@ public class workorderView extends javax.swing.JFrame {
     private void customerDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerDdActionPerformed
+
+    private void bobotInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bobotInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bobotInputActionPerformed
+
+    private void layananDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_layananDdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_layananDdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -472,9 +532,9 @@ public class workorderView extends javax.swing.JFrame {
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchInput;
-    private javax.swing.JTable serviceTable;
     private javax.swing.JPanel sidebarPan;
     private javax.swing.JLabel tanggalLabel;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JTable workOrderTable;
     // End of variables declaration//GEN-END:variables
 }
