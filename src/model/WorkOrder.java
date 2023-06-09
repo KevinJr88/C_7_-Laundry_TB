@@ -15,24 +15,27 @@ public class WorkOrder {
     private String tanggal_masuk;
     private String tanggal_selesai;
     private int bobot;
+    private String status;
     private Customer customer;
     private Employee karyawan;
     private Service layanan;
 
-    public WorkOrder(int id_transaksi, String tanggal_masuk, String tanggal_selesai, int bobot, Customer customer, Employee karyawan, Service layanan) {
+    public WorkOrder(int id_transaksi, String tanggal_masuk, String tanggal_selesai, int bobot, String status,  Customer customer, Employee karyawan, Service layanan) {
         this.id_transaksi = id_transaksi;
         this.tanggal_masuk = tanggal_masuk;
         this.tanggal_selesai = tanggal_selesai;
         this.bobot = bobot;
+        this.status = status;
         this.customer = customer;
         this.karyawan = karyawan;
         this.layanan = layanan;
     }
 
-    public WorkOrder(String tanggal_masuk, String tanggal_selesai, int bobot, Customer customer, Employee karyawan, Service layanan) {
+    public WorkOrder(String tanggal_masuk, String tanggal_selesai, int bobot, String status, Customer customer, Employee karyawan, Service layanan) {
         this.tanggal_masuk = tanggal_masuk;
         this.tanggal_selesai = tanggal_selesai;
         this.bobot = bobot;
+        this.status = status;
         this.customer = customer;
         this.karyawan = karyawan;
         this.layanan = layanan;
@@ -52,6 +55,10 @@ public class WorkOrder {
 
     public int getBobot() {
         return bobot;
+    }
+    
+    public String getStatus(){
+        return status;
     }
 
     public Customer getCustomer() {
@@ -81,6 +88,10 @@ public class WorkOrder {
     public void setBobot(int bobot) {
         this.bobot = bobot;
     }
+    
+    public void setStatus(String status){
+        this.status = status;
+    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -94,4 +105,11 @@ public class WorkOrder {
         this.layanan = layanan;
     }
     
+    @Override
+    public String toString(){
+        if(status.equalsIgnoreCase("Proses")){
+            return customer.getNama_customer();
+        }
+        return null;
+    }
 }
