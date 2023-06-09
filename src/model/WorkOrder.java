@@ -105,4 +105,11 @@ public class WorkOrder {
         this.layanan = layanan;
     }
     
+    @Override
+    public String toString(){
+        if(status.equalsIgnoreCase("Proses")){
+            return customer.getNama_customer();
+        }
+        return null;
+    }
 }

@@ -68,8 +68,5 @@ public class Customer {
 
     public void setJenis_kelamin(String jenis_kelamin) {
         this.jenis_kelamin = jenis_kelamin;
-    }
-    
-    
-    
+    } 
 }
