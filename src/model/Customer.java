@@ -69,4 +69,9 @@ public class Customer {
     public void setJenis_kelamin(String jenis_kelamin) {
         this.jenis_kelamin = jenis_kelamin;
     } 
+    
+    @Override
+    public String toString(){
+        return nama_customer;   
+    }
 }
