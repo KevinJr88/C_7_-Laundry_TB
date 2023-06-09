@@ -182,6 +182,9 @@
                   <Image iconType="3" name="/icons/Big Laundry pic.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
