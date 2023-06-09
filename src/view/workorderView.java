@@ -4,17 +4,43 @@
  */
 package view;
 
-/**
- *
- * @author Yeetman47
- */
-public class workorderView extends javax.swing.JFrame {
+import control.CustomerControl;
+import control.WorkOrderControl;
+import control.ServiceControl;
+import control.EmployeeControl;
 
-    /**
-     * Creates new form workorderView
-     */
-    public workorderView() {
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
+
+import model.Employee;
+import model.Customer;
+import model.Service;
+import model.WorkOrder;
+
+
+
+public class workorderView extends javax.swing.JFrame {
+    private CustomerControl cc;
+    private ServiceControl sc;
+    private WorkOrderControl wc;
+    private  static Employee employee;
+    
+    
+    public void setEmployee(Employee employee){
+        this.employee = employee;
+    }
+    
+    public workorderView(Employee employee) {
+        setEmployee(employee);
         initComponents();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
+        wc = new WorkOrderControl();
+        
+        
+        
     }
 
     /**
@@ -69,9 +95,9 @@ public class workorderView extends javax.swing.JFrame {
 
         headerPan.setBackground(new java.awt.Color(51, 255, 255));
 
+        titleLabel.setText("Work Order");
         titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 102));
-        titleLabel.setText("Work Order");
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
@@ -80,7 +106,7 @@ public class workorderView extends javax.swing.JFrame {
             .addGroup(headerPanLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(837, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,8 +209,8 @@ public class workorderView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel6.setText("Transaksi");
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -203,36 +229,41 @@ public class workorderView extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        customerLabel.setText("Pilih Customer");
         customerLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel.setForeground(new java.awt.Color(0, 0, 0));
-        customerLabel.setText("Pilih Customer");
 
+        customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         customerDd.setBackground(new java.awt.Color(255, 255, 255));
         customerDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDd.setForeground(new java.awt.Color(0, 0, 0));
-        customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        customerDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerDdActionPerformed(evt);
+            }
+        });
 
+        namaLabel.setText("Bobot");
         namaLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaLabel.setForeground(new java.awt.Color(0, 0, 0));
-        namaLabel.setText("Bobot");
 
-        bobotInput.setBackground(new java.awt.Color(255, 255, 255));
         bobotInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        bobotInput.setForeground(new java.awt.Color(0, 0, 0));
         bobotInput.setText("jTextField1");
+        bobotInput.setBackground(new java.awt.Color(255, 255, 255));
+        bobotInput.setForeground(new java.awt.Color(0, 0, 0));
 
+        layananLabel.setText("Jenis Layanan");
         layananLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananLabel.setForeground(new java.awt.Color(0, 0, 0));
-        layananLabel.setText("Jenis Layanan");
 
+        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         layananDd.setBackground(new java.awt.Color(255, 255, 255));
         layananDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananDd.setForeground(new java.awt.Color(0, 0, 0));
-        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        tanggalLabel.setText("Tanggal");
         tanggalLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         tanggalLabel.setForeground(new java.awt.Color(0, 0, 0));
-        tanggalLabel.setText("Tanggal");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -355,67 +386,33 @@ public class workorderView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        setComponent(true);
-        editBtn.setEnabled(false);
-        deleteBtn.setEnabled(false);
-        clearText();
-        searchInput.setText("");
-        action = "Tambah";
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        setComponent(true);
-        action = "Ubah";
+       
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        setComponent(false);
+        
 
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void serviceTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_serviceTableMouseClicked
-        setComponent(false);
-        editBtn.setEnabled(true);
-        deleteBtn.setEnabled(true);
-
-        int clickedRow = serviceTable.getSelectedRow();
-        TableModel table = serviceTable.getModel();
-
-        idInput.setText(table.getValueAt(clickedRow, 0).toString());
-        bobotInput.setText(table.getValueAt(clickedRow, 1).toString());
-        telpInput.setText(table.getValueAt(clickedRow, 2).toString());
-        temp = table.getValueAt(clickedRow, 3).toString();
-        if(temp.equalsIgnoreCase("Ya")){
-            yesRadBtn.setSelected(true);
-            noRadBtn.setSelected(false);
-        }else{
-            yesRadBtn.setSelected(false);
-            noRadBtn.setSelected(true);
-        }
-        alamatInput.setText(table.getValueAt(clickedRow, 4).toString());
+        
     }//GEN-LAST:event_serviceTableMouseClicked
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        setComponent(false);
-        clearText();
+        
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        try{
-            Service s = new Service(idInput.getText(), bobotInput.getText(), Integer.parseInt(telpInput.getText()), jasaAntar, Integer.parseInt(alamatInput.getText()));
-
-            if(action.equals("Tambah")){
-                serviceControl.insertDataService(s);
-            }else{
-                serviceControl.updateDataService(s, idInput.getText());
-            }
-            clearText();
-            showService();
-            setComponent(false);
-        }catch (Exception e){
-            System.out.println("Gagal menyimpan data");
-        }
+       
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void customerDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerDdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,7 +444,8 @@ public class workorderView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new workorderView().setVisible(true);
+                Employee Employee = null;
+                new workorderView(employee).setVisible(true);
             }
         });
     }
