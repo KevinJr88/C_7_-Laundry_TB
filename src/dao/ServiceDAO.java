@@ -60,7 +60,7 @@ public class ServiceDAO {
                             rs.getString("nama_layanan"),
                             Integer.parseInt(rs.getString("kecepatan")),
                             rs.getString("jasa_antar"),
-                            Integer.parseInt(rs.getString("biaya"))
+                            Double.parseDouble(rs.getString("biaya"))
                     );
                     list.add(s);
                 }
@@ -95,7 +95,7 @@ public class ServiceDAO {
                  while(rs.next()){
                      Service s = new Service(rs.getString("s.id_layanan"), rs.getString("s.nama_layanan"),
                         Integer.parseInt(rs.getString("s.kecepatan")), rs.getString("s.jasa_antar"),
-                        Integer.parseInt(rs.getString("s.biaya")));
+                        Double.parseDouble(rs.getString("s.biaya")));
                     list.add(s);
                  }
              }
@@ -149,7 +149,7 @@ public class ServiceDAO {
                             rs.getString("nama_layanan"),
                             rs.getInt("kecepatan"),
                             rs.getString("jasa_antar"),
-                            rs.getInt("biaya")
+                            rs.getDouble("biaya")
                     );
                 }
             }
