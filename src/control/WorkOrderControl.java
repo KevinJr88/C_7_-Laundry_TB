@@ -25,7 +25,7 @@ public class WorkOrderControl {
         return tableWorkOrder;
     }
     
-    public TableWorkOrder showWorkOrderCondition(String query){
+    public TableWorkOrder showWorkOrderByStatus(String query){
         List<WorkOrder> dataWorkOrder = woDao.showWorkOrder(query);
         TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
         
