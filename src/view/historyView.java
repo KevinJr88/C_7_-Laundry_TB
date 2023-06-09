@@ -142,6 +142,11 @@ public class historyView extends javax.swing.JFrame {
         searchBtn.setBackground(new java.awt.Color(255, 255, 204));
         searchBtn.setForeground(new java.awt.Color(0, 0, 0));
         searchBtn.setText("Search");
+        searchBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchBtnMouseExited(evt);
+            }
+        });
 
         searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -162,6 +167,7 @@ public class historyView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jScrollPane2.setViewportView(jTable2);
 
         deleteBtn4.setBackground(new java.awt.Color(255, 255, 204));
         deleteBtn4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -225,6 +231,10 @@ public class historyView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtnMouseExited
 
     /**
      * @param args the command line arguments

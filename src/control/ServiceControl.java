@@ -25,6 +25,13 @@ public class ServiceControl {
         return tableService;
     }
     
+    public TableService showDataBySearch(String x){
+        List<Service> dataService = sDao.showServiceBySearch(x);
+        TableService tableService = new TableService(dataService);
+        
+        return tableService;
+    }
+    
     public void updateDataService(Service s, String id){
         sDao.updateService(s, id);
     }

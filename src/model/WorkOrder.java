@@ -15,27 +15,33 @@ public class WorkOrder {
     private String tanggal_masuk;
     private String tanggal_selesai;
     private int bobot;
+    private String status;
     private Customer customer;
     private Employee karyawan;
     private Service layanan;
+    private double biaya;
 
-    public WorkOrder(int id_transaksi, String tanggal_masuk, String tanggal_selesai, int bobot, Customer customer, Employee karyawan, Service layanan) {
+    public WorkOrder(int id_transaksi, String tanggal_masuk, String tanggal_selesai, int bobot, String status,  Customer customer, Employee karyawan, Service layanan, double biaya) {
         this.id_transaksi = id_transaksi;
         this.tanggal_masuk = tanggal_masuk;
         this.tanggal_selesai = tanggal_selesai;
         this.bobot = bobot;
+        this.status = status;
         this.customer = customer;
         this.karyawan = karyawan;
         this.layanan = layanan;
+        this.biaya = biaya;
     }
 
-    public WorkOrder(String tanggal_masuk, String tanggal_selesai, int bobot, Customer customer, Employee karyawan, Service layanan) {
+    public WorkOrder(String tanggal_masuk, String tanggal_selesai, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
         this.tanggal_masuk = tanggal_masuk;
         this.tanggal_selesai = tanggal_selesai;
         this.bobot = bobot;
+        this.status = status;
         this.customer = customer;
         this.karyawan = karyawan;
         this.layanan = layanan;
+        this.biaya = biaya;
     }
 
     public int getId_transaksi() {
@@ -53,6 +59,10 @@ public class WorkOrder {
     public int getBobot() {
         return bobot;
     }
+    
+    public String getStatus(){
+        return status;
+    }
 
     public Customer getCustomer() {
         return customer;
@@ -64,6 +74,14 @@ public class WorkOrder {
 
     public Service getLayanan() {
         return layanan;
+    }
+
+    public double getBiaya() {
+        return biaya;
+    }
+
+    public void setBiaya(double biaya) {
+        this.biaya = biaya;
     }
 
     public void setId_transaksi(int id_transaksi) {
@@ -81,6 +99,10 @@ public class WorkOrder {
     public void setBobot(int bobot) {
         this.bobot = bobot;
     }
+    
+    public void setStatus(String status){
+        this.status = status;
+    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -94,4 +116,11 @@ public class WorkOrder {
         this.layanan = layanan;
     }
     
+    @Override
+    public String toString(){
+        if(status.equalsIgnoreCase("Proses")){
+            return customer.getNama_customer();
+        }
+        return null;
+    }
 }

@@ -13,9 +13,9 @@ public class Service {
     private String nama_layanan;
     private int kecepatan;
     private String jasa_antar;
-    private int biaya;
+    private double biaya;
 
-    public Service(String id_layanan, String nama_layanan, int kecepatan, String jasa_antar, int biaya) {
+    public Service(String id_layanan, String nama_layanan, int kecepatan, String jasa_antar, double biaya) {
         this.id_layanan = id_layanan;
         this.nama_layanan = nama_layanan;
         this.kecepatan = kecepatan;
@@ -23,7 +23,7 @@ public class Service {
         this.biaya = biaya;
     }
 
-    public Service(String nama_layanan, int kecepatan, String jasa_antar, int biaya) {
+    public Service(String nama_layanan, int kecepatan, String jasa_antar, double biaya) {
         this.nama_layanan = nama_layanan;
         this.kecepatan = kecepatan;
         this.jasa_antar = jasa_antar;
@@ -46,7 +46,7 @@ public class Service {
         return jasa_antar;
     }
 
-    public int getBiaya() {
+    public double getBiaya() {
         return biaya;
     }
 
