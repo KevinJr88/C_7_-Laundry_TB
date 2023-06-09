@@ -70,7 +70,7 @@ public class workorderView extends javax.swing.JFrame {
     }
     
     public void setCustomerToDropDown(){
-        //listCustomer  ;
+       // listCustomer  ;
 //         listKendaraan = kendaraanControl.showListKendaraan();
 //        for(int i=0; i<listKendaraan.size(); i++){
 //            selectMerkKendaraan.addItem(String.valueOf(listKendaraan.get(i)));
