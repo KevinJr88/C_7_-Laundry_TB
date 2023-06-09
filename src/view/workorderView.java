@@ -4,17 +4,43 @@
  */
 package view;
 
-/**
- *
- * @author Yeetman47
- */
-public class workorderView extends javax.swing.JFrame {
+import control.CustomerControl;
+import control.WorkOrderControl;
+import control.ServiceControl;
+import control.EmployeeControl;
 
-    /**
-     * Creates new form workorderView
-     */
-    public workorderView() {
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
+
+import model.Employee;
+import model.Customer;
+import model.Service;
+import model.WorkOrder;
+
+
+
+public class workorderView extends javax.swing.JFrame {
+    private CustomerControl cc;
+    private ServiceControl sc;
+    private WorkOrderControl wc;
+    private  static Employee employee;
+    
+    
+    public void setEmployee(Employee employee){
+        this.employee = employee;
+    }
+    
+    public workorderView(Employee employee) {
+        setEmployee(employee);
         initComponents();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
+        wc = new WorkOrderControl();
+        
+        
+        
     }
 
     /**
@@ -51,19 +77,6 @@ public class workorderView extends javax.swing.JFrame {
         layananDd = new javax.swing.JComboBox<>();
         tanggalLabel = new javax.swing.JLabel();
         dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        idLabel = new javax.swing.JLabel();
-        idInput = new javax.swing.JTextField();
-        namaLabel1 = new javax.swing.JLabel();
-        namaInput = new javax.swing.JTextField();
-        telpLabel = new javax.swing.JLabel();
-        telpInput = new javax.swing.JTextField();
-        feeLabel = new javax.swing.JLabel();
-        alamatInput = new javax.swing.JTextField();
-        kelaminLabel = new javax.swing.JLabel();
-        kelaminInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,9 +95,9 @@ public class workorderView extends javax.swing.JFrame {
 
         headerPan.setBackground(new java.awt.Color(51, 255, 255));
 
+        titleLabel.setText("Work Order");
         titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 102));
-        titleLabel.setText("Work Order");
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
@@ -154,14 +167,11 @@ public class workorderView extends javax.swing.JFrame {
             }
         });
 
-        searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        searchInput.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        searchInput.setForeground(new java.awt.Color(0, 0, 0));
 
-        serviceTable.setBackground(new java.awt.Color(255, 255, 255));
-        serviceTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        serviceTable.setForeground(new java.awt.Color(0, 0, 0));
         serviceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -173,6 +183,9 @@ public class workorderView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        serviceTable.setBackground(new java.awt.Color(255, 255, 255));
+        serviceTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        serviceTable.setForeground(new java.awt.Color(0, 0, 0));
         serviceTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 serviceTableMouseClicked(evt);
@@ -196,8 +209,8 @@ public class workorderView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel6.setText("Transaksi");
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -216,36 +229,41 @@ public class workorderView extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        customerLabel.setText("Pilih Customer");
         customerLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel.setForeground(new java.awt.Color(0, 0, 0));
-        customerLabel.setText("Pilih Customer");
 
+        customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         customerDd.setBackground(new java.awt.Color(255, 255, 255));
         customerDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDd.setForeground(new java.awt.Color(0, 0, 0));
-        customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        customerDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerDdActionPerformed(evt);
+            }
+        });
 
+        namaLabel.setText("Bobot");
         namaLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaLabel.setForeground(new java.awt.Color(0, 0, 0));
-        namaLabel.setText("Bobot");
 
-        bobotInput.setBackground(new java.awt.Color(255, 255, 255));
         bobotInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        bobotInput.setForeground(new java.awt.Color(0, 0, 0));
         bobotInput.setText("jTextField1");
+        bobotInput.setBackground(new java.awt.Color(255, 255, 255));
+        bobotInput.setForeground(new java.awt.Color(0, 0, 0));
 
+        layananLabel.setText("Jenis Layanan");
         layananLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananLabel.setForeground(new java.awt.Color(0, 0, 0));
-        layananLabel.setText("Jenis Layanan");
 
+        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         layananDd.setBackground(new java.awt.Color(255, 255, 255));
         layananDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananDd.setForeground(new java.awt.Color(0, 0, 0));
-        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        tanggalLabel.setText("Tanggal");
         tanggalLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         tanggalLabel.setForeground(new java.awt.Color(0, 0, 0));
-        tanggalLabel.setText("Tanggal");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -300,176 +318,45 @@ public class workorderView extends javax.swing.JFrame {
                 .addGap(0, 16, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
-
-        jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel7.setText("Tambah Customer");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        idLabel.setForeground(new java.awt.Color(0, 0, 0));
-        idLabel.setText("ID");
-
-        idInput.setText("jTextField1");
-
-        namaLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        namaLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        namaLabel1.setText("Nama");
-
-        namaInput.setText("jTextField1");
-
-        telpLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        telpLabel.setForeground(new java.awt.Color(0, 0, 0));
-        telpLabel.setText("No.Telp");
-
-        telpInput.setText("jTextField1");
-        telpInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telpInputActionPerformed(evt);
-            }
-        });
-
-        feeLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        feeLabel.setForeground(new java.awt.Color(0, 0, 0));
-        feeLabel.setText("Alamat");
-
-        alamatInput.setText("jTextField1");
-        alamatInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alamatInputActionPerformed(evt);
-            }
-        });
-
-        kelaminLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        kelaminLabel.setForeground(new java.awt.Color(0, 0, 0));
-        kelaminLabel.setText("Jenis Kelamin");
-
-        kelaminInput.setText("jTextField1");
-        kelaminInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kelaminInputActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(namaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alamatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(feeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kelaminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kelaminInput, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(idLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(namaLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(feeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alamatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(telpLabel)
-                        .addGap(4, 4, 4)
-                        .addComponent(telpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kelaminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kelaminInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 44, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addGap(18, 18, 18)
-                .addComponent(cancelBtn)
-                .addGap(55, 55, 55))
             .addComponent(jScrollPane1)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
+                    .addGroup(containerPanelLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(254, 254, 254)
+                        .addComponent(saveBtn)
+                        .addGap(39, 39, 39)
+                        .addComponent(cancelBtn))
+                    .addGroup(containerPanelLayout.createSequentialGroup()
+                        .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
                         .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchBtn)
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(37, 37, 37)
+                        .addComponent(searchBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchBtn)
-                            .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(saveBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(opPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerPanelLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(searchBtn)
+                                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(saveBtn)
+                        .addComponent(cancelBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -523,17 +410,9 @@ public class workorderView extends javax.swing.JFrame {
        
     }//GEN-LAST:event_saveBtnActionPerformed
 
-    private void telpInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telpInputActionPerformed
+    private void customerDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_telpInputActionPerformed
-
-    private void alamatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alamatInputActionPerformed
-
-    private void kelaminInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelaminInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kelaminInputActionPerformed
+    }//GEN-LAST:event_customerDdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -565,14 +444,14 @@ public class workorderView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new workorderView().setVisible(true);
+                Employee Employee = null;
+                new workorderView(employee).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JTextField alamatInput;
     private javax.swing.JTextField bobotInput;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel containerPanel;
@@ -581,24 +460,14 @@ public class workorderView extends javax.swing.JFrame {
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
-    private javax.swing.JLabel feeLabel;
     private javax.swing.JPanel headerPan;
-    private javax.swing.JTextField idInput;
-    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField kelaminInput;
-    private javax.swing.JLabel kelaminLabel;
     private javax.swing.JComboBox<String> layananDd;
     private javax.swing.JLabel layananLabel;
-    private javax.swing.JTextField namaInput;
     private javax.swing.JLabel namaLabel;
-    private javax.swing.JLabel namaLabel1;
     private javax.swing.JPanel opPanel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
@@ -606,8 +475,6 @@ public class workorderView extends javax.swing.JFrame {
     private javax.swing.JTable serviceTable;
     private javax.swing.JPanel sidebarPan;
     private javax.swing.JLabel tanggalLabel;
-    private javax.swing.JTextField telpInput;
-    private javax.swing.JLabel telpLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

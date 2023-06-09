@@ -46,6 +46,13 @@ public class WorkOrderControl {
         return tableWorkOrder;
     }
     
+    public TableWorkOrder showWorkOrderDiantar(String query){
+        List<WorkOrder> dataWorkOrder = woDao.showWorkOrderCondition2();
+        TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
+        
+        return tableWorkOrder;
+    }
+    
     public void deleteDataWorkOrder(int id){
         woDao.deleteWorkOrder(id);
     }
