@@ -70,5 +70,8 @@ public class Service {
         this.biaya = biaya;
     }
     
-    
+    @Override
+    public String toString(){
+        return nama_layanan;
+    }
 }

@@ -139,7 +139,7 @@ public class serviceView extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        containerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        containerPanel.setBackground(new java.awt.Color(55, 121, 164));
 
         opPanel.setBackground(new java.awt.Color(255, 255, 153));
 

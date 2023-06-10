@@ -144,7 +144,7 @@ public class ownerView extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        containerPan.setBackground(new java.awt.Color(255, 255, 255));
+        containerPan.setBackground(new java.awt.Color(55, 121, 164));
         containerPan.setForeground(new java.awt.Color(0, 0, 0));
 
         idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
