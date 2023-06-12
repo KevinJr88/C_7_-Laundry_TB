@@ -24,19 +24,19 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="kGradientPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="PanelUtama" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="kGradientPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="PanelUtama" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="keeptoo.KGradientPanel" name="kGradientPanel1">
+    <Container class="keeptoo.KGradientPanel" name="PanelUtama">
       <Properties>
         <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="a4" green="79" red="37" type="rgb"/>
