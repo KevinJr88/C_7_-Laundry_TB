@@ -239,7 +239,7 @@
                       <Component id="jLabel3" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -271,9 +271,9 @@
                   <Font name="Berlin Sans FB" size="12" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="99" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Add Customer"/>
+                <Property name="text" type="java.lang.String" value="Tambah Customer"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -818,7 +818,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bb" green="e6" red="fe" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Customer "/>
+            <Property name="text" type="java.lang.String" value="Tambah Customer "/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder/>

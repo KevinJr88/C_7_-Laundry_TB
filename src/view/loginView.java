@@ -26,7 +26,11 @@ public class loginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
+<<<<<<< HEAD
+        kGradientPanel1 = new org.netbeans.modules.form.InvalidComponent();
+=======
+        PanelUtama = new keeptoo.KGradientPanel();
+>>>>>>> bb3f0a4ac1fdca5c90bad33a350690526cf8d9e0
         welcomeLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
@@ -38,9 +42,12 @@ public class loginView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(55, 121, 164));
-        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 204));
+<<<<<<< HEAD
+=======
+        PanelUtama.setkEndColor(new java.awt.Color(55, 121, 164));
+        PanelUtama.setkStartColor(new java.awt.Color(255, 255, 204));
 
+>>>>>>> bb3f0a4ac1fdca5c90bad33a350690526cf8d9e0
         welcomeLabel.setFont(new java.awt.Font("Perpetua", 0, 48)); // NOI18N
         welcomeLabel.setForeground(new java.awt.Color(0, 0, 0));
         welcomeLabel.setText("WELCOME");
@@ -79,37 +86,43 @@ public class loginView extends javax.swing.JFrame {
                 creditButtonMouseClicked(evt);
             }
         });
+        creditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelUtamaLayout = new javax.swing.GroupLayout(PanelUtama);
+        PanelUtama.setLayout(PanelUtamaLayout);
+        PanelUtamaLayout.setHorizontalGroup(
+            PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelUtamaLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passwordLabel)
-                    .addComponent(usernameLabel)
-                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(usernameTextField)
-                    .addComponent(passwordField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(83, 83, 83))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordLabel)
+                        .addComponent(usernameTextField)
+                        .addComponent(passwordField)
+                        .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(usernameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelUtamaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(creditButton)
                 .addGap(15, 15, 15))
         );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+        PanelUtamaLayout.setVerticalGroup(
+            PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelUtamaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(creditButton)
                 .addGap(29, 29, 29)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                    .addGroup(PanelUtamaLayout.createSequentialGroup()
                         .addComponent(welcomeLabel)
                         .addGap(29, 29, 29)
                         .addComponent(usernameLabel)
@@ -129,12 +142,12 @@ public class loginView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -144,6 +157,10 @@ public class loginView extends javax.swing.JFrame {
         creditView cv = new creditView();
         cv.setVisible(true);
     }//GEN-LAST:event_creditButtonMouseClicked
+
+    private void creditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,9 +198,13 @@ public class loginView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private keeptoo.KGradientPanel PanelUtama;
     private javax.swing.JButton creditButton;
     private javax.swing.JLabel jLabel1;
-    private keeptoo.KGradientPanel kGradientPanel1;
+<<<<<<< HEAD
+    private org.netbeans.modules.form.InvalidComponent kGradientPanel1;
+=======
+>>>>>>> bb3f0a4ac1fdca5c90bad33a350690526cf8d9e0
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;

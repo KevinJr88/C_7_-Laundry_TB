@@ -3,50 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/EmployeeDAO.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/WorkOrderControl.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/deliView.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/Customer.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableCustomer.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableService.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/CustomerDAO.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/workoderView.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/connection/DbConnection.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/customerView.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/ServiceControl.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/WorkOrderDAO.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/historyView.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/Service.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/ownerView.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/ServiceDAO.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/loginView.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableWorkOrder.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/CustomerControl.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableEmployee.java</file>
-            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/EmployeeControl.java</file>
-=======
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/checkoutView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/deliView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/manageView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/loginView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/serviceView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/historyView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/customerView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/ownerView.java</file>
->>>>>>> a4507ee5f9bac356ef8e860d6fd4cf8786724d6c
-=======
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/manageView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/serviceView.java</file>
             <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/loginView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/customerView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/deliView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/historyView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/checkoutView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/ownerView.java</file>
-            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/creditView.java</file>
->>>>>>> 991a5197bec9d108f33d4ca57ce2ce64367bf1f2
+            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/OwnerMainView.java</file>
+            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/creditMainView.java</file>
+            <file>file:/D:/KULIAH/MATKUL/SMT%204/PBO%20C/TUBES%20pbo/C_7_-Laundry_TB/src/view/loginMainView.java</file>
         </group>
     </open-files>
 </project-private>
