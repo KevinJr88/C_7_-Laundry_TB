@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view;
 
 import java.awt.Color;
@@ -22,7 +19,7 @@ public class OwnerMainView extends javax.swing.JFrame {
         defaultcolor = new Color(255,255,204);
         clickedcolor = new Color(51,51,51);
         white = new Color(255,255,255);
-        black = new Color(0,0,0);
+        black = new Color(0,0,0); 
     }
 
     /**
@@ -438,7 +435,9 @@ public class OwnerMainView extends javax.swing.JFrame {
         );
         panelKaryawanLayout.setVerticalGroup(
             panelKaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelKaryawanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", panelKaryawan);

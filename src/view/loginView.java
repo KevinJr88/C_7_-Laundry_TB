@@ -79,6 +79,11 @@ public class loginView extends javax.swing.JFrame {
                 creditButtonMouseClicked(evt);
             }
         });
+        creditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelUtamaLayout = new javax.swing.GroupLayout(PanelUtama);
         PanelUtama.setLayout(PanelUtamaLayout);
@@ -86,13 +91,14 @@ public class loginView extends javax.swing.JFrame {
             PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelUtamaLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passwordLabel)
-                    .addComponent(usernameLabel)
-                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(usernameTextField)
-                    .addComponent(passwordField))
+                .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordLabel)
+                        .addComponent(usernameTextField)
+                        .addComponent(passwordField)
+                        .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(usernameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
@@ -144,6 +150,10 @@ public class loginView extends javax.swing.JFrame {
         creditView cv = new creditView();
         cv.setVisible(true);
     }//GEN-LAST:event_creditButtonMouseClicked
+
+    private void creditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditButtonActionPerformed
 
     /**
      * @param args the command line arguments
