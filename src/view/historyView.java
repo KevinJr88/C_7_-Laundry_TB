@@ -54,12 +54,12 @@ public class historyView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        headerPan.setBackground(new java.awt.Color(0, 88, 171));
+        headerPan.setBackground(new java.awt.Color(55, 121, 164));
         headerPan.setToolTipText("");
 
+        judulLabel.setText("RIWAYAT TRANSAKSI");
         judulLabel.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         judulLabel.setForeground(new java.awt.Color(251, 217, 20));
-        judulLabel.setText("RIWAYAT TRANSAKSI");
 
         storeLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         storeLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,7 +98,7 @@ public class historyView extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        containerPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        containerPanel4.setBackground(new java.awt.Color(55, 121, 164));
 
         searchBtn.setBackground(new java.awt.Color(255, 255, 204));
         searchBtn.setForeground(new java.awt.Color(0, 0, 0));

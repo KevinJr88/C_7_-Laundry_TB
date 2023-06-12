@@ -26,133 +26,124 @@ public class loginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        container1 = new javax.swing.JPanel();
-        idInput = new javax.swing.JTextField();
-        idLabel = new javax.swing.JLabel();
-        passInput = new javax.swing.JTextField();
-        passLabel = new javax.swing.JLabel();
-        loginBtn = new javax.swing.JButton();
-        container2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        kGradientPanel1 = new keeptoo.KGradientPanel();
+        welcomeLabel = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        usernameTextField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        creditButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        container1.setBackground(new java.awt.Color(0, 102, 153));
+        kGradientPanel1.setkEndColor(new java.awt.Color(55, 121, 164));
+        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 204));
 
-        idInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        idInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idInputActionPerformed(evt);
+        welcomeLabel.setFont(new java.awt.Font("Perpetua", 0, 48)); // NOI18N
+        welcomeLabel.setForeground(new java.awt.Color(0, 0, 0));
+        welcomeLabel.setText("WELCOME");
+
+        usernameLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(0, 0, 0));
+        usernameLabel.setText("Username");
+
+        passwordLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(0, 0, 0));
+        passwordLabel.setText("Password");
+
+        usernameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        usernameTextField.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        usernameTextField.setForeground(new java.awt.Color(0, 0, 0));
+
+        passwordField.setBackground(new java.awt.Color(255, 255, 255));
+        passwordField.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        passwordField.setForeground(new java.awt.Color(0, 0, 0));
+        passwordField.setText("jPasswordField1");
+
+        loginButton.setBackground(new java.awt.Color(255, 255, 204));
+        loginButton.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(0, 0, 0));
+        loginButton.setText("LOGIN");
+        loginButton.setBorder(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/loginn 3.png"))); // NOI18N
+
+        creditButton.setBackground(new java.awt.Color(102, 204, 255));
+        creditButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        creditButton.setForeground(new java.awt.Color(0, 0, 0));
+        creditButton.setText("Credit");
+        creditButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                creditButtonMouseClicked(evt);
             }
         });
 
-        idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        idLabel.setForeground(new java.awt.Color(255, 255, 255));
-        idLabel.setText("ID");
-
-        passInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-
-        passLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        passLabel.setForeground(new java.awt.Color(255, 255, 255));
-        passLabel.setText("Password");
-
-        loginBtn.setBackground(new java.awt.Color(51, 204, 255));
-        loginBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        loginBtn.setForeground(new java.awt.Color(255, 255, 255));
-        loginBtn.setText("Login");
-        loginBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        loginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBtnActionPerformed(evt);
-            }
-        });
-
-        container2.setBackground(new java.awt.Color(255, 255, 255));
-        container2.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Big Laundry pic.png"))); // NOI18N
-
-        javax.swing.GroupLayout container2Layout = new javax.swing.GroupLayout(container2);
-        container2.setLayout(container2Layout);
-        container2Layout.setHorizontalGroup(
-            container2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
-        );
-        container2Layout.setVerticalGroup(
-            container2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(container2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Welcome Back");
-
-        javax.swing.GroupLayout container1Layout = new javax.swing.GroupLayout(container1);
-        container1.setLayout(container1Layout);
-        container1Layout.setHorizontalGroup(
-            container1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(container1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(container1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                    .addGroup(container1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(container1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idInput, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                            .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passInput)
-                            .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(23, 23, 23)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(container2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        container1Layout.setVerticalGroup(
-            container1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(container1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
+        kGradientPanel1.setLayout(kGradientPanel1Layout);
+        kGradientPanel1Layout.setHorizontalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordLabel)
+                    .addComponent(usernameLabel)
+                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usernameTextField)
+                    .addComponent(passwordField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(52, 52, 52)
-                .addComponent(idLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(passLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passInput, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(loginBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(container1Layout.createSequentialGroup()
-                .addComponent(container2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(83, 83, 83))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(creditButton)
+                .addGap(15, 15, 15))
+        );
+        kGradientPanel1Layout.setVerticalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(creditButton)
+                .addGap(29, 29, 29)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(welcomeLabel)
+                        .addGap(29, 29, 29)
+                        .addComponent(usernameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(passwordLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idInputActionPerformed
-
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginBtnActionPerformed
+    private void creditButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditButtonMouseClicked
+        creditView cv = new creditView();
+        cv.setVisible(true);
+    }//GEN-LAST:event_creditButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -190,14 +181,14 @@ public class loginView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel container1;
-    private javax.swing.JPanel container2;
-    private javax.swing.JTextField idInput;
-    private javax.swing.JLabel idLabel;
+    private javax.swing.JButton creditButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton loginBtn;
-    private javax.swing.JTextField passInput;
-    private javax.swing.JLabel passLabel;
+    private keeptoo.KGradientPanel kGradientPanel1;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel usernameLabel;
+    private javax.swing.JTextField usernameTextField;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
