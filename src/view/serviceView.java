@@ -123,9 +123,9 @@ public class serviceView extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/customer.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
-        jLabel2.setText("Add Customer");
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Add Customer");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/history.png"))); // NOI18N
         jLabel7.setText("jLabel3");
@@ -142,25 +142,25 @@ public class serviceView extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pickup.png"))); // NOI18N
         jLabel11.setText("jLabel3");
 
-        jLabel4.setText("Ambil Laundry");
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Ambil Laundry");
 
-        jLabel12.setText("Riwayat");
         jLabel12.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Riwayat");
 
-        jLabel13.setText("Antar");
         jLabel13.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Antar");
 
-        jLabel14.setText("Work Order");
         jLabel14.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Work Order");
 
-        jLabel15.setText("Logout");
         jLabel15.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Logout");
 
         javax.swing.GroupLayout sidebarPan1Layout = new javax.swing.GroupLayout(sidebarPan1);
         sidebarPan1.setLayout(sidebarPan1Layout);
@@ -228,21 +228,13 @@ public class serviceView extends javax.swing.JFrame {
         sidebarPan.setLayout(sidebarPanLayout);
         sidebarPanLayout.setHorizontalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-            .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarPanLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(sidebarPan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(sidebarPan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         sidebarPanLayout.setVerticalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarPanLayout.createSequentialGroup()
-                    .addGap(129, 129, 129)
-                    .addComponent(sidebarPan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(129, 129, 129)))
+            .addComponent(sidebarPan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         headerPan.setBackground(new java.awt.Color(55, 121, 164));
