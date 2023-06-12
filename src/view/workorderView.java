@@ -43,6 +43,7 @@ public class workorderView extends javax.swing.JFrame {
         wc = new WorkOrderControl();
         showWorkOrder();
         setCustomerToDropDown();
+        setServiceToDropDown();
         clearText();
         
     }
@@ -70,19 +71,17 @@ public class workorderView extends javax.swing.JFrame {
     }
     
     public void setCustomerToDropDown(){
-       // listCustomer  ;
-//         listKendaraan = kendaraanControl.showListKendaraan();
-//        for(int i=0; i<listKendaraan.size(); i++){
-//            selectMerkKendaraan.addItem(String.valueOf(listKendaraan.get(i)));
-//        }
+        listCustomer = cc.showListCustomer();
+        for(int i=0; i<listCustomer.size(); i++){
+            customerDd.addItem(String.valueOf(listCustomer.get(i)));
+        }
     }
     
     public void setServiceToDropDown(){
-        //listCustomer  ;
-//         listKendaraan = kendaraanControl.showListKendaraan();
-//        for(int i=0; i<listKendaraan.size(); i++){
-//            selectMerkKendaraan.addItem(String.valueOf(listKendaraan.get(i)));
-//        }
+        listService = sc.showListService();
+        for(int i=0; i<listService.size(); i++){
+            layananDd.addItem(String.valueOf(listService.get(i)));
+        }
     }
 
     /**
@@ -275,7 +274,6 @@ public class workorderView extends javax.swing.JFrame {
         customerLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel.setForeground(new java.awt.Color(0, 0, 0));
 
-        customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         customerDd.setBackground(new java.awt.Color(255, 255, 255));
         customerDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDd.setForeground(new java.awt.Color(0, 0, 0));
@@ -303,7 +301,6 @@ public class workorderView extends javax.swing.JFrame {
         layananLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananLabel.setForeground(new java.awt.Color(0, 0, 0));
 
-        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         layananDd.setBackground(new java.awt.Color(255, 255, 255));
         layananDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananDd.setForeground(new java.awt.Color(0, 0, 0));
