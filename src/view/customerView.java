@@ -160,8 +160,8 @@ public class customerView extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
 
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel2.setText("Add Customer");
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Tambah Customer");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,7 +172,7 @@ public class customerView extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,7 +507,7 @@ public class customerView extends javax.swing.JFrame {
         titleLabel.setBackground(new java.awt.Color(254, 230, 187));
         titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(254, 230, 187));
-        titleLabel.setText("Customer ");
+        titleLabel.setText("Tambah Customer ");
         titleLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
@@ -741,7 +741,6 @@ public class customerView extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
-    private javax.swing.JPanel ambilPanel;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JTable customerTable;
     private javax.swing.JButton deleteBtn;
@@ -756,8 +755,6 @@ public class customerView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
