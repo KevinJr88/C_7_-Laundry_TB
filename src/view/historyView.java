@@ -27,10 +27,6 @@ public class historyView extends javax.swing.JFrame {
     private void initComponents() {
 
         jenLayabuttonGroup = new javax.swing.ButtonGroup();
-        sidebarPan = new javax.swing.JPanel();
-        historyPanel = new javax.swing.JPanel();
-        historyIcon = new javax.swing.JLabel();
-        historyLabel = new javax.swing.JLabel();
         headerPan = new javax.swing.JPanel();
         judulLabel = new javax.swing.JLabel();
         storeLabel = new javax.swing.JLabel();
@@ -42,56 +38,21 @@ public class historyView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         deleteBtn4 = new javax.swing.JButton();
+        sidebarPan = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        sidebarPan.setBackground(new java.awt.Color(0, 88, 171));
-
-        historyPanel.setBackground(new java.awt.Color(251, 217, 20));
-        historyPanel.setForeground(new java.awt.Color(204, 204, 204));
-
-        historyIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-history-48.png"))); // NOI18N
-
-        historyLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        historyLabel.setForeground(new java.awt.Color(0, 0, 0));
-        historyLabel.setText("Riwayat");
-
-        javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
-        historyPanel.setLayout(historyPanelLayout);
-        historyPanelLayout.setHorizontalGroup(
-            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historyPanelLayout.createSequentialGroup()
-                .addComponent(historyIcon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(historyLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        historyPanelLayout.setVerticalGroup(
-            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(historyPanelLayout.createSequentialGroup()
-                .addGroup(historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(historyPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(historyIcon))
-                    .addGroup(historyPanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(historyLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout sidebarPanLayout = new javax.swing.GroupLayout(sidebarPan);
-        sidebarPan.setLayout(sidebarPanLayout);
-        sidebarPanLayout.setHorizontalGroup(
-            sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        sidebarPanLayout.setVerticalGroup(
-            sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarPanLayout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         headerPan.setBackground(new java.awt.Color(0, 88, 171));
         headerPan.setToolTipText("");
@@ -118,7 +79,7 @@ public class historyView extends javax.swing.JFrame {
                 .addGroup(headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(storeLabel)
                     .addComponent(judulLabel))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,6 +169,112 @@ public class historyView extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(containerPanel4);
 
+        sidebarPan.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/customer.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Add Customer");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/history.png"))); // NOI18N
+        jLabel7.setText("jLabel3");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/deli.png"))); // NOI18N
+        jLabel8.setText("jLabel3");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
+        jLabel9.setText("jLabel3");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/workorder.png"))); // NOI18N
+        jLabel10.setText("jLabel3");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pickup.png"))); // NOI18N
+        jLabel11.setText("jLabel3");
+
+        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Ambil Laundry");
+
+        jLabel12.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Riwayat");
+
+        jLabel13.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Antar");
+
+        jLabel14.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Work Order");
+
+        jLabel15.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Logout");
+
+        javax.swing.GroupLayout sidebarPanLayout = new javax.swing.GroupLayout(sidebarPan);
+        sidebarPan.setLayout(sidebarPanLayout);
+        sidebarPanLayout.setHorizontalGroup(
+            sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPanLayout.createSequentialGroup()
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(sidebarPanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sidebarPanLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15))
+                    .addGroup(sidebarPanLayout.createSequentialGroup()
+                        .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        sidebarPanLayout.setVerticalGroup(
+            sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPanLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11))
+                .addGap(25, 25, 25)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel12))
+                .addGap(23, 23, 23)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel14))
+                .addGap(106, 106, 106)
+                .addGroup(sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -278,10 +345,19 @@ public class historyView extends javax.swing.JFrame {
     private javax.swing.JPanel containerPanel4;
     private javax.swing.JButton deleteBtn4;
     private javax.swing.JPanel headerPan;
-    private javax.swing.JLabel historyIcon;
-    private javax.swing.JLabel historyLabel;
-    private javax.swing.JPanel historyPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
