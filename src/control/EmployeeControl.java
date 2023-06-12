@@ -25,11 +25,24 @@ public class EmployeeControl {
         return tableEmployee;
     }
     
+    public TableEmployee showDataBySearch(String query){
+        List<Employee> dataEmployee = eDao.searchEmployeeAll(query);
+        TableEmployee tableEmployee = new TableEmployee(dataEmployee);
+        
+        return tableEmployee;
+    }
+    
     public void updateDataEmployee(Employee e, String id){
         eDao.updateEmployee(e, id);
     }
     
     public void deleteDataEmployee(String id){
         eDao.deleteEmployee(id);
+    }
+    
+    public String generateIDKaryawan(){
+        String temp = null;
+        temp = eDao.generateIDKaryawan();
+        return temp;
     }
 }

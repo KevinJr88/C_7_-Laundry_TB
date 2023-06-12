@@ -6,12 +6,12 @@ package view;
 
 /**
  *
- * @author julia
+ * @author Yeetman47
  */
 public class historyView extends javax.swing.JFrame {
 
     /**
-     * Creates new form historyView
+     * Creates new form Customer
      */
     public historyView() {
         initComponents();
@@ -26,21 +26,215 @@ public class historyView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jenLayabuttonGroup = new javax.swing.ButtonGroup();
+        sidebarPan = new javax.swing.JPanel();
+        historyPanel = new javax.swing.JPanel();
+        historyIcon = new javax.swing.JLabel();
+        historyLabel = new javax.swing.JLabel();
+        headerPan = new javax.swing.JPanel();
+        judulLabel = new javax.swing.JLabel();
+        storeLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        containerPanel4 = new javax.swing.JPanel();
+        searchBtn = new javax.swing.JButton();
+        searchInput = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        deleteBtn4 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        sidebarPan.setBackground(new java.awt.Color(0, 88, 171));
+
+        historyPanel.setBackground(new java.awt.Color(251, 217, 20));
+        historyPanel.setForeground(new java.awt.Color(204, 204, 204));
+
+        historyIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-history-48.png"))); // NOI18N
+
+        historyLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        historyLabel.setForeground(new java.awt.Color(0, 0, 0));
+        historyLabel.setText("Riwayat");
+
+        javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
+        historyPanel.setLayout(historyPanelLayout);
+        historyPanelLayout.setHorizontalGroup(
+            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historyPanelLayout.createSequentialGroup()
+                .addComponent(historyIcon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(historyLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        historyPanelLayout.setVerticalGroup(
+            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(historyPanelLayout.createSequentialGroup()
+                .addGroup(historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(historyPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(historyIcon))
+                    .addGroup(historyPanelLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(historyLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout sidebarPanLayout = new javax.swing.GroupLayout(sidebarPan);
+        sidebarPan.setLayout(sidebarPanLayout);
+        sidebarPanLayout.setHorizontalGroup(
+            sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        sidebarPanLayout.setVerticalGroup(
+            sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPanLayout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        headerPan.setBackground(new java.awt.Color(0, 88, 171));
+        headerPan.setToolTipText("");
+
+        judulLabel.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        judulLabel.setForeground(new java.awt.Color(251, 217, 20));
+        judulLabel.setText("RIWAYAT TRANSAKSI");
+
+        storeLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        storeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        storeLabel.setText("CLEAN FRESH LAUNDRY");
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-laundry-50.png"))); // NOI18N
+
+        javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
+        headerPan.setLayout(headerPanLayout);
+        headerPanLayout.setHorizontalGroup(
+            headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(storeLabel)
+                    .addComponent(judulLabel))
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
+        headerPanLayout.setVerticalGroup(
+            headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(headerPanLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(storeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(judulLabel)))
+                .addGap(62, 62, 62))
+        );
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        containerPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        searchBtn.setBackground(new java.awt.Color(255, 255, 204));
+        searchBtn.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn.setText("Search");
+        searchBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchBtnMouseExited(evt);
+            }
+        });
+
+        searchInput.setBackground(new java.awt.Color(255, 255, 255));
+        searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        searchInput.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jTable2.setForeground(new java.awt.Color(0, 0, 0));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        deleteBtn4.setBackground(new java.awt.Color(255, 255, 204));
+        deleteBtn4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        deleteBtn4.setForeground(new java.awt.Color(0, 0, 0));
+        deleteBtn4.setText("Delete");
+
+        javax.swing.GroupLayout containerPanel4Layout = new javax.swing.GroupLayout(containerPanel4);
+        containerPanel4.setLayout(containerPanel4Layout);
+        containerPanel4Layout.setHorizontalGroup(
+            containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerPanel4Layout.createSequentialGroup()
+                .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(deleteBtn4)
+                    .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(containerPanel4Layout.createSequentialGroup()
+                            .addGap(212, 212, 212)
+                            .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(searchBtn))
+                        .addGroup(containerPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(639, Short.MAX_VALUE))
+        );
+        containerPanel4Layout.setVerticalGroup(
+            containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerPanel4Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(containerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteBtn4)
+                .addContainerGap(319, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(containerPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(sidebarPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(headerPan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(headerPan, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(sidebarPan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtnMouseExited
 
     /**
      * @param args the command line arguments
@@ -68,6 +262,9 @@ public class historyView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(historyView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -78,5 +275,21 @@ public class historyView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel containerPanel4;
+    private javax.swing.JButton deleteBtn4;
+    private javax.swing.JPanel headerPan;
+    private javax.swing.JLabel historyIcon;
+    private javax.swing.JLabel historyLabel;
+    private javax.swing.JPanel historyPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.ButtonGroup jenLayabuttonGroup;
+    private javax.swing.JLabel judulLabel;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchInput;
+    private javax.swing.JPanel sidebarPan;
+    private javax.swing.JLabel storeLabel;
     // End of variables declaration//GEN-END:variables
 }
