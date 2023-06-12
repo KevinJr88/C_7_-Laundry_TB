@@ -26,7 +26,7 @@ public class loginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
+        kGradientPanel1 = new org.netbeans.modules.form.InvalidComponent();
         welcomeLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
@@ -37,9 +37,6 @@ public class loginView extends javax.swing.JFrame {
         creditButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        kGradientPanel1.setkEndColor(new java.awt.Color(55, 121, 164));
-        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 204));
 
         welcomeLabel.setFont(new java.awt.Font("Perpetua", 0, 48)); // NOI18N
         welcomeLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -183,7 +180,7 @@ public class loginView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditButton;
     private javax.swing.JLabel jLabel1;
-    private keeptoo.KGradientPanel kGradientPanel1;
+    private org.netbeans.modules.form.InvalidComponent kGradientPanel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
