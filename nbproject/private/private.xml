@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/EmployeeDAO.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/WorkOrderControl.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/deliView.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/model/Customer.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableCustomer.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableService.java</file>
@@ -24,15 +24,6 @@
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/CustomerControl.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/table/TableEmployee.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/EmployeeControl.java</file>
-=======
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/workoderView.java</file>
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/loginView.java</file>
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/customerView.java</file>
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/ownerView.java</file>
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/manageView.java</file>
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/historyView.java</file>
-            <file>file:/D:/Z%20TUGBES/C_7_-Laundry_TB/src/view/deliView.java</file>
->>>>>>> bb46bc76df57787ed3ef0c0e0f5c30b8cfeb9698
         </group>
     </open-files>
 </project-private>
