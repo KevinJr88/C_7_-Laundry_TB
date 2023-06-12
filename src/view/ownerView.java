@@ -53,6 +53,7 @@ public class ownerView extends javax.swing.JFrame {
         telpInput.setText("");
         passInput.setText("");
         idInput.setText("");
+        searchInput.setText("");
     }
      
      public void showCustomer(){
@@ -143,7 +144,7 @@ public class ownerView extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        containerPan.setBackground(new java.awt.Color(255, 255, 255));
+        containerPan.setBackground(new java.awt.Color(55, 121, 164));
         containerPan.setForeground(new java.awt.Color(0, 0, 0));
 
         idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -340,13 +341,13 @@ public class ownerView extends javax.swing.JFrame {
                                 .addComponent(idInput)
                                 .addComponent(namaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                                 .addComponent(telpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(229, 229, 229)
+                .addGap(232, 232, 232)
                 .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jabDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -453,6 +454,8 @@ public class ownerView extends javax.swing.JFrame {
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         setComponent(true);
         action = "Ubah";
+        addBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
@@ -526,17 +529,17 @@ public class ownerView extends javax.swing.JFrame {
         temp1 = table.getValueAt(clickedRow, 4).toString();
         
         if(temp1.equalsIgnoreCase("Aktif")){
-            statDd.setSelectedIndex(1);
+            statDd.setSelectedIndex(0);
         }else{
-            statDd.setSelectedIndex(2);
+            statDd.setSelectedIndex(1);
         }
         
         temp1 = table.getValueAt(clickedRow, 5).toString();
         
         if(temp1.equalsIgnoreCase("Kurir")){
-            jabDd.setSelectedIndex(2);
-        }else{
             jabDd.setSelectedIndex(1);
+        }else{
+            jabDd.setSelectedIndex(0);
         }
     }//GEN-LAST:event_employeeTableMouseClicked
 
@@ -544,15 +547,15 @@ public class ownerView extends javax.swing.JFrame {
         setComponent(false);
         
         try{
-           //TableEmployee employee = employeeControl.show;
-//            if(customer.getRowCount() == 0){
-//                clearText();
-//                editBtn.setEnabled(false);
-//                deleteBtn.setEnabled(false);
-//                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
-//            }else{
-//                customerTable.setModel(customer);
-//            }
+           TableEmployee employee = employeeControl.showDataBySearch(searchInput.getText());
+            if(employee.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                employeeTable.setModel(employee);
+            }
         }catch(Exception e){
             System.out.println("Error : "+e.getMessage());
         }

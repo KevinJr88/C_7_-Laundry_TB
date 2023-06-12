@@ -130,7 +130,7 @@
     <Container class="javax.swing.JPanel" name="containerPan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="a4" green="79" red="37" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -169,14 +169,14 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jabDd" min="-2" pref="241" max="-2" attributes="0"/>
                       <Component id="statDd" min="-2" pref="241" max="-2" attributes="0"/>
                       <Component id="jabLabel" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                       <Component id="statLabel" min="-2" pref="83" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="461" max="32767" attributes="0"/>
+                  <EmptySpace pref="458" max="32767" attributes="0"/>
               </Group>
               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
