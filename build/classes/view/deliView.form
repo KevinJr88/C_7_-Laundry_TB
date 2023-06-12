@@ -49,7 +49,7 @@
     <Container class="javax.swing.JPanel" name="headerPan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="33" type="rgb"/>
+          <Color blue="a4" green="79" red="37" type="rgb"/>
         </Property>
       </Properties>
 
@@ -57,7 +57,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="titleLabel" min="-2" pref="210" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -65,10 +65,10 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="titleLabel" min="-2" pref="57" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <Component id="titleLabel" min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,6 +110,7 @@
                   <Component id="jScrollPane1" min="-2" pref="558" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -133,7 +134,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" alignment="1" min="-2" pref="603" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" alignment="1" min="-2" pref="603" max="-2" attributes="0"/>
@@ -147,7 +148,7 @@
         <Container class="javax.swing.JPanel" name="opPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="ff" red="ff" type="rgb"/>
+              <Color blue="a4" green="79" red="37" type="rgb"/>
             </Property>
           </Properties>
 

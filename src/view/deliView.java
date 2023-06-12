@@ -53,7 +53,7 @@ public class deliView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        headerPan.setBackground(new java.awt.Color(51, 255, 255));
+        headerPan.setBackground(new java.awt.Color(55, 121, 164));
 
         titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 102));
@@ -64,21 +64,21 @@ public class deliView extends javax.swing.JFrame {
         headerPanLayout.setHorizontalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(32, 32, 32)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         containerPanel.setBackground(new java.awt.Color(55, 121, 164));
 
-        opPanel.setBackground(new java.awt.Color(255, 255, 153));
+        opPanel.setBackground(new java.awt.Color(55, 121, 164));
 
         javax.swing.GroupLayout opPanelLayout = new javax.swing.GroupLayout(opPanel);
         opPanel.setLayout(opPanelLayout);
@@ -147,7 +147,8 @@ public class deliView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +166,7 @@ public class deliView extends javax.swing.JFrame {
                             .addComponent(searchBtn))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))

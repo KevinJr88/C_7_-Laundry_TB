@@ -121,11 +121,11 @@ public class ownerView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        headerPan.setBackground(new java.awt.Color(255, 255, 153));
+        headerPan.setBackground(new java.awt.Color(55, 121, 164));
 
-        titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        titleLabel.setForeground(new java.awt.Color(0, 255, 255));
-        titleLabel.setText("Owner Operation Page");
+        titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 48)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(251, 217, 20));
+        titleLabel.setText("Owner Operation");
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
         headerPan.setLayout(headerPanLayout);
@@ -133,7 +133,7 @@ public class ownerView extends javax.swing.JFrame {
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
@@ -160,7 +160,7 @@ public class ownerView extends javax.swing.JFrame {
             }
         });
 
-        opPan.setBackground(new java.awt.Color(51, 204, 255));
+        opPan.setBackground(new java.awt.Color(55, 121, 164));
 
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -325,36 +325,40 @@ public class ownerView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBtn)
                 .addGap(34, 34, 34))
-            .addGroup(containerPanLayout.createSequentialGroup()
-                .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(telpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(containerPanLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(idInput)
-                                .addComponent(namaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                                .addComponent(telpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(232, 232, 232)
-                .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jabDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(statDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(458, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(saveBtn)
                 .addGap(18, 18, 18)
                 .addComponent(cancelBtn)
                 .addGap(89, 89, 89))
+            .addGroup(containerPanLayout.createSequentialGroup()
+                .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(containerPanLayout.createSequentialGroup()
+                        .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(telpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(containerPanLayout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idInput)
+                                        .addComponent(namaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                        .addComponent(telpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(232, 232, 232)
+                        .addGroup(containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jabDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(statDd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(containerPanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         containerPanLayout.setVerticalGroup(
             containerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,7 +399,8 @@ public class ownerView extends javax.swing.JFrame {
                     .addComponent(saveBtn)
                     .addComponent(cancelBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
