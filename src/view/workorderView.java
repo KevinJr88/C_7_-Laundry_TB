@@ -10,6 +10,7 @@ import control.WorkOrderControl;
 import control.ServiceControl;
 import control.EmployeeControl;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 import org.json.JSONArray;
@@ -129,7 +130,7 @@ public class workorderView extends javax.swing.JFrame {
     
     
     public void showWorkOrder(){
-        workOrderTable.setModel(wc.showWorkOrderNotDone(""));
+        workOrderTable.setModel(wc.showWorkOrderNotDone());
     }
     
     public void setCustomerToDropDown(){
@@ -612,20 +613,21 @@ public class workorderView extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         Customer c = (Customer) customerDd.getSelectedItem();
         Service s = (Service) layananDd.getSelectedItem();
+        double biaya = s.getBiaya() * Integer.parseInt(bobotInput.getText());
         
-        if(action.equalsIgnoreCase("Tambah")){
-            Penyewaan py = new Penyewaan(inputLamaSewa.getText(), Float.parseFloat(inputTotalHarga.getText()) , snack+", "+masker+ ", "+tissue, selectedKendaraan, selectedCustomer );
-            penyewaanControl.insertPenyewaan(py);
-        } else if(action.equalsIgnoreCase("Ubah")){
-            Penyewaan py = new Penyewaan(selectedId, inputLamaSewa.getText(), Float.parseFloat(inputTotalHarga.getText()) , snack+", "+masker+ ", "+tissue, selectedKendaraan, selectedCustomer );
-            penyewaanControl.updateDataPenyewaan(py);
-        }
-           
-            clearText();
-            showWorkOrder();
-            setComponent(false);
+      
+        WorkOrder wo= new WorkOrder(inputTglMasuk.getDateTimeStrict().toString(), 
+                    inputTglSelesai.getDateTimeStrict().toString(), 
+                    Integer.parseInt(bobotInput.getText()), 
+                    "Proses", 
+                    c, 
+                    employee, 
+                    s, 
+                    biaya);
         
-        
+        clearText();
+        showWorkOrder();
+        setComponent(false);
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void customerDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDdActionPerformed

@@ -104,7 +104,7 @@ public class WorkOrderDAO {
         String sql = "SELECT wo.*, c.*, e.*, s.* FROM WorkOrder as wo JOIN Customer as c on c.id_customer = wo.id_customer "
                 + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
-                + "'%" + query + "%)";
+                + "'%" + query + "%')";
         
         System.out.println("Mengambil data work order...");
         List<WorkOrder> list = new ArrayList();
