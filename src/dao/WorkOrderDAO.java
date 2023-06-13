@@ -6,8 +6,11 @@ package dao;
 
 import connection.DbConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import model.WorkOrder;
@@ -22,15 +25,70 @@ public class WorkOrderDAO {
     private DbConnection dbcon = new DbConnection();
     private Connection con;
     
+    
+//     public int insertTransaksi(Transaksi T, Pegawai P){
+//        con = DbConnection.getDBCon();
+//        int rowCount = 0;
+//        
+//        String sql = "INSERT INTO transaksi (idCustomer, tglMasuk, tglSelesai, tglAmbil, tipeLayanan, beratPakaian, beratSelimut, beratBoneka) "
+//                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+//        
+//        try{
+//            PreparedStatement st = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+//            st.setInt(1, T.getCustomer().getId());
+//            st.setString(2, T.getTglMasuk().format(Transaksi.DEFAULT_DTF));
+//            st.setString(3, T.getTglSelesai().format(Transaksi.DEFAULT_DTF));
+//            st.setString(4, T.getTglAmbil().format(Transaksi.DEFAULT_DTF));
+//            st.setString(5, T.getTipeLayanan().toString());
+//            st.setFloat(6, T.getBeratPakaian());
+//            st.setFloat(7, T.getBeratSelimut());
+//            st.setFloat(8, T.getBeratBoneka());
+//            
+//            rowCount = st.executeUpdate();
+//            
+//            int lastInsertId = 0;
+//            ResultSet rs = st.getGeneratedKeys();
+//            if(rs.next()) {
+//                // https://stackoverflow.com/questions/5513180/java-preparedstatement-retrieving-last-inserted-id
+//                lastInsertId = rs.getInt(1);
+//            }
+//
+//            System.out.println(DbConnection.ANSI_GREEN + "[OK] [TransaksiPreparedDAO/insertTransaksi] Added " + rowCount + " row(s), with the last inserted id of " + lastInsertId + ".");
+//            st.close();
+//            
+//            // Kemudian tambahkan juga job history pertamanya
+//            JobHistoryPreparedDAO jhDAO = new JobHistoryPreparedDAO();
+//            JobHistory JH = new JobHistory(
+//                    0,
+//                    lastInsertId,
+//                    P,
+//                    LocalDateTime.now().format(Transaksi.DEFAULT_DTF),
+//                    "Menerima dan mencatat transaksi dari customer ke dalam sistem."
+//            );
+//            jhDAO.insertJobHistory(JH);
+//        }catch(SQLException e){
+//            System.out.println(DbConnection.ANSI_RED + "[E] [TransaksiPreparedDAO/insertTransaksi] Error: " + e.toString());
+//        }
+////        DBC.closeConnection();
+//        return rowCount;
+//    }
+    
+    
+    
     public void insertWorkOrder(WorkOrder wo){
         con = dbcon.makeConnection();
-        
-        String sql = "INSERT INTO work_order(id_transaksi, tanggal_masuk, tanggal_selesai, bobot, status, customer, karyawan, layanan, biaya) values ('"
-              + wo.getId_transaksi() + "','" + wo.getTanggal_masuk() + "','" + wo.getTanggal_selesai() + "','" + wo.getTanggal_ambil() + "','"
+        String sql = null;
+        try{
+            sql = "INSERT INTO work_order(id_transaksi, tanggal_masuk, tanggal_selesai, bobot, status, id_customer, id_karyawan, id_layanan, biaya) values ('"
+              + wo.getId_transaksi() + "','" + String.valueOf(wo.getTanggal_masuk()) + "','" + String.valueOf(wo.getTanggal_selesai())  + "','"
               + wo.getBobot() + "','" + wo.getStatus() + "','" + wo.getCustomer().getId_customer() + "','" + wo.getKaryawan().getId_karyawan() + "','"
               + wo.getLayanan() + "','" + wo.getBiaya() + "')";
         
-        System.out.println("Adding Work Order...");
+            System.out.println("Adding Work Order...");
+        }catch(Exception e){
+            System.out.println("Gagal Adding WO...");
+        }
+        
         
         try{
             Statement statement = con.createStatement();
@@ -69,7 +127,7 @@ public class WorkOrderDAO {
             if(rs!=null){
                 while(rs.next()){
                     Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama.customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     
                     Employee e = new Employee(rs.getString("e.id_karyawan"),
@@ -101,9 +159,10 @@ public class WorkOrderDAO {
     public List<WorkOrder> showWorkOrderCondition(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
-                + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
-                + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
+        String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo "
+                + "JOIN Customer as c on c.id_customer = wo.id_customer "
+                + "JOIN employee as e ON e.id_karyawan = wo.id_karyawan "
+                + "JOIN service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
                 + "'%" + query + "%')";
         
         System.out.println("Mengambil data work order...");
@@ -116,7 +175,7 @@ public class WorkOrderDAO {
             if(rs!=null){
                 while(rs.next()){
                     Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama.customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     
                     Employee e = new Employee(rs.getString("e.id_karyawan"),

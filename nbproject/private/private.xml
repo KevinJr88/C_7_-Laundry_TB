@@ -5,12 +5,15 @@
         <group>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/view/employeeMainView.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/table/TableWorkOrder.java</file>
+            <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/dao/CustomerDAO.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/dao/WorkOrderDAO.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/control/WorkOrderControl.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/view/workorderView.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/model/WorkOrder.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/view/customerView.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/view/OwnerMainView.java</file>
+            <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/control/CustomerControl.java</file>
+            <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/connection/DbConnection.java</file>
         </group>
     </open-files>
 </project-private>

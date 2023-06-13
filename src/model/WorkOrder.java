@@ -39,19 +39,7 @@ public class WorkOrder {
         this.biaya = biaya;
     }
 
-    
 
-    public WorkOrder(String tanggal_masuk, String tanggal_selesai, String tanggal_ambil, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
-        this.tanggal_masuk = LocalDateTime.parse(tanggal_masuk, WorkOrder.DEFAULT_DTF);
-        this.tanggal_selesai = LocalDateTime.parse(tanggal_selesai, WorkOrder.DEFAULT_DTF);
-        this.tanggal_ambil = LocalDateTime.parse(tanggal_ambil, WorkOrder.DEFAULT_DTF);
-        this.bobot = bobot;
-        this.status = status;
-        this.customer = customer;
-        this.karyawan = karyawan;
-        this.layanan = layanan;
-        this.biaya = biaya;
-    }
     
         public WorkOrder(String tanggal_masuk, String tanggal_selesai, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
         this.tanggal_masuk = LocalDateTime.parse(tanggal_masuk, WorkOrder.DEFAULT_DTF);
@@ -63,6 +51,22 @@ public class WorkOrder {
         this.layanan = layanan;
         this.biaya = biaya;
     }
+
+    public WorkOrder(LocalDateTime tanggal_masuk, LocalDateTime tanggal_selesai, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
+        this.tanggal_masuk = tanggal_masuk;
+        this.tanggal_selesai = tanggal_selesai;
+        this.bobot = bobot;
+        this.status = status;
+        this.customer = customer;
+        this.karyawan = karyawan;
+        this.layanan = layanan;
+        this.biaya = biaya;
+    }
+
+   
+  
+        
+    
 
     public int getId_transaksi() {
         return id_transaksi;
