@@ -39,13 +39,9 @@ public class TableWorkOrder extends AbstractTableModel{
             case 4:
                 return list.get(rowIndex).getTanggal_masuk().format(WorkOrder.LOCAL_DTF);
             case 5:
-<<<<<<< HEAD
                 return list.get(rowIndex).getTanggal_selesai().format(WorkOrder.LOCAL_DTF);
-=======
-                return list.get(rowIndex).getTanggal_selesai();
             case 6:
                 return String.valueOf(list.get(rowIndex).getId_transaksi());
->>>>>>> 55fbfcf5dd96109dbccee2a16187995b3dc02f21
             default:
                 return null;
         }
@@ -63,11 +59,11 @@ public class TableWorkOrder extends AbstractTableModel{
             case 3:
                 return "Bobot";
             case 4:
-                return "Id_customer";
+                return "Nama_customer";
             case 5:
-                return "Id_karyawan";
+                return "Nama_karyawan";
             case 6:
-                return "Id_layanan";
+                return "Status";
             default:
                 return null;
                    
