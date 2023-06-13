@@ -26,7 +26,7 @@ public class WorkOrderDAO {
         con = dbcon.makeConnection();
         
         String sql = "INSERT INTO WorkOrder(id_transaksi, tanggal_masuk, tanggal_selesai, bobot, status, customer, karyawan, layanan, biaya) values ('"
-              + wo.getId_transaksi() + "','" + wo.getTanggal_masuk() + "','" + wo.getTanggal_selesai() + "','" 
+              + wo.getId_transaksi() + "','" + wo.getTanggal_masuk() + "','" + wo.getTanggal_selesai() + "','" + wo.getTanggal_ambil() + "','"
               + wo.getBobot() + "','" + wo.getStatus() + "','" + wo.getCustomer().getId_customer() + "','" + wo.getKaryawan().getId_karyawan() + "','"
               + wo.getLayanan() + "','" + wo.getBiaya() + "')";
         
@@ -82,7 +82,7 @@ public class WorkOrderDAO {
                         rs.getString("s.jasa_antar"), Double.parseDouble(rs.getString("s.biaya")));
                     
                     WorkOrder wo = new WorkOrder(Integer.parseInt(rs.getString("wo.id_transaksi")), 
-                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"),
+                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"), rs.getString("wo.tanggal_ambil"),
                         Integer.parseInt(rs.getString("wo.bobot")), rs.getString("wo.status"), c, e, s, Double.parseDouble(rs.getString("wo.biaya")));
                     
                     list.add(wo);
@@ -129,7 +129,7 @@ public class WorkOrderDAO {
                         rs.getString("s.jasa_antar"), Double.parseDouble(rs.getString("s.biaya")));
                     
                     WorkOrder wo = new WorkOrder(Integer.parseInt(rs.getString("wo.id_transaksi")), 
-                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"),
+                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"), rs.getString("wo.tanggal_ambil"),
                         Integer.parseInt(rs.getString("wo.bobot")), rs.getString("wo.status"), c, e, s, Double.parseDouble(rs.getString("wo.biaya")));
                     
                     list.add(wo);
@@ -177,7 +177,7 @@ public class WorkOrderDAO {
                         rs.getString("s.jasa_antar"), Double.parseDouble(rs.getString("s.biaya")));
                     
                     WorkOrder wo = new WorkOrder(Integer.parseInt(rs.getString("wo.id_transaksi")), 
-                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"),
+                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"), rs.getString("wo.tanggal_ambil"),
                         Integer.parseInt(rs.getString("wo.bobot")), rs.getString("wo.status"), c, e, s, Double.parseDouble(rs.getString("wo.biaya")));
                     
                     list.add(wo);

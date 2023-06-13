@@ -26,10 +26,11 @@ public class WorkOrder {
     private Service layanan;
     private double biaya;
 
-    public WorkOrder(int id_transaksi, LocalDateTime tanggal_masuk, LocalDateTime tanggal_selesai, int bobot, String status,  Customer customer, Employee karyawan, Service layanan, double biaya) {
+    public WorkOrder(int id_transaksi, String tanggal_masuk, String tanggal_selesai, String tanggal_ambil, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
         this.id_transaksi = id_transaksi;
-        this.tanggal_masuk = tanggal_masuk;
-        this.tanggal_selesai = tanggal_selesai;
+        this.tanggal_masuk = LocalDateTime.parse(tanggal_masuk, WorkOrder.DEFAULT_DTF);
+        this.tanggal_selesai = LocalDateTime.parse(tanggal_selesai, WorkOrder.DEFAULT_DTF);
+        this.tanggal_ambil = LocalDateTime.parse(tanggal_ambil, WorkOrder.DEFAULT_DTF);
         this.bobot = bobot;
         this.status = status;
         this.customer = customer;
@@ -38,10 +39,12 @@ public class WorkOrder {
         this.biaya = biaya;
     }
 
-    public WorkOrder(LocalDateTime tanggal_masuk, LocalDateTime tanggal_selesai, LocalDateTime tanggal_ambil, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
-        this.tanggal_masuk = tanggal_masuk;
-        this.tanggal_selesai = tanggal_selesai;
-        this.tanggal_ambil = tanggal_ambil;
+    
+
+    public WorkOrder(String tanggal_masuk, String tanggal_selesai, String tanggal_ambil, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
+        this.tanggal_masuk = LocalDateTime.parse(tanggal_masuk, WorkOrder.DEFAULT_DTF);
+        this.tanggal_selesai = LocalDateTime.parse(tanggal_selesai, WorkOrder.DEFAULT_DTF);
+        this.tanggal_ambil = LocalDateTime.parse(tanggal_ambil, WorkOrder.DEFAULT_DTF);
         this.bobot = bobot;
         this.status = status;
         this.customer = customer;
