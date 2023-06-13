@@ -25,7 +25,7 @@ public class WorkOrderDAO {
     public void insertWorkOrder(WorkOrder wo){
         con = dbcon.makeConnection();
         
-        String sql = "INSERT INTO WorkOrder(id_transaksi, tanggal_masuk, tanggal_selesai, bobot, status, customer, karyawan, layanan, biaya) values ('"
+        String sql = "INSERT INTO work_order(id_transaksi, tanggal_masuk, tanggal_selesai, bobot, status, customer, karyawan, layanan, biaya) values ('"
               + wo.getId_transaksi() + "','" + wo.getTanggal_masuk() + "','" + wo.getTanggal_selesai() + "','" + wo.getTanggal_ambil() + "','"
               + wo.getBobot() + "','" + wo.getStatus() + "','" + wo.getCustomer().getId_customer() + "','" + wo.getKaryawan().getId_karyawan() + "','"
               + wo.getLayanan() + "','" + wo.getBiaya() + "')";
@@ -47,7 +47,7 @@ public class WorkOrderDAO {
     public List<WorkOrder> showWorkOrder(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT wo.*, c.*, e.*, s.* FROM WorkOrder as wo JOIN Customer as c on c.id_customer = wo.id_customer "
+        String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
                 + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.tanggal_masuk LIKE "
                 + "'%" + query + "%'"
@@ -101,7 +101,7 @@ public class WorkOrderDAO {
     public List<WorkOrder> showWorkOrderCondition(String query){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT wo.*, c.*, e.*, s.* FROM WorkOrder as wo JOIN Customer as c on c.id_customer = wo.id_customer "
+        String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
                 + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
                 + "'%" + query + "%')";
@@ -148,7 +148,7 @@ public class WorkOrderDAO {
     public List<WorkOrder> showWorkOrderCondition2(){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT wo.*, c.*, e.*, s.* FROM WorkOrder as wo JOIN Customer as c on c.id_customer = wo.id_customer "
+        String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
                 + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
                 + "'%" + "selesai" + "%'"
@@ -196,7 +196,7 @@ public class WorkOrderDAO {
     public void deleteWorkOrder(int id){ // BERDASARKAN ID
         con = dbcon.makeConnection();
         
-        String sql = "DELETE FROM WorkOrder WHERE id_transaksi = " + id + "";
+        String sql = "DELETE FROM work_order WHERE id_transaksi = " + id + "";
         System.out.println("Deleting work order ...");
         
         try{
