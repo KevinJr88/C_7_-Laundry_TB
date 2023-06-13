@@ -115,14 +115,13 @@ public class employeeMainView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         menuDouea = new javax.swing.JPanel();
         pickupPanel = new javax.swing.JPanel();
-        customerDd = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         totInput = new javax.swing.JTextField();
         cancelBtn2 = new javax.swing.JButton();
         selesaiBtn = new javax.swing.JButton();
         dateTimePickerAmbil = new com.github.lgooddatepicker.components.DateTimePicker();
         setDateNowAmbilBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         rincianTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -137,12 +136,20 @@ public class employeeMainView extends javax.swing.JFrame {
         menuAmpadt = new javax.swing.JPanel();
         searchInput3 = new javax.swing.JTextField();
         searchBtn3 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        selesaiTable = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         prosesTable = new javax.swing.JTable();
         label1 = new java.awt.Label();
-        antarBtn = new javax.swing.JButton();
+        deliPanel = new javax.swing.JPanel();
+        dateTimePickerAntar = new com.github.lgooddatepicker.components.DateTimePicker();
+        setDateNowAmbilBtn1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        customerLabel2 = new javax.swing.JLabel();
+        customerDisplay = new javax.swing.JTextField();
+        bobotLabel2 = new javax.swing.JLabel();
+        bobotDisplay = new javax.swing.JTextField();
+        servisLabel2 = new javax.swing.JLabel();
+        servisDisplay = new javax.swing.JTextField();
+        selesaiBtn2 = new javax.swing.JButton();
         menuLiejma = new javax.swing.JPanel();
         transPanel = new javax.swing.JPanel();
         customerDd2 = new javax.swing.JComboBox<>();
@@ -635,15 +642,6 @@ public class employeeMainView extends javax.swing.JFrame {
 
         pickupPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        customerDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        customerDd.setBackground(new java.awt.Color(255, 255, 255));
-        customerDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        customerDd.setForeground(new java.awt.Color(0, 0, 0));
-
-        jLabel6.setText("Customer");
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel7.setText("Total Harga");
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -661,6 +659,10 @@ public class employeeMainView extends javax.swing.JFrame {
         setDateNowAmbilBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Tanggal Ambil");
+
         javax.swing.GroupLayout pickupPanelLayout = new javax.swing.GroupLayout(pickupPanel);
         pickupPanel.setLayout(pickupPanelLayout);
         pickupPanelLayout.setHorizontalGroup(
@@ -671,40 +673,41 @@ public class employeeMainView extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                         .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateTimePickerAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(setDateNowAmbilBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(setDateNowAmbilBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pickupPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(selesaiBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(cancelBtn2)
-                .addGap(15, 15, 15))
+                .addGap(9, 9, 9))
         );
         pickupPanelLayout.setVerticalGroup(
             pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pickupPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(setDateNowAmbilBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel3))
+                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pickupPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(setDateNowAmbilBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateTimePickerAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(pickupPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateTimePickerAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelBtn2)
-                    .addComponent(selesaiBtn))
-                .addContainerGap())
+                    .addComponent(selesaiBtn)
+                    .addComponent(cancelBtn2))
+                .addGap(9, 9, 9))
         );
 
         rincianTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -753,7 +756,7 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
 
@@ -857,21 +860,6 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
-        selesaiTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
-            }
-        ));
-        selesaiTable.setBackground(new java.awt.Color(255, 255, 255));
-        selesaiTable.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane4.setViewportView(selesaiTable);
-
         prosesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -891,47 +879,136 @@ public class employeeMainView extends javax.swing.JFrame {
         label1.setForeground(new java.awt.Color(255, 255, 255));
         label1.setText("ANTAR LAUNDRY");
 
-        antarBtn.setText("Terantar");
+        deliPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        setDateNowAmbilBtn1.setBackground(new java.awt.Color(0, 255, 51));
+        setDateNowAmbilBtn1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        setDateNowAmbilBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        setDateNowAmbilBtn1.setText("Sekarang");
+
+        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Tanggal Antar");
+
+        customerLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        customerLabel2.setText("Customer");
+
+        customerDisplay.setEditable(false);
+        customerDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        customerDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerDisplay.setForeground(new java.awt.Color(0, 0, 0));
+
+        bobotLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        bobotLabel2.setText("Bobot");
+
+        bobotDisplay.setEditable(false);
+        bobotDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        bobotDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotDisplay.setForeground(new java.awt.Color(0, 0, 0));
+
+        servisLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        servisLabel2.setText("Jenis Servis");
+
+        servisDisplay.setEditable(false);
+        servisDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        servisDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisDisplay.setForeground(new java.awt.Color(0, 0, 0));
+
+        selesaiBtn2.setText("Selesai");
+
+        javax.swing.GroupLayout deliPanelLayout = new javax.swing.GroupLayout(deliPanel);
+        deliPanel.setLayout(deliPanelLayout);
+        deliPanelLayout.setHorizontalGroup(
+            deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deliPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deliPanelLayout.createSequentialGroup()
+                        .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(servisLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deliPanelLayout.createSequentialGroup()
+                        .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(deliPanelLayout.createSequentialGroup()
+                                .addComponent(servisDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selesaiBtn2))
+                            .addGroup(deliPanelLayout.createSequentialGroup()
+                                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bobotLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(customerDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                                    .addComponent(bobotDisplay))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateTimePickerAntar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(setDateNowAmbilBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30))))
+        );
+        deliPanelLayout.setVerticalGroup(
+            deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deliPanelLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(customerLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(customerDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(setDateNowAmbilBtn1)
+                    .addComponent(bobotLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateTimePickerAntar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bobotDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(servisLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(servisDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selesaiBtn2))
+                .addGap(44, 44, 44))
+        );
 
         javax.swing.GroupLayout menuAmpadtLayout = new javax.swing.GroupLayout(menuAmpadt);
         menuAmpadt.setLayout(menuAmpadtLayout);
         menuAmpadtLayout.setHorizontalGroup(
             menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuAmpadtLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                     .addGroup(menuAmpadtLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(menuAmpadtLayout.createSequentialGroup()
                                 .addComponent(searchBtn3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 18, 18)
-                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(antarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                                .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(453, 453, 453))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuAmpadtLayout.createSequentialGroup()
+                        .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deliPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         menuAmpadtLayout.setVerticalGroup(
             menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
-                .addGap(28, 51, Short.MAX_VALUE)
-                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(menuAmpadtLayout.createSequentialGroup()
-                        .addComponent(antarBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuAmpadtLayout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchBtn3)
-                            .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn3)
+                    .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(deliPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1420,20 +1497,24 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton addBtn2;
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
-    private javax.swing.JButton antarBtn;
+    private javax.swing.JTextField bobotDisplay;
     private javax.swing.JTextField bobotInput;
     private javax.swing.JLabel bobotLabel;
+    private javax.swing.JLabel bobotLabel2;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton cancelBtn2;
     private javax.swing.JButton cancelBtn3;
-    private javax.swing.JComboBox<String> customerDd;
     private javax.swing.JComboBox<String> customerDd2;
+    private javax.swing.JTextField customerDisplay;
     private javax.swing.JLabel customerLabel;
+    private javax.swing.JLabel customerLabel2;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAmbil;
+    private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAntar;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton deleteBtn2;
     private javax.swing.JButton deleteBtn3;
+    private javax.swing.JPanel deliPanel;
     private javax.swing.JButton editBtn;
     private javax.swing.JButton editBtn2;
     private javax.swing.JTextField idInput;
@@ -1442,7 +1523,8 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1459,7 +1541,6 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable1;
@@ -1498,9 +1579,12 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JTextField searchInput3;
     private javax.swing.JTextField searchInput4;
     private javax.swing.JButton selesaiBtn;
-    private javax.swing.JTable selesaiTable;
+    private javax.swing.JButton selesaiBtn2;
     private javax.swing.JComboBox<String> servisDd;
+    private javax.swing.JTextField servisDisplay;
+    private javax.swing.JLabel servisLabel2;
     private javax.swing.JButton setDateNowAmbilBtn;
+    private javax.swing.JButton setDateNowAmbilBtn1;
     private javax.swing.JTabbedPane tabpeepee;
     private javax.swing.JTextField telpInput;
     private javax.swing.JLabel telpLabel;
