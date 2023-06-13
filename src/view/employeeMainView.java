@@ -763,13 +763,13 @@ public class employeeMainView extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
         jTable2.setBackground(new java.awt.Color(255, 255, 255));
@@ -945,6 +945,11 @@ public class employeeMainView extends javax.swing.JFrame {
         customerDd2.setBackground(new java.awt.Color(255, 255, 255));
         customerDd2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDd2.setForeground(new java.awt.Color(0, 0, 0));
+        customerDd2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerDd2ActionPerformed(evt);
+            }
+        });
 
         servisDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         servisDd.setBackground(new java.awt.Color(255, 255, 255));
@@ -1363,12 +1368,16 @@ public class employeeMainView extends javax.swing.JFrame {
             int clickedRow = jTable2.getSelectedRow();
             TableModel table = jTable2.getModel();
 
-            idInput.setText(table.getValueAt(clickedRow, 6).toString());     
+            idInput.setText(table.getValueAt(clickedRow, 0).toString());     
         } catch(Exception e){
             System.out.println(e);
         }
        
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void customerDd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDd2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerDd2ActionPerformed
 
     /**
      * @param args the command line arguments

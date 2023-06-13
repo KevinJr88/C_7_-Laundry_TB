@@ -29,19 +29,19 @@ public class TableWorkOrder extends AbstractTableModel{
     public String getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
             case 0:
-                return list.get(rowIndex).getCustomer().getNama_customer();
-            case 1:
-                return list.get(rowIndex).getLayanan().getNama_layanan();
-            case 2:
-                return String.valueOf(list.get(rowIndex).getBobot());
-            case 3:
-                return list.get(rowIndex).getStatus();
-            case 4:
-                return list.get(rowIndex).getTanggal_masuk();
-            case 5:
-                return list.get(rowIndex).getTanggal_selesai();
-            case 6:
                 return String.valueOf(list.get(rowIndex).getId_transaksi());
+            case 1:
+                return list.get(rowIndex).getCustomer().getNama_customer();
+            case 2:
+                return list.get(rowIndex).getLayanan().getNama_layanan();
+            case 3:
+                return String.valueOf(list.get(rowIndex).getBobot());
+            case 4:
+                return list.get(rowIndex).getStatus();
+            case 5:
+                return list.get(rowIndex).getTanggal_masuk();
+            case 6:
+                return list.get(rowIndex).getTanggal_selesai();
             default:
                 return null;
         }
