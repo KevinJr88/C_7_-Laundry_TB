@@ -37,9 +37,9 @@ public class TableWorkOrder extends AbstractTableModel{
             case 3:
                 return list.get(rowIndex).getStatus();
             case 4:
-                return list.get(rowIndex).getTanggal_masuk();
+                return list.get(rowIndex).getTanggal_masuk().format(WorkOrder.LOCAL_DTF);
             case 5:
-                return list.get(rowIndex).getTanggal_selesai();
+                return list.get(rowIndex).getTanggal_selesai().format(WorkOrder.LOCAL_DTF);
             default:
                 return null;
         }
