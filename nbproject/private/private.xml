@@ -3,36 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/dao/WorkOrderDAO.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/dao/CustomerDAO.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/creditMainView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/OwnerMainView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/model/WorkOrder.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/employeeMainView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/model/Employee.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/control/EmployeeControl.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/table/TableService.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/model/Service.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/customerView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/checkoutView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/dao/EmployeeDAO.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/historyView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/creditView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/loginMainView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/manageView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/table/TableWorkOrder.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/table/TableEmployee.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/table/TableCustomer.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/control/WorkOrderControl.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/dao/ServiceDAO.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/model/Customer.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/deliView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/serviceView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/connection/DbConnection.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/view/workorderView.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/control/ServiceControl.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/control/CustomerControl.java</file>
-            <file>file:/C:/Users/kevin/OneDrive/Dokumen/Kuliah/Tubes%20PBO/C_7_-Laundry_TB/src/exeption/inputKosongException.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/icons/loginn%203.png</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/creditView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/EmployeeDAO.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/deliView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/ServiceDAO.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/customerView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/icons/loginn.png</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/WorkOrderControl.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/icons/pickup.png</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/checkoutView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/historyView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/manageView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/serviceView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/icons/laundryIcon2.png</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/ownerView.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/WorkOrderDAO.java</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/icons/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png</file>
+            <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/icons/logout.png</file>
         </group>
     </open-files>
 </project-private>
