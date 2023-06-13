@@ -4,10 +4,16 @@
  */
 package view;
 
+import com.github.lgooddatepicker.components.DateTimePicker;
 import control.CustomerControl;
 import control.WorkOrderControl;
 import control.ServiceControl;
 import control.EmployeeControl;
+import java.time.LocalDate;
+
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,14 +35,26 @@ public class workorderView extends javax.swing.JFrame {
     private  static Employee employee;
     List<Customer> listCustomer;
     List<Service> listService;
+    int selectedId;
+    private WorkOrder selectedWorkOrder = null;
+    String action;
+
+   
     
     public void setEmployee(Employee employee){
         this.employee = employee;
     }
     
     public workorderView(Employee employee) {
-        setEmployee(employee);
         initComponents();
+        initDTInput(inputTglMasuk, LocalDate.now().minusYears(1), LocalDate.now().plusMonths(1));
+        initDTInput(inputTglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(2));
+        inputTglMasuk.addDateTimeChangeListener((com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent event) -> {
+            // tgl masuk berubah, recheck tgl ambil
+            //this.setTglSelesai();
+        });
+        
+        setEmployee(employee);
         setComponent(false);
         cc = new CustomerControl();
         sc = new ServiceControl();
@@ -54,15 +72,59 @@ public class workorderView extends javax.swing.JFrame {
        saveBtn.setEnabled(value);
        cancelBtn.setEnabled(value);
        
-       
     }
     
     public void clearText(){
         bobotInput.setText("");
         customerDd.setSelectedItem(ABORT);
         layananDd.setSelectedItem(ABORT);
+        inputTglMasuk.clear();
+        inputTglSelesai.clear();
         
             
+    }
+    
+    private String getFullDateTime(DateTimePicker input) {
+        try {
+            // getDateTimeStrinct() kemudian ubah ke format "yyyy-MM-dd HH:mm:ss"
+            return input.getDateTimeStrict().format(WorkOrder.DEFAULT_DTF);
+        } catch (Exception e) {
+            // Input date atau time belum diisi lengkap
+            return null;
+        }
+    }
+    
+    private Object getTableSelectedObject(javax.swing.JTable table) {
+        if (table.getSelectedRow() != -1) {
+            return table.getModel().getValueAt(table.getSelectedRow(), 99);
+        } else {
+            return null;
+        }
+    }
+    
+    private void initDTInput(DateTimePicker input, LocalDate min, LocalDate max) {
+        com.github.lgooddatepicker.components.DatePicker DP = input.getDatePicker();
+        com.github.lgooddatepicker.components.TimePicker TP = input.getTimePicker();
+        
+        TP.setOpaque(false);
+        DP.setOpaque(false);
+        
+        // Java passing by reference, jadi dengan melakukan ini, kita mendapatkan settings dari masing2 DatePicker dan TimePickernya, kemudian memodifikasinya kemudian.
+        com.github.lgooddatepicker.components.DatePickerSettings thisDPs = DP.getSettings();
+        com.github.lgooddatepicker.components.TimePickerSettings thisTPs = TP.getSettings();
+        
+        // Set settings:
+        thisDPs.setLocale(new java.util.Locale("id"));
+        thisDPs.setDateRangeLimits(min, max);
+        thisTPs.use24HourClockFormat();
+        
+        // Set font:
+        java.awt.Font elementFont = input.getFont();
+        thisDPs.setFontVetoedDate(elementFont);
+        thisDPs.setFontValidDate(elementFont);
+        thisDPs.setFontInvalidDate(elementFont);
+        thisTPs.fontValidTime = elementFont;
+        thisTPs.fontInvalidTime = elementFont;
     }
     
     
@@ -83,6 +145,30 @@ public class workorderView extends javax.swing.JFrame {
             layananDd.addItem(String.valueOf(listService.get(i)));
         }
     }
+    
+     private void btnResetTglMasukActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        inputTglMasuk.setDateTimeStrict(null);
+    }   
+    
+    
+//    private void setTglSelesai() {
+//        if(ddKecepatan.getSelectedIndex() == -1 || getFullDateTime(inputTglMasuk) == null) {
+//            // Kecepatan belum dipilih ATAU (checkbox cuci dan checkbox setrika belum ada yang dicentang): belum bisa dihitung tanggal ambil
+//            outTotalHarga.setText("-");
+//        } else {
+//            // Dapatkan dulu kecepatannya express atau reguler?
+//            String kec = (String) ddKecepatan.getSelectedItem();
+//            if(kec.equalsIgnoreCase("EXPRESS")) {
+//                // 6 jam
+//                inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusHours(6));
+//            } else {
+//                // 2 hari
+//                inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusDays(2));
+//            }
+//            // cek tgl ambil < tgl selesai pas mau simpan saja
+//        }
+//    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,8 +189,6 @@ public class workorderView extends javax.swing.JFrame {
         editBtn = new javax.swing.JButton();
         searchBtn = new javax.swing.JButton();
         searchInput = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        workOrderTable = new javax.swing.JTable();
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -117,7 +201,10 @@ public class workorderView extends javax.swing.JFrame {
         layananLabel = new javax.swing.JLabel();
         layananDd = new javax.swing.JComboBox<>();
         tanggalLabel = new javax.swing.JLabel();
-        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
+        inputTglMasuk = new com.github.lgooddatepicker.components.DateTimePicker();
+        inputTglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        workOrderTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,11 +214,11 @@ public class workorderView extends javax.swing.JFrame {
         sidebarPan.setLayout(sidebarPanLayout);
         sidebarPanLayout.setHorizontalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
+            .addGap(0, 543, Short.MAX_VALUE)
         );
         sidebarPanLayout.setVerticalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 815, Short.MAX_VALUE)
         );
 
         headerPan.setBackground(new java.awt.Color(51, 255, 255));
@@ -169,6 +256,11 @@ public class workorderView extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Edit");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -212,27 +304,6 @@ public class workorderView extends javax.swing.JFrame {
         searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         searchInput.setForeground(new java.awt.Color(0, 0, 0));
-
-        workOrderTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
-            }
-        ));
-        workOrderTable.setBackground(new java.awt.Color(255, 255, 255));
-        workOrderTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        workOrderTable.setForeground(new java.awt.Color(0, 0, 0));
-        workOrderTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                workOrderTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(workOrderTable);
 
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +395,6 @@ public class workorderView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tanggalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(customerDd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bobotInput, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,14 +404,15 @@ public class workorderView extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tanggalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(inputTglMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -362,31 +433,60 @@ public class workorderView extends javax.swing.JFrame {
                     .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(tanggalLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(inputTglMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 16, Short.MAX_VALUE))
         );
+
+        workOrderTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+            }
+        ));
+        workOrderTable.setBackground(new java.awt.Color(255, 255, 255));
+        workOrderTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        workOrderTable.setForeground(new java.awt.Color(0, 0, 0));
+        workOrderTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                workOrderTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(workOrderTable);
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(254, 254, 254)
-                        .addComponent(saveBtn)
-                        .addGap(39, 39, 39)
-                        .addComponent(cancelBtn))
+                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(254, 254, 254)
+                                .addComponent(saveBtn)
+                                .addGap(39, 39, 39)
+                                .addComponent(cancelBtn))
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(searchBtn))
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(searchBtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,7 +505,9 @@ public class workorderView extends javax.swing.JFrame {
                     .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(saveBtn)
                         .addComponent(cancelBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -435,28 +537,95 @@ public class workorderView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        
+        setComponent(true);
+        editBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
+        clearText();
+        searchInput.setText("");
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-       
+        setComponent(true);
+        action = "Ubah";
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+         setComponent(false);
         
+        try{
+            TableWorkOrder transaksi = wc.showWorkOrder(searchInput.getText());
+      
+            if(transaksi.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                workOrderTable.setModel(transaksi);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
 
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void workOrderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_workOrderTableMouseClicked
+        int indexCustomer = -1;
+        int indexService = -1;
         
+        WorkOrder selectedW = (WorkOrder) getTableSelectedObject(workOrderTable);
+        
+         int clickedRow = workOrderTable.getSelectedRow();
+        // Set the selected id --> having `0` means that we will be adding new data, not updating
+        selectedId = selectedW.getId_transaksi();
+        
+        inputTglMasuk.setDateTimeStrict(selectedW.getTanggal_masuk());
+        inputTglSelesai.setDateTimeStrict(selectedW.getTanggal_selesai());
+        
+        String nama = workOrderTable.getValueAt(clickedRow, 1).toString();
+        for(Customer customer : listCustomer){
+               if(customer.getNama_customer().equals(nama)){
+                   indexCustomer = listCustomer.indexOf(customer);
+               }
+           }
+        customerDd.setSelectedIndex(indexCustomer);
+
+        String nama2 = workOrderTable.getValueAt(clickedRow, 2).toString();
+        for(Service service : listService){
+               if(String.valueOf(service.getNama_layanan()).equals(nama2)){
+                   indexService = listService.indexOf(service);
+               }
+           }
+        layananDd.setSelectedIndex(indexService);    
+        
+        bobotInput.setText(workOrderTable.getValueAt(clickedRow, 3).toString());
+        
+        // Display to input:
+      
     }//GEN-LAST:event_workOrderTableMouseClicked
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        
+        setComponent(false);
+        clearText();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-       
+        Customer c = (Customer) customerDd.getSelectedItem();
+        Service s = (Service) layananDd.getSelectedItem();
+        
+        if(action.equalsIgnoreCase("Tambah")){
+            Penyewaan py = new Penyewaan(inputLamaSewa.getText(), Float.parseFloat(inputTotalHarga.getText()) , snack+", "+masker+ ", "+tissue, selectedKendaraan, selectedCustomer );
+            penyewaanControl.insertPenyewaan(py);
+        } else if(action.equalsIgnoreCase("Ubah")){
+            Penyewaan py = new Penyewaan(selectedId, inputLamaSewa.getText(), Float.parseFloat(inputTotalHarga.getText()) , snack+", "+masker+ ", "+tissue, selectedKendaraan, selectedCustomer );
+            penyewaanControl.updateDataPenyewaan(py);
+        }
+           
+            clearText();
+            showWorkOrder();
+            setComponent(false);
+        
+        
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void customerDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDdActionPerformed
@@ -470,6 +639,26 @@ public class workorderView extends javax.swing.JFrame {
     private void layananDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_layananDdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_layananDdActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+    
+        int clickedRow = workOrderTable.getSelectedRow();
+        switch(getAnswer){
+            case 0:
+                try{
+                    wc.deleteDataWorkOrder(Integer.parseInt(workOrderTable.getValueAt(clickedRow, 0).toString()));
+                    clearText();
+                    showWorkOrder();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,10 +703,11 @@ public class workorderView extends javax.swing.JFrame {
     private javax.swing.JPanel containerPanel;
     private javax.swing.JComboBox<String> customerDd;
     private javax.swing.JLabel customerLabel;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JPanel headerPan;
+    private com.github.lgooddatepicker.components.DateTimePicker inputTglMasuk;
+    private com.github.lgooddatepicker.components.DateTimePicker inputTglSelesai;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;

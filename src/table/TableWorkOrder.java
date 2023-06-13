@@ -29,6 +29,7 @@ public class TableWorkOrder extends AbstractTableModel{
     public String getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
             case 0:
+<<<<<<< HEAD
                 return String.valueOf(list.get(rowIndex).getId_transaksi());
             case 1:
                 return list.get(rowIndex).getCustomer().getNama_customer();
@@ -42,6 +43,25 @@ public class TableWorkOrder extends AbstractTableModel{
                 return list.get(rowIndex).getTanggal_masuk();
             case 6:
                 return list.get(rowIndex).getTanggal_selesai();
+=======
+                return list.get(rowIndex).getCustomer().getNama_customer();
+            case 1:
+                return list.get(rowIndex).getLayanan().getNama_layanan();
+            case 2:
+                return String.valueOf(list.get(rowIndex).getBobot());
+            case 3:
+                return list.get(rowIndex).getStatus();
+            case 4:
+                return list.get(rowIndex).getTanggal_masuk().format(WorkOrder.LOCAL_DTF);
+            case 5:
+<<<<<<< HEAD
+                return list.get(rowIndex).getTanggal_selesai().format(WorkOrder.LOCAL_DTF);
+=======
+                return list.get(rowIndex).getTanggal_selesai();
+            case 6:
+                return String.valueOf(list.get(rowIndex).getId_transaksi());
+>>>>>>> 55fbfcf5dd96109dbccee2a16187995b3dc02f21
+>>>>>>> 201d28c6a6584f771bb863b353fff8546ccc9f6f
             default:
                 return null;
         }
