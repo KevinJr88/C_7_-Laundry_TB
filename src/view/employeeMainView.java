@@ -95,6 +95,7 @@ public class employeeMainView extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         prosesTable = new javax.swing.JTable();
         label1 = new java.awt.Label();
+        antarBtn = new javax.swing.JButton();
         menuLiejma = new javax.swing.JPanel();
         transPanel = new javax.swing.JPanel();
         customerDd2 = new javax.swing.JComboBox<>();
@@ -568,10 +569,10 @@ public class employeeMainView extends javax.swing.JFrame {
 
         selesaiBtn.setText("Selesai");
 
+        setDateNowAmbilBtn.setText("Sekarang");
         setDateNowAmbilBtn.setBackground(new java.awt.Color(0, 255, 51));
         setDateNowAmbilBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn.setForeground(new java.awt.Color(255, 255, 255));
-        setDateNowAmbilBtn.setText("Sekarang");
 
         javax.swing.GroupLayout pickupPanelLayout = new javax.swing.GroupLayout(pickupPanel);
         pickupPanel.setLayout(pickupPanelLayout);
@@ -754,8 +755,6 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
-        selesaiTable.setBackground(new java.awt.Color(255, 255, 255));
-        selesaiTable.setForeground(new java.awt.Color(0, 0, 0));
         selesaiTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -767,10 +766,10 @@ public class employeeMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        selesaiTable.setBackground(new java.awt.Color(255, 255, 255));
+        selesaiTable.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane4.setViewportView(selesaiTable);
 
-        prosesTable.setBackground(new java.awt.Color(255, 255, 255));
-        prosesTable.setForeground(new java.awt.Color(0, 0, 0));
         prosesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -782,11 +781,15 @@ public class employeeMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        prosesTable.setBackground(new java.awt.Color(255, 255, 255));
+        prosesTable.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane5.setViewportView(prosesTable);
 
         label1.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
         label1.setForeground(new java.awt.Color(255, 255, 255));
         label1.setText("ANTAR LAUNDRY");
+
+        antarBtn.setText("Terantar");
 
         javax.swing.GroupLayout menuAmpadtLayout = new javax.swing.GroupLayout(menuAmpadt);
         menuAmpadt.setLayout(menuAmpadtLayout);
@@ -805,7 +808,9 @@ public class employeeMainView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(antarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         menuAmpadtLayout.setVerticalGroup(
@@ -813,7 +818,10 @@ public class employeeMainView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
                 .addGap(28, 51, Short.MAX_VALUE)
                 .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(menuAmpadtLayout.createSequentialGroup()
+                        .addComponent(antarBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuAmpadtLayout.createSequentialGroup()
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1153,6 +1161,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton addBtn2;
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
+    private javax.swing.JButton antarBtn;
     private javax.swing.JTextField bobotInput;
     private javax.swing.JLabel bobotLabel;
     private javax.swing.JButton cancelBtn;
