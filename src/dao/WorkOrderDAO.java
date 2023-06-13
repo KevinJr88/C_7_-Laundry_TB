@@ -77,9 +77,9 @@ public class WorkOrderDAO {
     
     public void insertWorkOrder(WorkOrder wo){
         con = dbcon.makeConnection();
-      
+        String sql=null;
         try{
-            String sql = "INSERT INTO work_order(tanggal_masuk, tanggal_selesai, bobot, status, id_customer, id_karyawan, id_layanan, biaya) values ('"
+            sql = "INSERT INTO work_order(tanggal_masuk, tanggal_selesai, bobot, status, id_customer, id_karyawan, id_layanan, biaya) values ('"
               + String.valueOf(wo.getTanggal_masuk()) + "','" + String.valueOf(wo.getTanggal_selesai())  + "','"
               + wo.getBobot() + "','" + wo.getStatus() + "','" + wo.getCustomer().getId_customer() + "','" + wo.getKaryawan().getId_karyawan() + "','"
               + wo.getLayanan().getId_layanan() + "','" + wo.getBiaya() + "')";

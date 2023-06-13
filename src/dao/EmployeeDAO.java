@@ -75,6 +75,39 @@ public class EmployeeDAO {
         return list;
     } 
     
+    public Employee searchUsernameEmployee(String username, String password){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT * FROM Employee WHERE username = '" + username + "'" +
+                "AND password = '" + password + "'";
+        System.out.println("Searching employee...");
+        Employee e = null;
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs!=null){
+                while(rs.next()){
+                    e = new Employee(
+                        rs.getString("id_karyawan"),
+                        rs.getString("nama_karyawan"),
+                        rs.getString("password"),
+                        Integer.parseInt(rs.getString("no_telepon")),
+                        rs.getString("status"),
+                        rs.getString("posisi")
+                    );
+                }
+            }
+            rs.close();
+            statement.close();
+        } catch(Exception e1){
+            System.out.println("Error reading database...");
+            System.out.println(e1);
+        }
+        dbcon.closeConnection();
+        return e;
+    }
     public Employee searchEmployee(String id){
         con = dbcon.makeConnection();
         

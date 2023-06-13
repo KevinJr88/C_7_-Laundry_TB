@@ -105,6 +105,11 @@ public class loginMainView extends javax.swing.JFrame {
         loginButton.setForeground(new java.awt.Color(0, 0, 0));
         loginButton.setText("LOGIN");
         loginButton.setBorder(null);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,6 +165,10 @@ public class loginMainView extends javax.swing.JFrame {
         creditMainView cmv = new creditMainView();
         cmv.setVisible(true);
     }//GEN-LAST:event_creditButtonMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
