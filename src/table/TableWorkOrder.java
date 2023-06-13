@@ -29,21 +29,6 @@ public class TableWorkOrder extends AbstractTableModel{
     public String getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
             case 0:
-<<<<<<< HEAD
-                return String.valueOf(list.get(rowIndex).getId_transaksi());
-            case 1:
-                return list.get(rowIndex).getCustomer().getNama_customer();
-            case 2:
-                return list.get(rowIndex).getLayanan().getNama_layanan();
-            case 3:
-                return String.valueOf(list.get(rowIndex).getBobot());
-            case 4:
-                return list.get(rowIndex).getStatus();
-            case 5:
-                return list.get(rowIndex).getTanggal_masuk();
-            case 6:
-                return list.get(rowIndex).getTanggal_selesai();
-=======
                 return list.get(rowIndex).getCustomer().getNama_customer();
             case 1:
                 return list.get(rowIndex).getLayanan().getNama_layanan();
@@ -54,14 +39,9 @@ public class TableWorkOrder extends AbstractTableModel{
             case 4:
                 return list.get(rowIndex).getTanggal_masuk().format(WorkOrder.LOCAL_DTF);
             case 5:
-<<<<<<< HEAD
                 return list.get(rowIndex).getTanggal_selesai().format(WorkOrder.LOCAL_DTF);
-=======
-                return list.get(rowIndex).getTanggal_selesai();
             case 6:
                 return String.valueOf(list.get(rowIndex).getId_transaksi());
->>>>>>> 55fbfcf5dd96109dbccee2a16187995b3dc02f21
->>>>>>> 201d28c6a6584f771bb863b353fff8546ccc9f6f
             default:
                 return null;
         }
@@ -79,11 +59,11 @@ public class TableWorkOrder extends AbstractTableModel{
             case 3:
                 return "Bobot";
             case 4:
-                return "Id_customer";
+                return "Nama_customer";
             case 5:
-                return "Id_karyawan";
+                return "Nama_karyawan";
             case 6:
-                return "Id_layanan";
+                return "Status";
             default:
                 return null;
                    
