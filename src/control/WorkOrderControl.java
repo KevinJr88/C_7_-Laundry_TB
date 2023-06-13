@@ -25,28 +25,28 @@ public class WorkOrderControl {
         return tableWorkOrder;
     }
     
-    public TableWorkOrder showWorkOrderNotDone(String query){
+    public TableWorkOrder showWorkOrderNotDone(){
         List<WorkOrder> dataWorkOrder = woDao.showWorkOrderCondition("Proses");
         TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
         
         return tableWorkOrder;
     }
     
-    public TableWorkOrder showWorkOrderDone(String query){
+    public TableWorkOrder showWorkOrderDone(){
         List<WorkOrder> dataWorkOrder = woDao.showWorkOrderCondition("Selesai");
         TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
         
         return tableWorkOrder;
     }
     
-    public TableWorkOrder showWorkOrderDiambil(String query){
+    public TableWorkOrder showWorkOrderDiambil(){
         List<WorkOrder> dataWorkOrder = woDao.showWorkOrderCondition("Diambil");
         TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
         
         return tableWorkOrder;
     }
     
-    public TableWorkOrder showWorkOrderDiantar(String query){
+    public TableWorkOrder showWorkOrderDiantar(){
         List<WorkOrder> dataWorkOrder = woDao.showWorkOrderCondition2();
         TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
         
