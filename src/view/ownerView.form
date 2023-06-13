@@ -89,7 +89,7 @@
     <Container class="javax.swing.JPanel" name="headerPan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="a4" green="79" red="37" type="rgb"/>
         </Property>
       </Properties>
 
@@ -98,7 +98,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Component id="titleLabel" min="-2" pref="301" max="-2" attributes="0"/>
+                  <Component id="titleLabel" min="-2" pref="511" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -117,12 +117,12 @@
         <Component class="javax.swing.JLabel" name="titleLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Berlin Sans FB" size="24" style="0"/>
+              <Font name="Berlin Sans FB" size="48" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="0" type="rgb"/>
+              <Color blue="14" green="d9" red="fb" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Owner Operation Page"/>
+            <Property name="text" type="java.lang.String" value="Owner Operation"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -130,7 +130,7 @@
     <Container class="javax.swing.JPanel" name="containerPan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="a4" green="79" red="37" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -148,43 +148,50 @@
                   <Component id="searchBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="telpInput" min="-2" pref="222" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="passInput" min="-2" pref="222" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="passLabel" min="-2" pref="83" max="-2" attributes="0"/>
-                                  <Component id="idLabel" min="-2" pref="83" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                  <Component id="idInput" max="32767" attributes="0"/>
-                                  <Component id="namaInput" alignment="0" pref="222" max="32767" attributes="0"/>
-                                  <Component id="telpLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jabDd" min="-2" pref="241" max="-2" attributes="0"/>
-                      <Component id="statDd" min="-2" pref="241" max="-2" attributes="0"/>
-                      <Component id="jabLabel" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                      <Component id="statLabel" min="-2" pref="83" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="458" max="32767" attributes="0"/>
-              </Group>
-              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cancelBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="telpInput" min="-2" pref="222" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="passInput" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="passLabel" min="-2" pref="83" max="-2" attributes="0"/>
+                                          <Component id="idLabel" min="-2" pref="83" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                          <Component id="idInput" max="32767" attributes="0"/>
+                                          <Component id="namaInput" alignment="0" pref="222" max="32767" attributes="0"/>
+                                          <Component id="telpLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jabDd" min="-2" pref="241" max="-2" attributes="0"/>
+                              <Component id="statDd" min="-2" pref="241" max="-2" attributes="0"/>
+                              <Component id="jabLabel" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                              <Component id="statLabel" min="-2" pref="83" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="1190" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -235,7 +242,8 @@
                       <Component id="cancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="330" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="324" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -271,7 +279,7 @@
         <Container class="javax.swing.JPanel" name="opPan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="33" type="rgb"/>
+              <Color blue="a4" green="79" red="37" type="rgb"/>
             </Property>
           </Properties>
 

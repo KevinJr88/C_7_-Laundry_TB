@@ -73,6 +73,19 @@ public class serviceView extends javax.swing.JFrame {
 
         yesNoGroup = new javax.swing.ButtonGroup();
         sidebarPan = new javax.swing.JPanel();
+        sidebarPan1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         headerPan = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
@@ -100,27 +113,134 @@ public class serviceView extends javax.swing.JFrame {
         deliLabel = new javax.swing.JLabel();
         yesRadBtn = new javax.swing.JRadioButton();
         noRadBtn = new javax.swing.JRadioButton();
-        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidebarPan.setBackground(new java.awt.Color(255, 255, 153));
+        sidebarPan.setBackground(new java.awt.Color(255, 255, 255));
+
+        sidebarPan1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/customer.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Add Customer");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/history.png"))); // NOI18N
+        jLabel7.setText("jLabel3");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/deli.png"))); // NOI18N
+        jLabel8.setText("jLabel3");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
+        jLabel9.setText("jLabel3");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/workorder.png"))); // NOI18N
+        jLabel10.setText("jLabel3");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pickup.png"))); // NOI18N
+        jLabel11.setText("jLabel3");
+
+        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Ambil Laundry");
+
+        jLabel12.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Riwayat");
+
+        jLabel13.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Antar");
+
+        jLabel14.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Work Order");
+
+        jLabel15.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Logout");
+
+        javax.swing.GroupLayout sidebarPan1Layout = new javax.swing.GroupLayout(sidebarPan1);
+        sidebarPan1.setLayout(sidebarPan1Layout);
+        sidebarPan1Layout.setHorizontalGroup(
+            sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPan1Layout.createSequentialGroup()
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(sidebarPan1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sidebarPan1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15))
+                    .addGroup(sidebarPan1Layout.createSequentialGroup()
+                        .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        sidebarPan1Layout.setVerticalGroup(
+            sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPan1Layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11))
+                .addGap(25, 25, 25)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel12))
+                .addGap(23, 23, 23)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel14))
+                .addGap(106, 106, 106)
+                .addGroup(sidebarPan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout sidebarPanLayout = new javax.swing.GroupLayout(sidebarPan);
         sidebarPan.setLayout(sidebarPanLayout);
         sidebarPanLayout.setHorizontalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(sidebarPan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         sidebarPanLayout.setVerticalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(sidebarPan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        headerPan.setBackground(new java.awt.Color(51, 255, 255));
+        headerPan.setBackground(new java.awt.Color(55, 121, 164));
 
-        titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
-        titleLabel.setForeground(new java.awt.Color(255, 255, 102));
+        titleLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 36)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(251, 217, 20));
         titleLabel.setText("Service Page");
 
         javax.swing.GroupLayout headerPanLayout = new javax.swing.GroupLayout(headerPan);
@@ -140,9 +260,9 @@ public class serviceView extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        containerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        containerPanel.setBackground(new java.awt.Color(55, 121, 164));
 
-        opPanel.setBackground(new java.awt.Color(255, 255, 153));
+        opPanel.setBackground(new java.awt.Color(55, 121, 164));
 
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +272,11 @@ public class serviceView extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Edit");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +356,7 @@ public class serviceView extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel6.setText("Tambah service");
@@ -337,23 +462,15 @@ public class serviceView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(noRadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,7 +504,7 @@ public class serviceView extends javax.swing.JFrame {
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchBtn)
@@ -501,8 +618,20 @@ public class serviceView extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-         setComponent(false);
-        
+        setComponent(false);
+         try{
+           TableService service = serviceControl.showDataBySearch(searchInput.getText());
+            if(service.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                serviceTable.setModel(service);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
         
     }//GEN-LAST:event_searchBtnActionPerformed
 
@@ -522,12 +651,34 @@ public class serviceView extends javax.swing.JFrame {
         if(temp.equalsIgnoreCase("Ya")){
             yesRadBtn.setSelected(true);
             noRadBtn.setSelected(false);
+            jasaAntar = "Iya";
         }else{
-             yesRadBtn.setSelected(false);
+            yesRadBtn.setSelected(false);
             noRadBtn.setSelected(true);
+            jasaAntar = "Tidak";
         }
         feeInput.setText(table.getValueAt(clickedRow, 4).toString());
     }//GEN-LAST:event_serviceTableMouseClicked
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    serviceControl.deleteDataService(idInput.getText());
+                    
+                    clearText();
+                    showService();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -570,7 +721,6 @@ public class serviceView extends javax.swing.JFrame {
     private javax.swing.JTextField cepatInput;
     private javax.swing.JLabel cepatLabel;
     private javax.swing.JPanel containerPanel;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel deliLabel;
     private javax.swing.JButton editBtn;
@@ -579,7 +729,19 @@ public class serviceView extends javax.swing.JFrame {
     private javax.swing.JPanel headerPan;
     private javax.swing.JTextField idInput;
     private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -592,6 +754,7 @@ public class serviceView extends javax.swing.JFrame {
     private javax.swing.JTextField searchInput;
     private javax.swing.JTable serviceTable;
     private javax.swing.JPanel sidebarPan;
+    private javax.swing.JPanel sidebarPan1;
     private javax.swing.JLabel titleLabel;
     private javax.swing.ButtonGroup yesNoGroup;
     private javax.swing.JRadioButton yesRadBtn;

@@ -60,7 +60,7 @@ public class ServiceDAO {
                             rs.getString("nama_layanan"),
                             Integer.parseInt(rs.getString("kecepatan")),
                             rs.getString("jasa_antar"),
-                            Integer.parseInt(rs.getString("biaya"))
+                            Double.parseDouble(rs.getString("biaya"))
                     );
                     list.add(s);
                 }
@@ -70,6 +70,40 @@ public class ServiceDAO {
         } catch(Exception e){
             System.out.println("Error reading database");
             System.out.println(e);
+        }
+        dbcon.closeConnection();
+        return list;
+    }
+    
+    public List<Service> showServiceBySearch(String x){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT * FROM Service as s WHERE(s.id_layanan LIKE "
+                + "'%" + x + "%'"
+                + "OR s.nama_layanan LIKE '%" + x + "%'"
+                + "OR s.kecepatan LIKE '%" + x + "%'"
+                + "OR s.jasa_antar LIKE '%" + x + "%'"
+                + "OR s.biaya LIKE '%" + x + "%')";
+        System.out.println("Mengambil data Service...");        
+        List<Service> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery(sql);
+             
+             if(rs!=null){
+                 while(rs.next()){
+                     Service s = new Service(rs.getString("s.id_layanan"), rs.getString("s.nama_layanan"),
+                        Integer.parseInt(rs.getString("s.kecepatan")), rs.getString("s.jasa_antar"),
+                        Double.parseDouble(rs.getString("s.biaya")));
+                    list.add(s);
+                 }
+             }
+             rs.close();
+             statement.close();
+        } catch(Exception e1){
+            System.out.println("Error reading employee...");
+            System.out.println(e1);
         }
         dbcon.closeConnection();
         return list;
@@ -115,7 +149,7 @@ public class ServiceDAO {
                             rs.getString("nama_layanan"),
                             rs.getInt("kecepatan"),
                             rs.getString("jasa_antar"),
-                            rs.getInt("biaya")
+                            rs.getDouble("biaya")
                     );
                 }
             }
