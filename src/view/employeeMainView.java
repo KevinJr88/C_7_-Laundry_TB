@@ -15,6 +15,8 @@ import table.*;
  */
 public class employeeMainView extends javax.swing.JFrame {
     private CustomerControl customerControl;
+    private WorkOrderControl workOrderControl;
+    
     private String action, id, jenisKelamin, temp;
     /**
      * Creates new form employeeMainView
@@ -56,6 +58,10 @@ public class employeeMainView extends javax.swing.JFrame {
     
     public void showCustomer(){
         jTable1.setModel(customerControl.showDataCustomer());
+    }
+    
+    public void showRiwayat(){
+        jTable2.setModel(workOrderControl.showWorkOrderDiambil());
     }
 
     /**
@@ -757,22 +763,32 @@ public class employeeMainView extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setForeground(new java.awt.Color(0, 0, 0));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         deleteBtn3.setText("Hapus");
         deleteBtn3.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn3.setForeground(new java.awt.Color(0, 0, 0));
+        deleteBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtn3ActionPerformed(evt);
+            }
+        });
 
         searchInput2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput2.setBackground(new java.awt.Color(255, 255, 255));
@@ -781,6 +797,11 @@ public class employeeMainView extends javax.swing.JFrame {
         searchBtn2.setText("Cari");
         searchBtn2.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn2.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn2ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("RIWAYAT");
         jLabel11.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -1303,6 +1324,51 @@ public class employeeMainView extends javax.swing.JFrame {
             perempuanBtn.setSelected(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
+         try{
+           TableWorkOrder wo = workOrderControl.showWorkOrder(searchInput2.getText());
+            if(wo.getRowCount() == 0){
+                searchInput2.setText("");
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                jTable2.setModel(wo);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtn2ActionPerformed
+
+    private void deleteBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtn3ActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    workOrderControl.deleteDataWorkOrder(Integer.parseInt(idInput.getText()));
+                    searchInput2.setText("");
+                    showRiwayat();
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_deleteBtn3ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        
+        try{
+            int clickedRow = jTable2.getSelectedRow();
+            TableModel table = jTable2.getModel();
+
+            idInput.setText(table.getValueAt(clickedRow, 6).toString());     
+        } catch(Exception e){
+            System.out.println(e);
+        }
+       
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments
