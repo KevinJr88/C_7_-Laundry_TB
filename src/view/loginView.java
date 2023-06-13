@@ -26,7 +26,11 @@ public class loginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
+        kGradientPanel1 = new org.netbeans.modules.form.InvalidComponent();
+=======
         PanelUtama = new keeptoo.KGradientPanel();
+>>>>>>> bb3f0a4ac1fdca5c90bad33a350690526cf8d9e0
         welcomeLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
@@ -38,9 +42,12 @@ public class loginView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+<<<<<<< HEAD
+=======
         PanelUtama.setkEndColor(new java.awt.Color(55, 121, 164));
         PanelUtama.setkStartColor(new java.awt.Color(255, 255, 204));
 
+>>>>>>> bb3f0a4ac1fdca5c90bad33a350690526cf8d9e0
         welcomeLabel.setFont(new java.awt.Font("Perpetua", 0, 48)); // NOI18N
         welcomeLabel.setForeground(new java.awt.Color(0, 0, 0));
         welcomeLabel.setText("WELCOME");
@@ -79,6 +86,11 @@ public class loginView extends javax.swing.JFrame {
                 creditButtonMouseClicked(evt);
             }
         });
+        creditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelUtamaLayout = new javax.swing.GroupLayout(PanelUtama);
         PanelUtama.setLayout(PanelUtamaLayout);
@@ -86,13 +98,14 @@ public class loginView extends javax.swing.JFrame {
             PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelUtamaLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passwordLabel)
-                    .addComponent(usernameLabel)
-                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(usernameTextField)
-                    .addComponent(passwordField))
+                .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordLabel)
+                        .addComponent(usernameTextField)
+                        .addComponent(passwordField)
+                        .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(usernameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
@@ -145,6 +158,10 @@ public class loginView extends javax.swing.JFrame {
         cv.setVisible(true);
     }//GEN-LAST:event_creditButtonMouseClicked
 
+    private void creditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,6 +201,10 @@ public class loginView extends javax.swing.JFrame {
     private keeptoo.KGradientPanel PanelUtama;
     private javax.swing.JButton creditButton;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
+    private org.netbeans.modules.form.InvalidComponent kGradientPanel1;
+=======
+>>>>>>> bb3f0a4ac1fdca5c90bad33a350690526cf8d9e0
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
