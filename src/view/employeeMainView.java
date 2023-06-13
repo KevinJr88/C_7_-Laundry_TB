@@ -4,17 +4,58 @@
  */
 package view;
 
+import control.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import model.*;
+import table.*;
 /**
  *
  * @author Yeetman47
  */
 public class employeeMainView extends javax.swing.JFrame {
-
+    private CustomerControl customerControl;
+    private String action, id, jenisKelamin, temp;
     /**
      * Creates new form employeeMainView
      */
     public employeeMainView() {
-        initComponents();
+        try{
+            initComponents();
+            setComponent(false);
+            idInput.setEnabled(false);
+            customerControl = new CustomerControl();
+            showCustomer();
+            clearText();
+        } catch(Exception e){
+            System.out.println("Error customerView");
+        }
+    }
+    
+    public void setComponent(boolean value){
+       editBtn.setEnabled(value);
+       deleteBtn.setEnabled(value);
+       namaInput.setEnabled(value);
+       telpInput.setEnabled(value);
+       alamatInput.setEnabled(value);
+       lakiBtn.setEnabled(value);
+       perempuanBtn.setEnabled(value);
+       lakiBtn.setSelected(value);
+       perempuanBtn.setSelected(value);
+       saveBtn.setEnabled(value);
+       cancelBtn.setEnabled(value);
+    }
+    
+    public void clearText(){
+        namaInput.setText("");
+        telpInput.setText("");
+        alamatInput.setText("");
+        idInput.setText("");
+        searchInput.setText("");
+    }
+    
+    public void showCustomer(){
+        jTable1.setModel(customerControl.showDataCustomer());
     }
 
     /**
@@ -367,10 +408,25 @@ public class employeeMainView extends javax.swing.JFrame {
         perempuanBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         perempuanBtn.setForeground(new java.awt.Color(0, 0, 0));
         perempuanBtn.setText("Perempuan");
+        perempuanBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                perempuanBtnActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText("Batal");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         saveBtn.setText("Simpan");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Jenis Kelamin");
         jLabel9.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -439,14 +495,29 @@ public class employeeMainView extends javax.swing.JFrame {
         addBtn.setText("Tambah");
         addBtn.setBackground(new java.awt.Color(255, 255, 255));
         addBtn.setForeground(new java.awt.Color(0, 0, 0));
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setText("Hapus");
         deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setForeground(new java.awt.Color(0, 0, 0));
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Ubah");
         editBtn.setBackground(new java.awt.Color(255, 255, 255));
         editBtn.setForeground(new java.awt.Color(0, 0, 0));
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -485,6 +556,11 @@ public class employeeMainView extends javax.swing.JFrame {
         ));
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setForeground(new java.awt.Color(51, 51, 51));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -494,6 +570,11 @@ public class employeeMainView extends javax.swing.JFrame {
         searchBtn.setText("Cari");
         searchBtn.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Tambah Pelanggan");
         jLabel2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -1101,7 +1182,7 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void lakiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lakiBtnActionPerformed
-        // TODO add your handling code here:
+        jenisKelamin = "Laki-laki";
     }//GEN-LAST:event_lakiBtnActionPerformed
 
     private void deleteBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtn2ActionPerformed
@@ -1119,6 +1200,109 @@ public class employeeMainView extends javax.swing.JFrame {
     private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchBtn3ActionPerformed
+
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        setComponent(true);
+        action = "Ubah";
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        setComponent(true);
+        editBtn.setEnabled(false);
+        deleteBtn.setEnabled(false);
+        clearText();
+        searchInput.setText("");
+        id = customerControl.generateIDCustomer();
+        idInput.setText(id);
+        action = "Tambah";
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    customerControl.deleteDataCustomer(idInput.getText());
+                    //customerControl.deleteCustomer(selectedId);
+                    clearText();
+                    showCustomer();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+       try{
+           
+            Customer c = new Customer(idInput.getText(), namaInput.getText(), Integer.parseInt(telpInput.getText()) , alamatInput.getText(), jenisKelamin );               
+            if(action.equals("Tambah")){
+                customerControl.insertDataCustomer(c);
+            }else{
+                customerControl.updateDataCustomer(c, idInput.getText());
+            }
+            clearText();
+            showCustomer();
+            setComponent(false);
+        }catch (Exception e){
+            System.out.println("Gagal menyimpan data");
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void perempuanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perempuanBtnActionPerformed
+        jenisKelamin = "Perempuan";
+    }//GEN-LAST:event_perempuanBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        setComponent(false);
+        clearText();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        setComponent(false);
+        
+        try{
+           TableCustomer customer = customerControl.showDataBySearch(searchInput.getText());
+            if(customer.getRowCount() == 0){
+                clearText();
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                jTable1.setModel(customer);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        setComponent(false);
+        editBtn.setEnabled(true);
+        deleteBtn.setEnabled(true);
+
+        int clickedRow = jTable1.getSelectedRow();
+        TableModel table = jTable1.getModel();
+
+        idInput.setText(table.getValueAt(clickedRow, 0).toString());
+        namaInput.setText(table.getValueAt(clickedRow, 1).toString());
+        telpInput.setText(table.getValueAt(clickedRow, 2).toString());
+        alamatInput.setText(table.getValueAt(clickedRow, 3).toString());
+
+        temp = table.getValueAt(clickedRow, 4).toString();
+        if(temp.equalsIgnoreCase("Laki-laki")){
+            lakiBtn.setSelected(true);
+            perempuanBtn.setSelected(false);
+        }else{
+            lakiBtn.setSelected(false);
+            perempuanBtn.setSelected(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

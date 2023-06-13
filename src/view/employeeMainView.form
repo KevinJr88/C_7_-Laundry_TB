@@ -608,16 +608,25 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Perempuan"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="perempuanBtnActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="cancelBtn">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Batal"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelBtnActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="saveBtn">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Simpan"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel9">
                       <Properties>
@@ -678,6 +687,9 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="deleteBtn">
                       <Properties>
@@ -689,6 +701,9 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="editBtn">
                       <Properties>
@@ -700,6 +715,9 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editBtnActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -760,6 +778,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -786,6 +807,9 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
