@@ -178,6 +178,21 @@ public class employeeMainView extends javax.swing.JFrame {
         jTable2.setModel(workOrderControl.showWorkOrderDiambil());
     }
 
+    public void showRincian(){
+        rincianTable.setModel(workOrderControl.showWorkOrderDoneAntarNo());
+    }
+    
+    public void showAntarLaundry(){
+        prosesTable.setModel(workOrderControl.showWorkOrderDoneAntarYes());
+    }
+    
+    public void showTransaksi(){
+        jTable3.setModel(workOrderControl.showWorkOrder("Proses"));
+    }
+    
+    public void showProses(){
+        prosesTable1.setModel(workOrderControl.showWorkOrderNotDone());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -814,6 +829,11 @@ public class employeeMainView extends javax.swing.JFrame {
         totInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         totInput.setBackground(new java.awt.Color(255, 255, 255));
         totInput.setForeground(new java.awt.Color(0, 0, 0));
+        totInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totInputActionPerformed(evt);
+            }
+        });
 
         cancelBtn2.setText("Cancel");
 
@@ -823,6 +843,11 @@ public class employeeMainView extends javax.swing.JFrame {
         setDateNowAmbilBtn.setBackground(new java.awt.Color(0, 255, 51));
         setDateNowAmbilBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn.setForeground(new java.awt.Color(255, 255, 255));
+        setDateNowAmbilBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setDateNowAmbilBtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Tanggal Ambil");
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -888,6 +913,11 @@ public class employeeMainView extends javax.swing.JFrame {
         ));
         rincianTable.setBackground(new java.awt.Color(255, 255, 255));
         rincianTable.setForeground(new java.awt.Color(0, 0, 0));
+        rincianTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rincianTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(rincianTable);
 
         jLabel1.setText("Rincian");
@@ -1836,6 +1866,25 @@ public class employeeMainView extends javax.swing.JFrame {
     private void btnSetDTMasukNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetDTMasukNowActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSetDTMasukNowActionPerformed
+
+    private void rincianTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rincianTableMouseClicked
+
+        int clickedRow = rincianTable.getSelectedRow();
+        TableModel table = rincianTable.getModel();
+        int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
+        int b = Integer.parseInt(table.getValueAt(clickedRow, 7).toString());
+        int c = a*b;
+        
+        totInput.setText(String.valueOf(c));
+    }//GEN-LAST:event_rincianTableMouseClicked
+
+    private void setDateNowAmbilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDateNowAmbilBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_setDateNowAmbilBtnActionPerformed
+
+    private void totInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totInputActionPerformed
 
     /**
      * @param args the command line arguments

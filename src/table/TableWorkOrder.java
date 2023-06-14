@@ -42,6 +42,8 @@ public class TableWorkOrder extends AbstractTableModel{
                 return list.get(rowIndex).getTanggal_masuk();
             case 6:
                 return list.get(rowIndex).getTanggal_selesai();
+            case 7:
+                return String.valueOf(list.get(rowIndex).getLayanan().getBiaya());
             default:
                 return null;
         }

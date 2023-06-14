@@ -46,6 +46,13 @@ public class WorkOrderControl {
         return tableWorkOrder;
     }
     
+    public TableWorkOrder showWorkOrderDoneAntarNo(){
+        List<WorkOrder> dataWorkOrder = woDao.showWorkOrderConditiondouble("Selesai", "tidak");
+        TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
+        
+        return tableWorkOrder;
+    }
+    
     public TableWorkOrder showWorkOrderDiambil(){
         List<WorkOrder> dataWorkOrder = woDao.showWorkOrderCondition("Diambil");
         TableWorkOrder tableWorkOrder = new TableWorkOrder(dataWorkOrder);
