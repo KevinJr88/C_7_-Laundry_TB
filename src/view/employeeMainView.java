@@ -96,8 +96,10 @@ public class employeeMainView extends javax.swing.JFrame {
             showWorkOrder();
            
             
-            //Batas
-         
+       //TAB 6 PROSES
+            initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+            showProses();
+            //setComponentProses();
         } catch(Exception e){
             System.out.println("Error customerView");
         }
@@ -139,6 +141,9 @@ public class employeeMainView extends javax.swing.JFrame {
        prosesTable.setModel(wc.showWorkOrderDiantar());
    }
     
+    public void showProses(){
+        prosesTable1.setModel(wc.showWorkOrderNotDone());
+    }
     
     public void showWorkOrder(){
         jTable3.setModel(wc.showWorkOrderNotDone());
@@ -424,6 +429,9 @@ public class employeeMainView extends javax.swing.JFrame {
         servisLabel3 = new javax.swing.JLabel();
         servisDisplay1 = new javax.swing.JTextField();
         selesaiBtn3 = new javax.swing.JButton();
+        tglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
+        todayBtn = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1789,6 +1797,20 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
+        todayBtn.setText("Today");
+        todayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                todayBtnActionPerformed(evt);
+            }
+        });
+
+        cancel.setText("cancel");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout donePanelLayout = new javax.swing.GroupLayout(donePanel);
         donePanel.setLayout(donePanelLayout);
         donePanelLayout.setHorizontalGroup(
@@ -1797,29 +1819,47 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(donePanelLayout.createSequentialGroup()
+                        .addComponent(customerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(todayBtn)
+                        .addGap(18, 18, 18))
+                    .addGroup(donePanelLayout.createSequentialGroup()
                         .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(servisLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, donePanelLayout.createSequentialGroup()
+                            .addGroup(donePanelLayout.createSequentialGroup()
+                                .addComponent(servisLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(donePanelLayout.createSequentialGroup()
+                                .addComponent(bobotLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                                .addComponent(tglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(donePanelLayout.createSequentialGroup()
                         .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(servisDisplay1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                            .addComponent(bobotLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                            .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bobotDisplay1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(selesaiBtn3)
-                        .addGap(30, 30, 30))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancel)
+                        .addGap(16, 16, 16))))
         );
         donePanelLayout.setVerticalGroup(
             donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(donePanelLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(customerLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(customerDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(donePanelLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(customerLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(customerDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(donePanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(todayBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bobotLabel3)
+                .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bobotLabel3)
+                    .addComponent(tglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bobotDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1827,7 +1867,8 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(servisDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selesaiBtn3))
+                    .addComponent(selesaiBtn3)
+                    .addComponent(cancel))
                 .addGap(44, 44, 44))
         );
 
@@ -1839,18 +1880,13 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(containerEightnamLayout.createSequentialGroup()
-                            .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(containerEightnamLayout.createSequentialGroup()
-                                    .addComponent(searchBtn5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(453, 453, 453))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerEightnamLayout.createSequentialGroup()
-                            .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(425, 425, 425)))))
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(containerEightnamLayout.createSequentialGroup()
+                        .addComponent(searchBtn5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
         containerEightnamLayout.setVerticalGroup(
             containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1865,7 +1901,7 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout menuEightnamLayout = new javax.swing.GroupLayout(menuEightnam);
@@ -1881,7 +1917,7 @@ public class employeeMainView extends javax.swing.JFrame {
         );
         menuEightnamLayout.setVerticalGroup(
             menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
             .addGroup(menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(menuEightnamLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -2129,7 +2165,8 @@ public class employeeMainView extends javax.swing.JFrame {
 
 
     private void selesaiBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn2ActionPerformed
-       workOrderControl.updateStatusWorkOrder(Integer.parseInt(diantarkan), "Diambil");
+        String tglAmbil = String.valueOf(inputTglAmbil.getDateTimeStrict());
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diantarkan), "Diambil",tglAmbil);
     }//GEN-LAST:event_selesaiBtn2ActionPerformed
 
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
@@ -2174,8 +2211,8 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_sCustomerActionPerformed
 
     private void selesaiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtnActionPerformed
-
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Diambil");
+        String tglAmbil = String.valueOf(inputTglAmbil.getDateTimeStrict());
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Diambil",tglAmbil);
     }//GEN-LAST:event_selesaiBtnActionPerformed
 
     private void prosesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTableMouseClicked
@@ -2212,7 +2249,9 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_prosesTable1MouseClicked
 
     private void selesaiBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn3ActionPerformed
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai");
+     
+        String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai", tglSelse);
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
 
     private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
@@ -2364,6 +2403,15 @@ public class employeeMainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchBtn6ActionPerformed
 
+    private void todayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todayBtnActionPerformed
+        tglSelesai.datePicker.setDateToToday();
+        tglSelesai.timePicker.setTimeToNow();
+    }//GEN-LAST:event_todayBtnActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        
+    }//GEN-LAST:event_cancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2412,6 +2460,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel bobotLabel2;
     private javax.swing.JLabel bobotLabel3;
     private javax.swing.JButton btnSetDTMasukNow;
+    private javax.swing.JButton cancel;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton cancelBtn2;
     private javax.swing.JButton cancelBtn3;
@@ -2523,6 +2572,8 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JTextField telpInput;
     private javax.swing.JLabel telpLabel;
     private com.github.lgooddatepicker.components.DateTimePicker tglDiambilAntar;
+    private com.github.lgooddatepicker.components.DateTimePicker tglSelesai;
+    private javax.swing.JButton todayBtn;
     private javax.swing.JTextField totInput;
     private javax.swing.JPanel transPanel;
     // End of variables declaration//GEN-END:variables

@@ -146,12 +146,12 @@ public class EmployeeDAO {
         con = dbcon.makeConnection();
         
         String sql = "SELECT * FROM Employee as e WHERE(e.id_karyawan LIKE "
-                + "'%" + x + "%'"
-                + "OR e.nama_karyawan LIKE '%" + x + "%'"
-                + "OR e.password LIKE '%" + x + "%'"
-                + "OR e.no_telepon LIKE '%" + x + "%'"
-                + "OR e.status LIKE '%" + x + "%'"
-                + "OR e.posisi LIKE '%" + x + "%')";
+                + "'%" + x + "%' "
+                + "OR e.nama_karyawan LIKE '%" + x + "%' "
+                + "OR e.password LIKE '%" + x + "%' "
+                + "OR e.no_telepon LIKE '%" + x + "%' "
+                + "OR e.status LIKE '%" + x + "%' "
+                + "OR e.posisi LIKE '%" + x + "%') ";
         
         System.out.println("Mengambil data employee...");
         List<Employee> list = new ArrayList();
