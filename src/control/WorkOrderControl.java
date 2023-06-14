@@ -76,6 +76,8 @@ public class WorkOrderControl {
     }
     
     public void updateStatusWorkOrder(int id, String status, String tgl){
+        System.out.println("JJJJJJJJJJ");
         woDao.updateStatusWorkOrder(id, status, tgl);
+        
     }
 }

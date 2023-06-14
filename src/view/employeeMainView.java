@@ -24,7 +24,7 @@ import table.*;
 public class employeeMainView extends javax.swing.JFrame {
     private CustomerControl customerControl;
     private WorkOrderControl workOrderControl;
-    private String menu;
+    private int menu = 0;
     private String action, id, jenisKelamin, temp;
     
     //WORK ORDER VIEW
@@ -49,33 +49,51 @@ public class employeeMainView extends javax.swing.JFrame {
     
     
     public employeeMainView(Employee employee) {
+        initComponents();
         
         try{
             
         //TAB 1 Tambah Pelanggan
-            initComponents();
+       // if(menu==0){
             setComponent(false);
             idInput.setEnabled(false);
             customerControl = new CustomerControl();
+            
             showCustomer();
             clearText();
+       // }
+            
+            
             
         //TAB 2 AMBIL
+        //if(menu==1){
             initDTInput(inputTglAmbil, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
             showSelesai();
             setComponentAmbil(false);
+           
             clearTextAmbil();
+        //}
+            
             
         //TAB 3 RIWAYAT
-            showDiambil();
-            searchInput2.setText("");
+             //if(menu ==2){
+//                showDiambil();
+//                searchInput2.setText("");
+            //}
+            
+            
             
         //TAB 4 ANTAR
-             showAntar();
-             setComponentAntar(false);
-             clearTextAntar();
+            //if(menu == 3){
+//                showAntar();
+//                setComponentAntar(false);
+//                 clearTextAntar();
+           // }
+            
+             
 
         //TAB 5 WORK ORDER
+        // if(menu == 4){
             setEmployee(employee);
             cc = new CustomerControl();
             sc = new ServiceControl();
@@ -92,18 +110,30 @@ public class employeeMainView extends javax.swing.JFrame {
             inputTglSelesai.setEnabled(false);
             clearTextWorkOrder();
            
+           
+                showWorkOrder();
+          // }
             
-            showWorkOrder();
            
             
        //TAB 6 PROSES
-            initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
-            showProses();
-            setComponentProses(false);
-            clearTextProses();
+            
+           // if(menu == 5){
+//                showProses();
+//                initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+//                setComponentProses(false);
+//                clearTextProses();
+           // }
+            
+            
+            
+            
+         menu = -1;
+            
         } catch(Exception e){
             System.out.println("Error customerView");
         }
+        
     }
     
     public void setComponentProses(boolean value){
@@ -758,18 +788,17 @@ public class employeeMainView extends javax.swing.JFrame {
         registerPanel.setLayout(registerPanelLayout);
         registerPanelLayout.setHorizontalGroup(
             registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancelBtn)
-                .addGap(19, 19, 19))
             .addGroup(registerPanelLayout.createSequentialGroup()
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerPanelLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(perempuanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(registerPanelLayout.createSequentialGroup()
+                                .addComponent(perempuanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(saveBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cancelBtn))
                             .addComponent(lakiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(telpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -808,12 +837,12 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lakiBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(perempuanBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelBtn)
-                    .addComponent(saveBtn))
-                .addContainerGap())
+                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(perempuanBtn)
+                    .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(saveBtn)
+                        .addComponent(cancelBtn)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel9.setBackground(new java.awt.Color(55, 121, 164));
@@ -934,7 +963,7 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(menuSaetuLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuSaetuLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addComponent(jLabel2)
@@ -942,10 +971,11 @@ public class employeeMainView extends javax.swing.JFrame {
                         .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchBtn)
                             .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(registerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(58, 58, 58))
         );
 
@@ -1966,27 +1996,32 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_tabpeepeeMouseClicked
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-        // TODO add your handling code here:
+        menu = 0;
         tabpeepee.setSelectedIndex(0);
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+        menu = 1;
         tabpeepee.setSelectedIndex(1);
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         // TODO add your handling code here:
+        menu = 2;
         tabpeepee.setSelectedIndex(2);
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         // TODO add your handling code here:
+        menu = 4;
         tabpeepee.setSelectedIndex(3);
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
         // TODO add your handling code here:
+        menu = 5;
+       
         tabpeepee.setSelectedIndex(4);
     }//GEN-LAST:event_jPanel8MouseClicked
 
@@ -2205,6 +2240,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
         // TODO add your handling code here:
         tabpeepee.setSelectedIndex(5);
+        menu = 6;
     }//GEN-LAST:event_jPanel11MouseClicked
 
 
@@ -2283,9 +2319,18 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_prosesTable1MouseClicked
 
     private void selesaiBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn3ActionPerformed
-     
-        String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai", tglSelse);
+        try{
+            String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
+            System.out.println(tglSelse);
+            System.out.println(diselesaikan);
+            String status = "Selesai";
+            workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), status, tglSelse);
+            
+        }catch(Exception E){
+            System.out.println(E);
+            System.out.println("ERORRR DISINI");
+        }
+        
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
 
     private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
