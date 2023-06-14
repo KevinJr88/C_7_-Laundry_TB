@@ -48,6 +48,9 @@ public class antarBackUp extends javax.swing.JFrame {
     
     public antarBackUp(Employee employee) {
         initComponents();
+        wc = new WorkOrderControl();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
         setEmployee(employee);
         showAntar();
         setComponentAntar(false);

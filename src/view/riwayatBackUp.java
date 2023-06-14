@@ -47,6 +47,9 @@ private CustomerControl customerControl;
     public riwayatBackUp(Employee employee) {
         initComponents();
         setEmployee(employee);
+         wc = new WorkOrderControl();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
         showDiambil();
         searchInput2.setText("");
     }
