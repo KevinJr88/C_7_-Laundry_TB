@@ -99,13 +99,30 @@ public class employeeMainView extends javax.swing.JFrame {
        //TAB 6 PROSES
             initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
             showProses();
-            //setComponentProses();
+            setComponentProses(false);
+            clearTextProses();
         } catch(Exception e){
             System.out.println("Error customerView");
         }
     }
     
-    
+    public void setComponentProses(boolean value){
+        customerDisplay1.setEnabled(value);
+        bobotDisplay1.setEnabled(value);
+        servisDisplay1.setEnabled(value);
+
+        selesaiBtn3.setEnabled(value);
+        tglSelesai.setEnabled(value);
+        cancel.setEnabled(value);
+        todayBtn.setEnabled(value);
+    }
+     
+    public void  clearTextProses(){
+        customerDisplay1.setText("");
+        bobotDisplay1.setText("");
+        servisDisplay1.setText("");
+        tglSelesai.clear();
+    }
     
     public void setComponentAmbil(boolean value){
         totInput.setEnabled(value);
@@ -136,6 +153,8 @@ public class employeeMainView extends javax.swing.JFrame {
         servisDisplay.setText("");
         tglDiambilAntar.clear();
     }
+    
+   
     
    public void showAntar(){
        prosesTable.setModel(wc.showWorkOrderDiantar());
@@ -292,9 +311,7 @@ public class employeeMainView extends javax.swing.JFrame {
         jTable3.setModel(workOrderControl.showWorkOrder("Proses"));
     }
     
-    public void showProses(){
-        prosesTable1.setModel(workOrderControl.showWorkOrderNotDone());
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -2170,7 +2187,19 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_selesaiBtn2ActionPerformed
 
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
-        // TODO add your handling code here:
+         try{
+             
+             TableWorkOrder wo = workOrderControl.showWorkOrderNotDone();
+            //TableCustomer customer = customerControl.showCustomer(searchInput.getText());
+            if(wo.getRowCount() == 0){
+                clearText();
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                prosesTable1.setModel(wo);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
     }//GEN-LAST:event_searchBtn5ActionPerformed
 
     private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
@@ -2239,6 +2268,11 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addBtn2ActionPerformed
 
     private void prosesTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTable1MouseClicked
+        selesaiBtn3.setEnabled(true);
+        tglSelesai.setEnabled(true);
+        cancel.setEnabled(true);
+        todayBtn.setEnabled(true);
+
         int clickedRow = prosesTable1.getSelectedRow();
         TableModel table = prosesTable1.getModel();
         
@@ -2255,7 +2289,7 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
 
     private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
-         setComponentWorkOrder(false);
+        setComponentWorkOrder(false);
         
         try{
             TableWorkOrder transaksi = wc.showWorkOrder(searchInput4.getText());
@@ -2409,7 +2443,7 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_todayBtnActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        
+        clearTextProses();
     }//GEN-LAST:event_cancelActionPerformed
 
     /**
