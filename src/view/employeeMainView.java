@@ -100,17 +100,17 @@ public class employeeMainView extends javax.swing.JFrame {
     } 
     
     private void initDTInput(DateTimePicker input, LocalDate min, LocalDate max) {
-        com.github.lgooddatepicker.components.DatePicker DP = input.getDatePicker();
+         com.github.lgooddatepicker.components.DatePicker DP = input.getDatePicker();
         com.github.lgooddatepicker.components.TimePicker TP = input.getTimePicker();
         
         TP.setOpaque(false);
         DP.setOpaque(false);
-        epicker.components.TimePickerSettings thisTPs = TP.getSettings();
         
-        // Set settings:
         // Java passing by reference, jadi dengan melakukan ini, kita mendapatkan settings dari masing2 DatePicker dan TimePickernya, kemudian memodifikasinya kemudian.
         com.github.lgooddatepicker.components.DatePickerSettings thisDPs = DP.getSettings();
-        com.github.lgooddat
+        com.github.lgooddatepicker.components.TimePickerSettings thisTPs = TP.getSettings();
+        
+        // Set settings:
         thisDPs.setLocale(new java.util.Locale("id"));
         thisDPs.setDateRangeLimits(min, max);
         thisTPs.use24HourClockFormat();
