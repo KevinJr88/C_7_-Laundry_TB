@@ -109,13 +109,13 @@ public class WorkOrderDAO {
         String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
                 + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan "
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.tanggal_masuk LIKE "
-                + "'%" + query + "%'"
-                + "OR wo.tanggal_selesai LIKE '%" + query + "%'"
-                + "OR wo.bobot LIKE '%" + query + "%'"
-                + "OR wo.status LIKE '%" + query + "%'"
-                + "OR s.nama_layanan LIKE '%" + query + "%'"
-                + "OR wo.biaya LIKE '%" + query + "%'" 
-                + "OR c.nama_customer LIKE '%" + query + "%')";
+                + "'%" + query + "%' "
+                + "OR wo.tanggal_selesai LIKE '%" + query + "%' "
+                + "OR wo.bobot LIKE '%" + query + "%' "
+                + "OR wo.status LIKE '%" + query + "%' "
+                + "OR s.nama_layanan LIKE '%" + query + "%' "
+                + "OR wo.biaya LIKE '%" + query + "%' " 
+                + "OR c.nama_customer LIKE '%" + query + "%') ";
                 // TAMBAH APA LAGI YANG BISA JADIIN KATA KUNCI
                 
         System.out.println("Mengambil data work order...");
@@ -258,9 +258,9 @@ public class WorkOrderDAO {
         con = dbcon.makeConnection();
         
         String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
-                + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
+                + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan "
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
-                + "'%" + "selesai" + "%'"
+                + "'%" + "selesai" + "%' "
                 + "AND s.jasa_antar LIKE '%" + "ya" + "%)";
         
         System.out.println("Mengambil data work order...");
@@ -346,10 +346,11 @@ public class WorkOrderDAO {
         dbcon.closeConnection();
     }
     
-    public void updateStatusWorkOrder(int id, String status){
+    public void updateStatusWorkOrder(int id, String status, String tgl){
         con = dbcon.makeConnection();
         
-        String sql = "UPDATE work_order SET status = '" + status + "' "
+        String sql = "UPDATE work_order SET status = '" + status + "', "
+                + "tanggal_ambil = '" + tgl + "' "
                 + "WHERE id_transaksi = '" + id + "'";
         
         System.out.println("Editing wo...");

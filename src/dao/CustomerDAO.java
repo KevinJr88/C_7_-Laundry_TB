@@ -110,10 +110,10 @@ public class CustomerDAO {
         con = dbcon.makeConnection();
         
         String sql = "SELECT * FROM Customer as c WHERE(c.id_customer LIKE "
-                + "'%" + x + "%'"
-                + "OR c.nama_customer LIKE '%" + x + "%'"
-                + "OR c.no_telp LIKE '%" + x + "%'"
-                + "OR c.alamat LIKE '%" + x + "%'"
+                + "'%" + x + "%' "
+                + "OR c.nama_customer LIKE '%" + x + "%' "
+                + "OR c.no_telp LIKE '%" + x + "%' "
+                + "OR c.alamat LIKE '%" + x + "%' "
                 + "OR c.jenis_kelamin LIKE '%" + x + "%')";
         
         System.out.println("Mengambil data customer...");

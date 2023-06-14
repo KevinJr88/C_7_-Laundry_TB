@@ -24,7 +24,7 @@ import table.*;
 public class employeeMainView extends javax.swing.JFrame {
     private CustomerControl customerControl;
     private WorkOrderControl workOrderControl;
-    
+    private String menu;
     private String action, id, jenisKelamin, temp;
     
     //WORK ORDER VIEW
@@ -48,11 +48,11 @@ public class employeeMainView extends javax.swing.JFrame {
      */
     
     
-    public employeeMainView() {
+    public employeeMainView(Employee employee) {
         
         try{
             
-            //tab1 
+        //TAB 1 Tambah Pelanggan
             initComponents();
             setComponent(false);
             idInput.setEnabled(false);
@@ -60,33 +60,111 @@ public class employeeMainView extends javax.swing.JFrame {
             showCustomer();
             clearText();
             
-            //tab 5
-            initDTInput(inputTglMasuk, LocalDate.now().minusYears(1), LocalDate.now().plusMonths(1));
-            initDTInput(inputTglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(2));
+        //TAB 2 AMBIL
+            initDTInput(inputTglAmbil, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+            showSelesai();
+            setComponentAmbil(false);
+            clearTextAmbil();
+            
+        //TAB 3 RIWAYAT
+            showDiambil();
+            searchInput2.setText("");
+            
+        //TAB 4 ANTAR
+             showAntar();
+             setComponentAntar(false);
+             clearTextAntar();
 
-            inputTglMasuk.addDateTimeChangeListener((com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent event) -> {
-                setTglSelesai();
-            });
-
+        //TAB 5 WORK ORDER
             setEmployee(employee);
-            setComponent(false);
-            inputTglSelesai.setEnabled(false);
             cc = new CustomerControl();
             sc = new ServiceControl();
             wc = new WorkOrderControl();
-            showWorkOrder();
+            setComponentWorkOrder(false);
             setCustomerToDropDown();
             setServiceToDropDown();
-            clearText();
+            initDTInput(inputTglMasuk, LocalDate.now().minusYears(1), LocalDate.now().plusMonths(1));
+            initDTInput(inputTglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(2));
+            
+            inputTglMasuk.addDateTimeChangeListener((com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent event) -> {
+                setTglSelesai();
+            });
+            inputTglSelesai.setEnabled(false);
+            clearTextWorkOrder();
+           
+            
+            showWorkOrder();
+           
+            
+       //TAB 6 PROSES
+            initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+            showProses();
+            //setComponentProses();
         } catch(Exception e){
             System.out.println("Error customerView");
         }
     }
     
+    
+    
+    public void setComponentAmbil(boolean value){
+        totInput.setEnabled(value);
+        cancelBtn2.setEnabled(value);
+        selesaiBtn.setEnabled(value);
+        setDateNowAmbilBtn.setEnabled(value);
+        sCustomer.setEnabled(value);
+        sTanggalJam.setEnabled(value);
+        sLayanan.setEnabled(value);
+        sBobot.setEnabled(value);
+    }
+    
+    
+    public void setComponentAntar(boolean value){
+        customerDisplay.setEnabled(value);
+        bobotDisplay.setEnabled(value);
+        servisDisplay.setEnabled(value);
+        selesaiBtn2.setEnabled(value);
+        batalBtn.setEnabled(value);
+        tglDiambilAntar.setEnabled(value);
+        setDateNowAmbilBtn1.setEnabled(value);
+    }
+    
+    public void clearTextAntar(){
+        searchInput3.setText("");
+        customerDisplay.setText("");
+        bobotDisplay.setText("");
+        servisDisplay.setText("");
+        tglDiambilAntar.clear();
+    }
+    
+   public void showAntar(){
+       prosesTable.setModel(wc.showWorkOrderDiantar());
+   }
+    
+    public void showProses(){
+        prosesTable1.setModel(wc.showWorkOrderNotDone());
+    }
+    
     public void showWorkOrder(){
         jTable3.setModel(wc.showWorkOrderNotDone());
     }
+    
+    public void showDiambil(){
+        jTable2.setModel(wc.showWorkOrderDiambil());
+    }
+    
+    public void showSelesai(){
+        rincianTable.setModel(wc.showWorkOrderDone());
+    }
      
+    public void clearTextAmbil(){
+        totInput.setText("");
+        sCustomer.setText("");
+        sLayanan.setText("");
+        sBobot.setText("");
+        sTanggalJam.setText("");
+    }
+    
     public void setCustomerToDropDown(){
         listCustomer = cc.showListCustomer();
         for(int i=0; i<listCustomer.size(); i++){
@@ -138,15 +216,11 @@ public class employeeMainView extends javax.swing.JFrame {
     
     private void setTglSelesai() {
         if(layananDd.getSelectedIndex() == -1 || getFullDateTime(inputTglMasuk) == null) {
-            // Kecepatan belum dipilih ATAU (checkbox cuci dan checkbox setrika belum ada yang dicentang): belum bisa dihitung tanggal ambil
-            
-        } else {
-            // Dapatkan dulu kecepatannya express atau reguler?
+
+        } else {   
             int selectedIndex2 =  layananDd.getSelectedIndex();
             Service s = listService.get(selectedIndex2);
             inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusDays(s.getKecepatan()));
-           
-           
         }
     }
     
@@ -162,6 +236,32 @@ public class employeeMainView extends javax.swing.JFrame {
        perempuanBtn.setSelected(value);
        saveBtn.setEnabled(value);
        cancelBtn.setEnabled(value);
+    }
+    
+    public void setComponentWorkOrder(boolean value){
+        
+        editBtn2.setEnabled(value);
+        deleteBtn2.setEnabled(value);
+        
+        saveBtn2.setEnabled(value);
+        cancelBtn3.setEnabled(value);
+
+        layananDd.setEnabled(value);
+        customerDd2.setEnabled(value);
+        bobotInput.setEnabled(value);
+        inputTglMasuk.setEnabled(value);
+
+        btnSetDTMasukNow.setEnabled(value);
+  
+    }
+    
+    public void clearTextWorkOrder(){
+        layananDd.setSelectedIndex(-1);
+        customerDd2.setSelectedIndex(-1);
+        bobotInput.setText("");
+        inputTglMasuk.clear();
+        inputTglSelesai.clear();
+        searchInput4.setText("");
     }
     
     public void clearText(){
@@ -190,10 +290,6 @@ public class employeeMainView extends javax.swing.JFrame {
     
     public void showTransaksi(){
         jTable3.setModel(workOrderControl.showWorkOrder("Proses"));
-    }
-    
-    public void setPanelActive(boolean panel1,boolean panel2,boolean panel3,boolean panel4,boolean panel5,boolean panel6){
-        
     }
     
     public void showProses(){
@@ -253,12 +349,18 @@ public class employeeMainView extends javax.swing.JFrame {
         menuDouea = new javax.swing.JPanel();
         pickupPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        totInput = new javax.swing.JTextField();
+        sCustomer = new javax.swing.JTextField();
         cancelBtn2 = new javax.swing.JButton();
         selesaiBtn = new javax.swing.JButton();
-        dateTimePickerAmbil = new com.github.lgooddatepicker.components.DateTimePicker();
+        inputTglAmbil = new com.github.lgooddatepicker.components.DateTimePicker();
         setDateNowAmbilBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        totInput = new javax.swing.JTextField();
+        sLayanan = new javax.swing.JTextField();
+        sTanggalJam = new javax.swing.JTextField();
+        sBobot = new javax.swing.JTextField();
+        searchInput6 = new javax.swing.JTextField();
+        searchBtn6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         rincianTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -277,7 +379,7 @@ public class employeeMainView extends javax.swing.JFrame {
         prosesTable = new javax.swing.JTable();
         label1 = new java.awt.Label();
         deliPanel = new javax.swing.JPanel();
-        dateTimePickerAntar = new com.github.lgooddatepicker.components.DateTimePicker();
+        tglDiambilAntar = new com.github.lgooddatepicker.components.DateTimePicker();
         setDateNowAmbilBtn1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         customerLabel2 = new javax.swing.JLabel();
@@ -287,6 +389,7 @@ public class employeeMainView extends javax.swing.JFrame {
         servisLabel2 = new javax.swing.JLabel();
         servisDisplay = new javax.swing.JTextField();
         selesaiBtn2 = new javax.swing.JButton();
+        batalBtn = new javax.swing.JButton();
         menuLiejma = new javax.swing.JPanel();
         transPanel = new javax.swing.JPanel();
         customerDd2 = new javax.swing.JComboBox<>();
@@ -326,6 +429,9 @@ public class employeeMainView extends javax.swing.JFrame {
         servisLabel3 = new javax.swing.JLabel();
         servisDisplay1 = new javax.swing.JTextField();
         selesaiBtn3 = new javax.swing.JButton();
+        tglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
+        todayBtn = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -836,16 +942,21 @@ public class employeeMainView extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
 
-        totInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        totInput.setBackground(new java.awt.Color(255, 255, 255));
-        totInput.setForeground(new java.awt.Color(0, 0, 0));
-        totInput.addActionListener(new java.awt.event.ActionListener() {
+        sCustomer.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        sCustomer.setBackground(new java.awt.Color(255, 255, 255));
+        sCustomer.setForeground(new java.awt.Color(0, 0, 0));
+        sCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totInputActionPerformed(evt);
+                sCustomerActionPerformed(evt);
             }
         });
 
         cancelBtn2.setText("Cancel");
+        cancelBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtn2ActionPerformed(evt);
+            }
+        });
 
         selesaiBtn.setText("Selesai");
         selesaiBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -868,51 +979,141 @@ public class employeeMainView extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
 
+        totInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        totInput.setBackground(new java.awt.Color(255, 255, 255));
+        totInput.setForeground(new java.awt.Color(0, 0, 0));
+        totInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totInputActionPerformed(evt);
+            }
+        });
+
+        sLayanan.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        sLayanan.setBackground(new java.awt.Color(255, 255, 255));
+        sLayanan.setForeground(new java.awt.Color(0, 0, 0));
+        sLayanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sLayananActionPerformed(evt);
+            }
+        });
+
+        sTanggalJam.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        sTanggalJam.setBackground(new java.awt.Color(255, 255, 255));
+        sTanggalJam.setForeground(new java.awt.Color(0, 0, 0));
+        sTanggalJam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sTanggalJamActionPerformed(evt);
+            }
+        });
+
+        sBobot.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        sBobot.setBackground(new java.awt.Color(255, 255, 255));
+        sBobot.setForeground(new java.awt.Color(0, 0, 0));
+        sBobot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sBobotActionPerformed(evt);
+            }
+        });
+
+        searchInput6.setBackground(new java.awt.Color(255, 255, 255));
+        searchInput6.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        searchInput6.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchInput6ActionPerformed(evt);
+            }
+        });
+
+        searchBtn6.setText("Cari");
+        searchBtn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pickupPanelLayout = new javax.swing.GroupLayout(pickupPanel);
         pickupPanel.setLayout(pickupPanelLayout);
         pickupPanelLayout.setHorizontalGroup(
             pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pickupPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pickupPanelLayout.createSequentialGroup()
+                        .addComponent(sBobot, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pickupPanelLayout.createSequentialGroup()
+                        .addComponent(sTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pickupPanelLayout.createSequentialGroup()
+                        .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pickupPanelLayout.createSequentialGroup()
+                                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputTglAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(setDateNowAmbilBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pickupPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(selesaiBtn)))
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelBtn2)
+                        .addGap(9, 9, 9))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pickupPanelLayout.createSequentialGroup()
-                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pickupPanelLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateTimePickerAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(setDateNowAmbilBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pickupPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(selesaiBtn)))
-                .addGap(18, 18, 18)
-                .addComponent(cancelBtn2)
-                .addGap(9, 9, 9))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchInput6, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchBtn6)
+                .addGap(74, 74, 74))
+            .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pickupPanelLayout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(492, Short.MAX_VALUE)))
+            .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pickupPanelLayout.createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addComponent(sLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(483, Short.MAX_VALUE)))
         );
         pickupPanelLayout.setVerticalGroup(
             pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pickupPanelLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(40, 40, 40)
+                .addComponent(sCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(searchInput6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sBobot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(setDateNowAmbilBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pickupPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(setDateNowAmbilBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dateTimePickerAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(pickupPanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(inputTglAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selesaiBtn)
                     .addComponent(cancelBtn2))
                 .addGap(9, 9, 9))
+            .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pickupPanelLayout.createSequentialGroup()
+                    .addContainerGap(120, Short.MAX_VALUE)
+                    .addComponent(totInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)))
+            .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pickupPanelLayout.createSequentialGroup()
+                    .addContainerGap(75, Short.MAX_VALUE)
+                    .addComponent(sLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(72, 72, 72)))
         );
 
         rincianTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -962,7 +1163,7 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pickupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pickupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1006,6 +1207,11 @@ public class employeeMainView extends javax.swing.JFrame {
         searchInput2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput2.setBackground(new java.awt.Color(255, 255, 255));
         searchInput2.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchInput2ActionPerformed(evt);
+            }
+        });
 
         searchBtn2.setText("Cari");
         searchBtn2.setBackground(new java.awt.Color(255, 255, 255));
@@ -1100,6 +1306,11 @@ public class employeeMainView extends javax.swing.JFrame {
         setDateNowAmbilBtn1.setBackground(new java.awt.Color(0, 255, 51));
         setDateNowAmbilBtn1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        setDateNowAmbilBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setDateNowAmbilBtn1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Tanggal Antar");
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
@@ -1139,6 +1350,13 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
+        batalBtn.setText("jButton1");
+        batalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batalBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout deliPanelLayout = new javax.swing.GroupLayout(deliPanel);
         deliPanel.setLayout(deliPanelLayout);
         deliPanelLayout.setHorizontalGroup(
@@ -1156,7 +1374,9 @@ public class employeeMainView extends javax.swing.JFrame {
                             .addGroup(deliPanelLayout.createSequentialGroup()
                                 .addComponent(servisDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(selesaiBtn2))
+                                .addComponent(selesaiBtn2)
+                                .addGap(36, 36, 36)
+                                .addComponent(batalBtn))
                             .addGroup(deliPanelLayout.createSequentialGroup()
                                 .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(bobotLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1164,7 +1384,7 @@ public class employeeMainView extends javax.swing.JFrame {
                                     .addComponent(bobotDisplay))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                                 .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateTimePickerAntar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tglDiambilAntar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(setDateNowAmbilBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(30, 30, 30))))
@@ -1184,14 +1404,15 @@ public class employeeMainView extends javax.swing.JFrame {
                     .addComponent(bobotLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateTimePickerAntar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tglDiambilAntar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bobotDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(servisLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(deliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(servisDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selesaiBtn2))
+                    .addComponent(selesaiBtn2)
+                    .addComponent(batalBtn))
                 .addGap(44, 44, 44))
         );
 
@@ -1238,7 +1459,6 @@ public class employeeMainView extends javax.swing.JFrame {
 
         transPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        customerDd2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         customerDd2.setBackground(new java.awt.Color(255, 255, 255));
         customerDd2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDd2.setForeground(new java.awt.Color(0, 0, 0));
@@ -1248,7 +1468,6 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
-        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         layananDd.setBackground(new java.awt.Color(255, 255, 255));
         layananDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         layananDd.setForeground(new java.awt.Color(0, 0, 0));
@@ -1389,11 +1608,21 @@ public class employeeMainView extends javax.swing.JFrame {
         ));
         jTable3.setBackground(new java.awt.Color(255, 255, 255));
         jTable3.setForeground(new java.awt.Color(0, 0, 0));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTable3);
 
         saveBtn2.setText("Simpan");
         saveBtn2.setBackground(new java.awt.Color(255, 255, 255));
         saveBtn2.setForeground(new java.awt.Color(0, 0, 0));
+        saveBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtn2ActionPerformed(evt);
+            }
+        });
 
         cancelBtn3.setText("Batal");
         cancelBtn3.setBackground(new java.awt.Color(255, 255, 255));
@@ -1425,6 +1654,11 @@ public class employeeMainView extends javax.swing.JFrame {
         searchBtn4.setText("Cari");
         searchBtn4.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn4.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn4ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("TRANSAKSI");
         jLabel8.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -1563,6 +1797,20 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
+        todayBtn.setText("Today");
+        todayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                todayBtnActionPerformed(evt);
+            }
+        });
+
+        cancel.setText("cancel");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout donePanelLayout = new javax.swing.GroupLayout(donePanel);
         donePanel.setLayout(donePanelLayout);
         donePanelLayout.setHorizontalGroup(
@@ -1571,29 +1819,47 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(donePanelLayout.createSequentialGroup()
+                        .addComponent(customerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(todayBtn)
+                        .addGap(18, 18, 18))
+                    .addGroup(donePanelLayout.createSequentialGroup()
                         .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(servisLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, donePanelLayout.createSequentialGroup()
+                            .addGroup(donePanelLayout.createSequentialGroup()
+                                .addComponent(servisLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(donePanelLayout.createSequentialGroup()
+                                .addComponent(bobotLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                                .addComponent(tglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(donePanelLayout.createSequentialGroup()
                         .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(servisDisplay1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                            .addComponent(bobotLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                            .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bobotDisplay1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(selesaiBtn3)
-                        .addGap(30, 30, 30))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancel)
+                        .addGap(16, 16, 16))))
         );
         donePanelLayout.setVerticalGroup(
             donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(donePanelLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(customerLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(customerDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(donePanelLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(customerLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(customerDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(donePanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(todayBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bobotLabel3)
+                .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bobotLabel3)
+                    .addComponent(tglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bobotDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1601,7 +1867,8 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(servisDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selesaiBtn3))
+                    .addComponent(selesaiBtn3)
+                    .addComponent(cancel))
                 .addGap(44, 44, 44))
         );
 
@@ -1613,18 +1880,13 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(containerEightnamLayout.createSequentialGroup()
-                            .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(containerEightnamLayout.createSequentialGroup()
-                                    .addComponent(searchBtn5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(453, 453, 453))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerEightnamLayout.createSequentialGroup()
-                            .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(425, 425, 425)))))
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(containerEightnamLayout.createSequentialGroup()
+                        .addComponent(searchBtn5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
         containerEightnamLayout.setVerticalGroup(
             containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1639,7 +1901,7 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout menuEightnamLayout = new javax.swing.GroupLayout(menuEightnam);
@@ -1655,7 +1917,7 @@ public class employeeMainView extends javax.swing.JFrame {
         );
         menuEightnamLayout.setVerticalGroup(
             menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
             .addGroup(menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(menuEightnamLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1716,15 +1978,33 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_lakiBtnActionPerformed
 
     private void deleteBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtn2ActionPerformed
-        // TODO add your handling code here:
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+    
+        int clickedRow = jTable3.getSelectedRow();
+        switch(getAnswer){
+            case 0:
+                try{
+                    wc.deleteDataWorkOrder(Integer.parseInt(jTable3.getValueAt(clickedRow, 0).toString()));
+                    clearTextWorkOrder();
+                    showWorkOrder();
+                    setComponentWorkOrder(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
     }//GEN-LAST:event_deleteBtn2ActionPerformed
 
     private void editBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtn2ActionPerformed
-        // TODO add your handling code here:
+        setComponentWorkOrder(true);
+        action = "Ubah";
     }//GEN-LAST:event_editBtn2ActionPerformed
 
     private void cancelBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtn3ActionPerformed
-        // TODO add your handling code here:
+        setComponentWorkOrder(false);
+        clearTextWorkOrder();
     }//GEN-LAST:event_cancelBtn3ActionPerformed
 
     private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
@@ -1885,7 +2165,8 @@ public class employeeMainView extends javax.swing.JFrame {
 
 
     private void selesaiBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn2ActionPerformed
-       workOrderControl.updateStatusWorkOrder(Integer.parseInt(diantarkan), "Diambil");
+        String tglAmbil = String.valueOf(inputTglAmbil.getDateTimeStrict());
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diantarkan), "Diambil",tglAmbil);
     }//GEN-LAST:event_selesaiBtn2ActionPerformed
 
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
@@ -1899,34 +2180,45 @@ public class employeeMainView extends javax.swing.JFrame {
 
 
     private void btnSetDTMasukNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetDTMasukNowActionPerformed
-        // TODO add your handling code here:
+        inputTglMasuk.datePicker.setDateToToday();
+        inputTglMasuk.timePicker.setTimeToNow();
     }//GEN-LAST:event_btnSetDTMasukNowActionPerformed
 
     private void rincianTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rincianTableMouseClicked
-
+        
         int clickedRow = rincianTable.getSelectedRow();
         TableModel table = rincianTable.getModel();
         int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
         int b = Integer.parseInt(table.getValueAt(clickedRow, 7).toString());
         int c = a*b;
         diselesaikan = table.getValueAt(clickedRow, 0).toString();
-        
-        totInput.setText(String.valueOf(c));
+        totInput.setText(table.getValueAt(clickedRow, 7).toString());
+        sCustomer.setText(table.getValueAt(clickedRow, 1).toString());
+        sTanggalJam.setText(table.getValueAt(clickedRow, 5).toString());
+        sLayanan.setText(table.getValueAt(clickedRow, 2).toString());
+        sBobot.setText(table.getValueAt(clickedRow, 3).toString());
+        cancelBtn2.setSelected(true);
+        selesaiBtn.setSelected(true);
     }//GEN-LAST:event_rincianTableMouseClicked
 
     private void setDateNowAmbilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDateNowAmbilBtnActionPerformed
-        // TODO add your handling code here:
+        inputTglAmbil.datePicker.setDateToToday();
+        inputTglAmbil.timePicker.setTimeToNow();
     }//GEN-LAST:event_setDateNowAmbilBtnActionPerformed
 
-    private void totInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totInputActionPerformed
+    private void sCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sCustomerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_totInputActionPerformed
+    }//GEN-LAST:event_sCustomerActionPerformed
 
     private void selesaiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtnActionPerformed
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Diambil");
+        String tglAmbil = String.valueOf(inputTglAmbil.getDateTimeStrict());
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Diambil",tglAmbil);
     }//GEN-LAST:event_selesaiBtnActionPerformed
 
     private void prosesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTableMouseClicked
+        selesaiBtn2.setEnabled(true);
+        batalBtn.setEnabled(true);
+        
         int clickedRow = prosesTable.getSelectedRow();
         TableModel table = prosesTable.getModel();
        
@@ -1937,7 +2229,13 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_prosesTableMouseClicked
 
     private void addBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtn2ActionPerformed
-        // TODO add your handling code here:
+        setComponentWorkOrder(true);
+        saveBtn2.setEnabled(true);
+        editBtn2.setEnabled(false);
+        deleteBtn2.setEnabled(false);
+        clearTextWorkOrder();
+        searchInput4.setText("");
+        action = "Tambah";
     }//GEN-LAST:event_addBtn2ActionPerformed
 
     private void prosesTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTable1MouseClicked
@@ -1951,8 +2249,168 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_prosesTable1MouseClicked
 
     private void selesaiBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn3ActionPerformed
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai");
+     
+        String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai", tglSelse);
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
+
+    private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
+         setComponentWorkOrder(false);
+        
+        try{
+            TableWorkOrder transaksi = wc.showWorkOrder(searchInput4.getText());
+      
+            if(transaksi.getRowCount() == 0){
+                clearTextWorkOrder();
+                editBtn2.setEnabled(false);
+                deleteBtn2.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                jTable3.setModel(transaksi);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtn4ActionPerformed
+
+    private void saveBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtn2ActionPerformed
+        try{
+            
+            int selectedIndex = customerDd2.getSelectedIndex();
+            Customer c = listCustomer.get(selectedIndex);
+            
+            int selectedIndex2 =  layananDd.getSelectedIndex();
+            Service s = listService.get(selectedIndex2);
+                     
+            double biaya = s.getBiaya() * Integer.parseInt(bobotInput.getText());
+
+            WorkOrder wo = new WorkOrder(String.valueOf(inputTglMasuk.getDateTimeStrict()),
+                            String.valueOf(inputTglSelesai.getDateTimeStrict()),
+                            "-",
+                            Integer.parseInt(bobotInput.getText()),
+                            "Proses",
+                            c,
+                            employee,
+                            s,
+                            biaya
+            );
+ 
+            if(action.equalsIgnoreCase("Tambah")){
+                wc.insertDataWorkOrder(wo);
+            }else{
+                wc.updateWorkOrder(wo,selectedId);
+                selectedId = -1;
+            }
+            
+        
+            clearTextWorkOrder();
+            showWorkOrder();
+            setComponentWorkOrder(false);
+        }catch(Exception e){
+            System.out.println("Gagal save data");
+            System.out.println(e);
+            clearText();
+            showWorkOrder();
+            setComponentWorkOrder(false);
+        }
+    }//GEN-LAST:event_saveBtn2ActionPerformed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        int indexCustomer = -1;
+        int indexService = -1;
+        
+        setComponentWorkOrder(false);
+        editBtn2.setEnabled(true);
+        deleteBtn2.setEnabled(true);
+        try{
+            int clickedRow = jTable3.getSelectedRow();
+            selectedId = Integer.parseInt(jTable3.getValueAt(clickedRow, 0).toString());
+            String nama = jTable3.getValueAt(clickedRow, 1).toString();
+            for(Customer customer : listCustomer){
+                if(customer.getNama_customer().equals(nama)){
+                    indexCustomer = listCustomer.indexOf(customer);
+                }
+             }
+            customerDd2.setSelectedIndex(indexCustomer);
+
+            String nama2 = jTable3.getValueAt(clickedRow, 2).toString();
+            for(Service service : listService){
+                if(String.valueOf(service.getNama_layanan()).equals(nama2)){
+                    indexService = listService.indexOf(service);
+                }
+            }
+            layananDd.setSelectedIndex(indexService);    
+
+            bobotInput.setText(jTable3.getValueAt(clickedRow, 3).toString());
+        
+        // Display to input:
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void totInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totInputActionPerformed
+
+    private void sLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sLayananActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sLayananActionPerformed
+
+    private void sTanggalJamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sTanggalJamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sTanggalJamActionPerformed
+
+    private void sBobotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBobotActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sBobotActionPerformed
+
+    private void cancelBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtn2ActionPerformed
+
+        clearTextAmbil();
+    }//GEN-LAST:event_cancelBtn2ActionPerformed
+
+    private void searchInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInput2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchInput2ActionPerformed
+
+    private void setDateNowAmbilBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDateNowAmbilBtn1ActionPerformed
+        tglDiambilAntar.datePicker.setDateToToday();
+        tglDiambilAntar.timePicker.setTimeToNow();
+    }//GEN-LAST:event_setDateNowAmbilBtn1ActionPerformed
+
+    private void batalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalBtnActionPerformed
+        clearTextAntar();
+    }//GEN-LAST:event_batalBtnActionPerformed
+
+    private void searchInput6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInput6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchInput6ActionPerformed
+
+    private void searchBtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn6ActionPerformed
+
+        try{
+            TableWorkOrder transaksi = wc.showWorkOrder(searchInput6.getText());
+      
+            if(transaksi.getRowCount() == 0){
+                clearTextAmbil();
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                rincianTable.setModel(transaksi);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtn6ActionPerformed
+
+    private void todayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todayBtnActionPerformed
+        tglSelesai.datePicker.setDateToToday();
+        tglSelesai.timePicker.setTimeToNow();
+    }//GEN-LAST:event_todayBtnActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        
+    }//GEN-LAST:event_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1984,7 +2442,7 @@ public class employeeMainView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new employeeMainView().setVisible(true);
+                new employeeMainView(employee).setVisible(true);
             }
         });
     }
@@ -1994,6 +2452,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton addBtn2;
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
+    private javax.swing.JButton batalBtn;
     private javax.swing.JTextField bobotDisplay;
     private javax.swing.JTextField bobotDisplay1;
     private javax.swing.JTextField bobotInput;
@@ -2001,6 +2460,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel bobotLabel2;
     private javax.swing.JLabel bobotLabel3;
     private javax.swing.JButton btnSetDTMasukNow;
+    private javax.swing.JButton cancel;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton cancelBtn2;
     private javax.swing.JButton cancelBtn3;
@@ -2011,8 +2471,6 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel customerLabel;
     private javax.swing.JLabel customerLabel2;
     private javax.swing.JLabel customerLabel3;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAmbil;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAntar;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton deleteBtn2;
     private javax.swing.JButton deleteBtn3;
@@ -2022,6 +2480,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton editBtn2;
     private javax.swing.JTextField idInput;
     private javax.swing.JLabel idLabel;
+    private com.github.lgooddatepicker.components.DateTimePicker inputTglAmbil;
     private com.github.lgooddatepicker.components.DateTimePicker inputTglMasuk;
     private com.github.lgooddatepicker.components.DateTimePicker inputTglSelesai;
     private javax.swing.JLabel jLabel1;
@@ -2080,6 +2539,10 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JTable prosesTable1;
     private javax.swing.JPanel registerPanel;
     private javax.swing.JTable rincianTable;
+    private javax.swing.JTextField sBobot;
+    private javax.swing.JTextField sCustomer;
+    private javax.swing.JTextField sLayanan;
+    private javax.swing.JTextField sTanggalJam;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton saveBtn2;
     private javax.swing.JButton searchBtn;
@@ -2087,11 +2550,13 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton searchBtn3;
     private javax.swing.JButton searchBtn4;
     private javax.swing.JButton searchBtn5;
+    private javax.swing.JButton searchBtn6;
     private javax.swing.JTextField searchInput;
     private javax.swing.JTextField searchInput2;
     private javax.swing.JTextField searchInput3;
     private javax.swing.JTextField searchInput4;
     private javax.swing.JTextField searchInput5;
+    private javax.swing.JTextField searchInput6;
     private javax.swing.JButton selesaiBtn;
     private javax.swing.JButton selesaiBtn2;
     private javax.swing.JButton selesaiBtn3;
@@ -2106,6 +2571,9 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel tanggalSelesai;
     private javax.swing.JTextField telpInput;
     private javax.swing.JLabel telpLabel;
+    private com.github.lgooddatepicker.components.DateTimePicker tglDiambilAntar;
+    private com.github.lgooddatepicker.components.DateTimePicker tglSelesai;
+    private javax.swing.JButton todayBtn;
     private javax.swing.JTextField totInput;
     private javax.swing.JPanel transPanel;
     // End of variables declaration//GEN-END:variables

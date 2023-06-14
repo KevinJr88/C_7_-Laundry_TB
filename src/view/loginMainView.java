@@ -178,7 +178,7 @@ public class loginMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_creditButtonMouseClicked
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        employeeMainView ev = new employeeMainView();
+        
         OwnerMainView ov  = new OwnerMainView();
         //workorderView wv = new workorderView();
         
@@ -191,9 +191,9 @@ public class loginMainView extends javax.swing.JFrame {
             ov.setVisible(true);
         }else if (ec.showUserEmployee(username, password)!=null){
             Employee E = ec.showUserEmployee(username, password);
-            workorderView wv = new workorderView(E);
+            employeeMainView ev = new employeeMainView(E);
             this.dispose();
-            wv.setVisible(true);
+            ev.setVisible(true);
            
         }else{
             JOptionPane.showConfirmDialog(rootPane, "Login Gagal!!", "Baik", JOptionPane.DEFAULT_OPTION);
