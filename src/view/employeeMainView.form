@@ -500,6 +500,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -527,6 +528,29 @@
                                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                       <Component id="namaInput" min="-2" pref="191" max="-2" attributes="0"/>
                                   </Group>
+=======
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cancelBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="namaInput" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="perempuanBtn" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="lakiBtn" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="telpInput" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="namaLabel" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="idLabel" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="idInput" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="telpLabel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="alamatInput" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="alamatLabel" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+>>>>>>> d85d12e19e8982af711b53dc9ce8bb1182313455
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
