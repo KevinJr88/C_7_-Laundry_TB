@@ -5,6 +5,14 @@
 package view;
 
 import control.*;
+import com.github.lgooddatepicker.components.DateTimePicker;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import model.*;
@@ -18,19 +26,125 @@ public class employeeMainView extends javax.swing.JFrame {
     private WorkOrderControl workOrderControl;
     
     private String action, id, jenisKelamin, temp;
+    
+    //WORK ORDER VIEW
+    private CustomerControl cc;
+    private ServiceControl sc;
+    private WorkOrderControl wc;
+    private  static Employee employee = null;
+    List<Customer> listCustomer;
+    List<Service> listService;
+    int selectedId;
+    private WorkOrder selectedWorkOrder = null;
+    String action2;
+    
+    public void setEmployee(Employee employee){
+        this.employee = employee;
+    }
     /**
      * Creates new form employeeMainView
      */
+    
+    
     public employeeMainView() {
+        
         try{
+            
+            //tab1 
             initComponents();
             setComponent(false);
             idInput.setEnabled(false);
             customerControl = new CustomerControl();
             showCustomer();
             clearText();
+            
+            //tab 5
+            initDTInput(inputTglMasuk, LocalDate.now().minusYears(1), LocalDate.now().plusMonths(1));
+            initDTInput(inputTglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(2));
+
+            inputTglMasuk.addDateTimeChangeListener((com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent event) -> {
+                setTglSelesai();
+            });
+
+            setEmployee(employee);
+            setComponent(false);
+            inputTglSelesai.setEnabled(false);
+            cc = new CustomerControl();
+            sc = new ServiceControl();
+            wc = new WorkOrderControl();
+            showWorkOrder();
+            setCustomerToDropDown();
+            setServiceToDropDown();
+            clearText();
         } catch(Exception e){
             System.out.println("Error customerView");
+        }
+    }
+    
+    public void showWorkOrder(){
+        jTable3.setModel(wc.showWorkOrderNotDone());
+    }
+     
+    public void setCustomerToDropDown(){
+        listCustomer = cc.showListCustomer();
+        for(int i=0; i<listCustomer.size(); i++){
+            customerDd2.addItem(String.valueOf(listCustomer.get(i)));
+        }
+    }
+    
+    public void setServiceToDropDown(){
+        listService = sc.showListService();
+        for(int i=0; i<listService.size(); i++){
+            layananDd.addItem(String.valueOf(listService.get(i)));
+        }
+    } 
+    
+    private void initDTInput(DateTimePicker input, LocalDate min, LocalDate max) {
+        com.github.lgooddatepicker.components.DatePicker DP = input.getDatePicker();
+        com.github.lgooddatepicker.components.TimePicker TP = input.getTimePicker();
+        
+        TP.setOpaque(false);
+        DP.setOpaque(false);
+        epicker.components.TimePickerSettings thisTPs = TP.getSettings();
+        
+        // Set settings:
+        // Java passing by reference, jadi dengan melakukan ini, kita mendapatkan settings dari masing2 DatePicker dan TimePickernya, kemudian memodifikasinya kemudian.
+        com.github.lgooddatepicker.components.DatePickerSettings thisDPs = DP.getSettings();
+        com.github.lgooddat
+        thisDPs.setLocale(new java.util.Locale("id"));
+        thisDPs.setDateRangeLimits(min, max);
+        thisTPs.use24HourClockFormat();
+        
+        // Set font:
+        java.awt.Font elementFont = input.getFont();
+        thisDPs.setFontVetoedDate(elementFont);
+        thisDPs.setFontValidDate(elementFont);
+        thisDPs.setFontInvalidDate(elementFont);
+        thisTPs.fontValidTime = elementFont;
+        thisTPs.fontInvalidTime = elementFont;
+    }
+    
+    private String getFullDateTime(DateTimePicker input) {
+        try {
+            // getDateTimeStrinct() kemudian ubah ke format "yyyy-MM-dd HH:mm:ss"
+            return input.getDateTimeStrict().format(WorkOrder.DEFAULT_DTF);
+        } catch (Exception e) {
+            // Input date atau time belum diisi lengkap
+            return null;
+        }
+    }
+    
+    private void setTglSelesai() {
+        if(layananDd.getSelectedIndex() == -1 || getFullDateTime(inputTglMasuk) == null) {
+            // Kecepatan belum dipilih ATAU (checkbox cuci dan checkbox setrika belum ada yang dicentang): belum bisa dihitung tanggal ambil
+            
+        } else {
+            // Dapatkan dulu kecepatannya express atau reguler?
+            int selectedIndex2 =  layananDd.getSelectedIndex();
+            Service s = listService.get(selectedIndex2);
+            inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusDays(s.getKecepatan()));
+           
+           
         }
     }
     
@@ -1131,14 +1245,14 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
+        tanggalSelesai.setText("Tanggal Selesai");
         tanggalSelesai.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         tanggalSelesai.setForeground(new java.awt.Color(0, 0, 0));
-        tanggalSelesai.setText("Tanggal Selesai");
 
+        btnSetDTMasukNow.setText("Today");
         btnSetDTMasukNow.setBackground(new java.awt.Color(0, 255, 0));
         btnSetDTMasukNow.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         btnSetDTMasukNow.setForeground(new java.awt.Color(255, 255, 255));
-        btnSetDTMasukNow.setText("Today");
         btnSetDTMasukNow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSetDTMasukNowActionPerformed(evt);
@@ -1334,8 +1448,6 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
-        prosesTable1.setBackground(new java.awt.Color(255, 255, 255));
-        prosesTable1.setForeground(new java.awt.Color(0, 0, 0));
         prosesTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -1347,6 +1459,8 @@ public class employeeMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        prosesTable1.setBackground(new java.awt.Color(255, 255, 255));
+        prosesTable1.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane7.setViewportView(prosesTable1);
 
         label2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
