@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
+import exeption.*;
 /**
  *
  * @author julia
@@ -15,7 +15,12 @@ public class Customer {
     private String alamat;
     private String jenis_kelamin;
 
-    public Customer(String id_customer, String nama_customer, int no_telp, String alamat, String jenis_kelamin) {
+    public Customer(String id_customer, String nama_customer, int no_telp, String alamat, String jenis_kelamin) throws inputKosongException, TidakBoleh0{
+        if(nama_customer.isEmpty() || alamat.isEmpty()){
+            throw new inputKosongException();
+        } else if(no_telp==0){
+            throw new TidakBoleh0();
+        }
         this.id_customer = id_customer;
         this.nama_customer = nama_customer;
         this.no_telp = no_telp;

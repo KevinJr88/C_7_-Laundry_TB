@@ -76,7 +76,7 @@ public class employeeMainView extends javax.swing.JFrame {
         //}
             
             
-        TAB 3 RIWAYAT
+        //TAB 3 RIWAYAT
              if(menu ==2){
                 showDiambil();
                 searchInput2.setText("");
@@ -84,7 +84,7 @@ public class employeeMainView extends javax.swing.JFrame {
             
             
             
-        TAB 4 ANTAR
+        //TAB 4 ANTAR
             if(menu == 3){
                 showAntar();
                 setComponentAntar(false);

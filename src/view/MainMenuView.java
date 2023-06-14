@@ -331,6 +331,7 @@ public class MainMenuView extends javax.swing.JFrame {
         ambilBackUp ab = new ambilBackUp(employee);
         this.dispose();
         ab.setVisible(true);
+ 
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
