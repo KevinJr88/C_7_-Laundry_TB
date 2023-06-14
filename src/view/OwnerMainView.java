@@ -349,6 +349,11 @@ public class OwnerMainView extends javax.swing.JFrame {
         cariBtn.setBackground(new java.awt.Color(255, 255, 255));
         cariBtn.setForeground(new java.awt.Color(0, 0, 0));
         cariBtn.setText("Cari");
+        cariBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariBtnActionPerformed(evt);
+            }
+        });
 
         tambahBtn.setBackground(new java.awt.Color(255, 255, 255));
         tambahBtn.setForeground(new java.awt.Color(0, 0, 0));
@@ -681,7 +686,7 @@ public class OwnerMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_cariInputActionPerformed
 
     private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_idInputActionPerformed
 
     private void cariInput1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariInput1ActionPerformed
@@ -709,6 +714,10 @@ public class OwnerMainView extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_tllabelMouseClicked
+
+    private void cariBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cariBtnActionPerformed
 
     /**
      * @param args the command line arguments
