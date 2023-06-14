@@ -128,12 +128,12 @@ public class WorkOrderDAO {
             if(rs!=null){
                 while(rs.next()){
                     Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), rs.getString("c.no_telp"),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     
                     Employee e = new Employee(rs.getString("e.id_karyawan"),
                         rs.getString("e.nama_karyawan"), rs.getString("e.password"),
-                        Integer.parseInt(rs.getString("e.no_telepon")), rs.getString("e.status"),
+                        rs.getString("no_telepon"), rs.getString("e.status"),
                         rs.getString("e.posisi"));
                     
                     Service s = new Service(rs.getString("s.id_layanan"),
@@ -176,12 +176,12 @@ public class WorkOrderDAO {
             if(rs!=null){
                 while(rs.next()){
                     Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), rs.getString("c.no_telp"),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     
                     Employee e = new Employee(rs.getString("e.id_karyawan"),
                         rs.getString("e.nama_karyawan"), rs.getString("e.password"),
-                        Integer.parseInt(rs.getString("e.no_telepon")), rs.getString("e.status"),
+                        rs.getString("no_telepon"), rs.getString("e.status"),
                         rs.getString("e.posisi"));
                     
                     Service s = new Service(rs.getString("s.id_layanan"),
@@ -225,12 +225,12 @@ public class WorkOrderDAO {
             if(rs!=null){
                 while(rs.next()){
                     Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), rs.getString("c.no_telp"),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     
                     Employee e = new Employee(rs.getString("e.id_karyawan"),
                         rs.getString("e.nama_karyawan"), rs.getString("e.password"),
-                        Integer.parseInt(rs.getString("e.no_telepon")), rs.getString("e.status"),
+                        rs.getString("no_telepon"), rs.getString("e.status"),
                         rs.getString("e.posisi"));
                     
                     Service s = new Service(rs.getString("s.id_layanan"),
@@ -261,7 +261,7 @@ public class WorkOrderDAO {
                 + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan "
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
                 + "'%" + "selesai" + "%' "
-                + "AND s.jasa_antar LIKE '%" + "ya" + "%)";
+                + "AND s.jasa_antar LIKE '%" + "ya" + "%')";
         
         System.out.println("Mengambil data work order...");
         List<WorkOrder> list = new ArrayList();
@@ -273,12 +273,12 @@ public class WorkOrderDAO {
             if(rs!=null){
                 while(rs.next()){
                     Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama.customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), rs.getString("c.no_telp"),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     
                     Employee e = new Employee(rs.getString("e.id_karyawan"),
                         rs.getString("e.nama_karyawan"), rs.getString("e.password"),
-                        Integer.parseInt(rs.getString("e.no_telepon")), rs.getString("e.status"),
+                        rs.getString("no_telepon"), rs.getString("e.status"),
                         rs.getString("e.posisi"));
                     
                     Service s = new Service(rs.getString("s.id_layanan"),
@@ -368,12 +368,42 @@ public class WorkOrderDAO {
         
     }
     
-    public void updateStatusWorkOrder2(int id, String status, String tgl){
+    public void updateStatusWorkOrder2(int id, String status, String tgl, double biaya){
         con = dbcon.makeConnection();
         
-        String sql = "UPDATE work_order SET status = '" + status + "', "
-                + "tanggal_ambil = '" + tgl + "' "
-                + "WHERE id_transaksi = '" + id + "'";
+        String sql = "UPDATE work_order as w "
+                + "JOIN service AS s ON w.id_layanan = s.id_layanan "
+                + "SET w.status = '" + status + "', "
+                + "w.tanggal_ambil = '" + tgl + "', " 
+                + "w.biaya = '" +biaya +"' "
+                + "WHERE w.id_transaksi = '" + id 
+                + "' AND s.jasa_antar = 'Tidak'";
+        
+        System.out.println("Editing wo...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Edited "+result+" wo " + id);
+            statement.close();
+        } catch(Exception e){
+            System.out.println("Error editing wo...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        
+    }
+    
+    public void updateStatusWorkOrder3(int id, String status, String tgl, double biaya){
+        con = dbcon.makeConnection();
+        
+        String sql = "UPDATE work_order as w "
+                + "JOIN service AS s ON w.id_layanan = s.id_layanan "
+                + "SET w.status = '" + status + "', "
+                + "w.tanggal_ambil = '" + tgl + "', " 
+                + "w.biaya = '" +biaya +"' "
+                + "WHERE w.id_transaksi = '" + id 
+                + "' AND s.jasa_antar = 'Ya'";
         
         System.out.println("Editing wo...");
         

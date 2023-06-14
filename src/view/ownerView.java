@@ -494,7 +494,7 @@ public class ownerView extends javax.swing.JFrame {
                    posisi = "Kurir";
                    break;
            }
-            Employee e = new Employee(idInput.getText(), namaInput.getText(), passInput.getText(), Integer.parseInt(telpInput.getText()), status, posisi);
+            Employee e = new Employee(idInput.getText(), namaInput.getText(), passInput.getText(), telpInput.getText(), status, posisi);
            
             if(action.equals("Tambah")){
                 employeeControl.insertDataEmployee(e);

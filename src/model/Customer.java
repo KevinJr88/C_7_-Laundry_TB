@@ -11,16 +11,14 @@ import exeption.*;
 public class Customer {
     private String id_customer;
     private String nama_customer;
-    private int no_telp;
+    private String no_telp;
     private String alamat;
     private String jenis_kelamin;
 
-    public Customer(String id_customer, String nama_customer, int no_telp, String alamat, String jenis_kelamin) throws inputKosongException, TidakBoleh0{
-        if(nama_customer.isEmpty() || alamat.isEmpty()){
+    public Customer(String id_customer, String nama_customer, String no_telp, String alamat, String jenis_kelamin) throws inputKosongException, TidakBoleh0{
+        if(nama_customer.isEmpty() == true || alamat.isEmpty() == true || no_telp.isEmpty() == true){
             throw new inputKosongException();
-        } else if(no_telp==0){
-            throw new TidakBoleh0();
-        }
+        } 
         this.id_customer = id_customer;
         this.nama_customer = nama_customer;
         this.no_telp = no_telp;
@@ -28,11 +26,19 @@ public class Customer {
         this.jenis_kelamin = jenis_kelamin;
     }
 
-    public Customer(String nama_customer, int no_telp, String alamat, String jenis_kelamin) {
+    public Customer(String nama_customer, String no_telp, String alamat, String jenis_kelamin) {
         this.nama_customer = nama_customer;
         this.no_telp = no_telp;
         this.alamat = alamat;
         this.jenis_kelamin = jenis_kelamin;
+    }
+
+    public String getNo_telp() {
+        return no_telp;
+    }
+
+    public void setNo_telp(String no_telp) {
+        this.no_telp = no_telp;
     }
 
     public String getId_customer() {
@@ -43,9 +49,7 @@ public class Customer {
         return nama_customer;
     }
 
-    public int getNo_telp() {
-        return no_telp;
-    }
+    
 
     public String getAlamat() {
         return alamat;
@@ -63,9 +67,7 @@ public class Customer {
         this.nama_customer = nama_customer;
     }
 
-    public void setNo_telp(int no_telp) {
-        this.no_telp = no_telp;
-    }
+
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;

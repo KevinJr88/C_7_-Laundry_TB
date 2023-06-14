@@ -36,15 +36,15 @@ public class OwnerMainView extends javax.swing.JFrame {
     private String action2, jasaAntar, temp2;
     
     public void InputKosongException() throws inputKosongException{
-        if(namaInput.getText().equalsIgnoreCase("") 
-                || passInput.getText().equalsIgnoreCase("")){
+        if(namaInput.getText().isEmpty() == true
+                || passInput.getText().isEmpty() == true){
             throw new inputKosongException();
         }
     }
     
     public void InputKosongException2() throws inputKosongException{
-        if(namaInput1.getText().equalsIgnoreCase("")
-                || kecepatanInput.getText().equalsIgnoreCase("")){
+        if(namaInput1.getText().isEmpty() == true
+                || kecepatanInput.getText().isEmpty() == true){
             throw new inputKosongException();
         }
     }
@@ -71,6 +71,7 @@ public class OwnerMainView extends javax.swing.JFrame {
         setComponent(false);
         idInput.setEnabled(false);
         employeeControl = new EmployeeControl();
+        
         showCustomer();
         clearText();
         
@@ -159,6 +160,8 @@ public class OwnerMainView extends javax.swing.JFrame {
         layananPanel = new javax.swing.JPanel();
         tllabel = new javax.swing.JLabel();
         layananIcons = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelKaryawan = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -326,12 +329,33 @@ public class OwnerMainView extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Logout");
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
+        jLabel9.setText("jLabel9");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
         sidebarPanelLayout.setHorizontalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(karyawanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(layananPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
         sidebarPanelLayout.setVerticalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +364,11 @@ public class OwnerMainView extends javax.swing.JFrame {
                 .addComponent(karyawanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(layananPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addGap(52, 52, 52))
         );
 
         getContentPane().add(sidebarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 160, 630));
@@ -997,13 +1025,14 @@ public class OwnerMainView extends javax.swing.JFrame {
                    posisi = "Junior";
                    break;
            }
-            Employee e = new Employee(idInput.getText(), namaInput.getText(), passInput.getText(), Integer.parseInt(telpInput.getText()), status, posisi);
+            Employee e = new Employee(idInput.getText(), namaInput.getText(), passInput.getText(), telpInput.getText(), status, posisi);
            
             if(action.equals("Tambah")){
                 employeeControl.insertDataEmployee(e);
             }else{
                 employeeControl.updateDataEmployee(e, idInput.getText());
             }
+            tambahBtn.setEnabled(true);
             clearText();
             showCustomer();
             setComponent(false);
@@ -1178,6 +1207,12 @@ public class OwnerMainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_statusDdActionPerformed
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        loginMainView lm = new loginMainView();
+        this.dispose();
+        lm.setVisible(true);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1232,6 +1267,8 @@ public class OwnerMainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

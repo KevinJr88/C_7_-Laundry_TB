@@ -12,11 +12,11 @@ public class Employee {
     private String id_karyawan;
     private String nama_karyawan;
     private String password;
-    private int no_telepon;
+    private String no_telepon;
     private String status;
     private String posisi;
 
-    public Employee(String id_karyawan, String nama_karyawan, String password, int no_telepon, String status, String posisi) {
+    public Employee(String id_karyawan, String nama_karyawan, String password, String no_telepon, String status, String posisi) {
         this.id_karyawan = id_karyawan;
         this.nama_karyawan = nama_karyawan;
         this.password = password;
@@ -25,7 +25,7 @@ public class Employee {
         this.posisi = posisi;
     }
 
-    public Employee(String nama_karyawan, String password, int no_telepon, String status) {
+    public Employee(String nama_karyawan, String password, String no_telepon, String status) {
         this.nama_karyawan = nama_karyawan;
         this.password = password;
         this.no_telepon = no_telepon;
@@ -56,13 +56,15 @@ public class Employee {
         this.password = password;
     }
 
-    public int getNo_telepon() {
+    public String getNo_telepon() {
         return no_telepon;
     }
 
-    public void setNo_telepon(int no_telepon) {
+    public void setNo_telepon(String no_telepon) {
         this.no_telepon = no_telepon;
     }
+
+    
 
     public String getStatus() {
         return status;

@@ -40,6 +40,7 @@ public class ambilBackUp extends javax.swing.JFrame {
     String action2;
     String diselesaikan;
     String diantarkan;
+    private double biaya;
     
     
     public void setEmployee(Employee employee){
@@ -79,7 +80,7 @@ public class ambilBackUp extends javax.swing.JFrame {
     }
     
     public void showSelesai(){
-        rincianTable.setModel(wc.showWorkOrderDone());
+        rincianTable.setModel(wc.showWorkOrderDoneAntarNo());
     }
     
     private void initDTInput(DateTimePicker input, LocalDate min, LocalDate max) {
@@ -449,7 +450,7 @@ public class ambilBackUp extends javax.swing.JFrame {
 
     private void selesaiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtnActionPerformed
         String tglAmbil = String.valueOf(inputTglAmbil.getDateTimeStrict());
-        wc.updateStatusWorkOrder2(Integer.parseInt(diselesaikan), "Diambil",tglAmbil);
+        wc.updateStatusWorkOrder2(Integer.parseInt(diselesaikan), "Diambil",tglAmbil,biaya);
         showSelesai();
     }//GEN-LAST:event_selesaiBtnActionPerformed
 
@@ -501,11 +502,11 @@ public class ambilBackUp extends javax.swing.JFrame {
         cancelBtn2.setEnabled(true);
         int clickedRow = rincianTable.getSelectedRow();
         TableModel table = rincianTable.getModel();
-   //     int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
-//        int b = Integer.parseInt(table.getValueAt(clickedRow, 7).toString());
-//        int c = a*b;
+        int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
+        double b = Double.parseDouble(table.getValueAt(clickedRow, 7).toString());
+        biaya = a*b;
         diselesaikan = table.getValueAt(clickedRow, 0).toString();
-        //totInput.setText(table.getValueAt(clickedRow, 7).toString());
+        totInput.setText(String.valueOf(biaya));
         sCustomer.setText(table.getValueAt(clickedRow, 1).toString());
         sTanggalJam.setText(table.getValueAt(clickedRow, 5).toString());
         sLayanan.setText(table.getValueAt(clickedRow, 2).toString());

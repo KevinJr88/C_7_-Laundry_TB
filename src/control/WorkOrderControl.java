@@ -80,9 +80,14 @@ public class WorkOrderControl {
         woDao.updateStatusWorkOrder(id, status, tgl);
         
     }
-    public void updateStatusWorkOrder2(int id, String status, String tgl){
+    public void updateStatusWorkOrder2(int id, String status, String tgl,double biaya){
         System.out.println("JJJJJJJJJJ");
-        woDao.updateStatusWorkOrder2(id, status, tgl);
+        woDao.updateStatusWorkOrder2(id, status, tgl, biaya);
+        
+    }
+    public void updateStatusWorkOrder3(int id, String status, String tgl,double biaya){
+        System.out.println("JJJJJJJJJJ");
+        woDao.updateStatusWorkOrder3(id, status, tgl, biaya);
         
     }
     

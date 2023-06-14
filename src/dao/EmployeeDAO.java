@@ -57,7 +57,7 @@ public class EmployeeDAO {
                             rs.getString("id_karyawan"),
                             rs.getString("nama_karyawan"),
                             rs.getString("password"),
-                            Integer.parseInt(rs.getString("no_telepon")),
+                            rs.getString("no_telepon"),
                             rs.getString("status"),
                             rs.getString("posisi")
                     );
@@ -94,7 +94,7 @@ public class EmployeeDAO {
                         rs.getString("id_karyawan"),
                         rs.getString("nama_karyawan"),
                         rs.getString("password"),
-                        Integer.parseInt(rs.getString("no_telepon")),
+                        rs.getString("no_telepon"),
                         rs.getString("status"),
                         rs.getString("posisi")
                     );
@@ -126,7 +126,7 @@ public class EmployeeDAO {
                         rs.getString("id_karyawan"),
                         rs.getString("nama_karyawan"),
                         rs.getString("password"),
-                        Integer.parseInt(rs.getString("no_telepon")),
+                        rs.getString("no_telepon"),
                         rs.getString("status"),
                         rs.getString("posisi")
                     );
@@ -163,7 +163,7 @@ public class EmployeeDAO {
              if(rs!=null){
                  while(rs.next()){
                      Employee e = new Employee(rs.getString("e.id_karyawan"), rs.getString("e.nama_karyawan"),
-                        rs.getString("e.password"), Integer.parseInt(rs.getString("e.no_telepon")),
+                        rs.getString("e.password"), rs.getString("e.no_telepon"),
                         rs.getString("e.status"), rs.getString("e.posisi"));
                     list.add(e);
                  }

@@ -56,7 +56,7 @@ public class CustomerDAO {
                     Customer c = new Customer(
                             rs.getString("id_customer"),
                             rs.getString("nama_customer"),
-                            Integer.parseInt(rs.getString("no_telp")),
+                            rs.getString("no_telp"),
                             rs.getString("alamat"),
                             rs.getString("jenis_kelamin")
                     );
@@ -90,7 +90,7 @@ public class CustomerDAO {
                     c = new Customer(
                         rs.getString("id_customer"),
                         rs.getString("nama_customer"),
-                        Integer.parseInt(rs.getString("no_telp")),
+                        rs.getString("no_telp"),
                         rs.getString("alamat"),
                         rs.getString("jenis_kelamin")
                     );
@@ -126,7 +126,7 @@ public class CustomerDAO {
              if(rs!=null){
                  while(rs.next()){
                      Customer c = new Customer(rs.getString("c.id_customer"),
-                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.nama_customer"), rs.getString("c.no_telp"),
                         rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
                     list.add(c);
                  }

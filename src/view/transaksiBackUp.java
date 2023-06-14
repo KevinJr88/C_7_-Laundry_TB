@@ -256,7 +256,7 @@ public class transaksiBackUp extends javax.swing.JFrame {
             }
         });
 
-        tanggalSelesai.setText("Tanggal Selesai");
+        tanggalSelesai.setText("Perkiraan Tanggal Selesai");
         tanggalSelesai.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         tanggalSelesai.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -277,7 +277,6 @@ public class transaksiBackUp extends javax.swing.JFrame {
             .addGroup(transPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(transPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tanggalSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(transPanelLayout.createSequentialGroup()
                         .addComponent(addBtn2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -296,7 +295,8 @@ public class transaksiBackUp extends javax.swing.JFrame {
                         .addComponent(inputTglMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bobotInput)
                         .addComponent(customerDd2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputTglSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(inputTglSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tanggalSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         transPanelLayout.setVerticalGroup(

@@ -437,7 +437,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         try{
 
-            Customer c = new Customer(idInput.getText(), namaInput.getText(), Integer.parseInt(telpInput.getText()) , alamatInput.getText(), jenisKelamin );
+            Customer c = new Customer(idInput.getText(), namaInput.getText(), telpInput.getText() , alamatInput.getText(), jenisKelamin );
             if(action.equals("Tambah")){
                 customerControl.insertDataCustomer(c);
             }else{
