@@ -1704,11 +1704,11 @@ public class employeeMainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_customerDd2ActionPerformed
 
-<<<<<<< HEAD
+
     private void selesaiBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selesaiBtn2ActionPerformed
-=======
+
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchBtn5ActionPerformed
@@ -1717,7 +1717,7 @@ public class employeeMainView extends javax.swing.JFrame {
         // TODO add your handling code here:
         tabpeepee.setSelectedIndex(5);
     }//GEN-LAST:event_jPanel11MouseClicked
->>>>>>> a215d3017cbad271ba992810704cd8e46ab2e185
+
 
     private void btnSetDTMasukNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetDTMasukNowActionPerformed
         // TODO add your handling code here:

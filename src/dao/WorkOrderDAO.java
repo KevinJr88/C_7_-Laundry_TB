@@ -107,7 +107,7 @@ public class WorkOrderDAO {
         con = dbcon.makeConnection();
         
         String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo JOIN Customer as c on c.id_customer = wo.id_customer "
-                + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan"
+                + "JOIN Employee as e ON e.id_karyawan = wo.id_karyawan "
                 + "JOIN Service as s ON s.id_layanan = wo.id_layanan WHERE (wo.tanggal_masuk LIKE "
                 + "'%" + query + "%'"
                 + "OR wo.tanggal_selesai LIKE '%" + query + "%'"
@@ -115,7 +115,7 @@ public class WorkOrderDAO {
                 + "OR wo.status LIKE '%" + query + "%'"
                 + "OR s.nama_layanan LIKE '%" + query + "%'"
                 + "OR wo.biaya LIKE '%" + query + "%'" 
-                + "OR c.nama_customer LIKE '%" + query + "%)";
+                + "OR c.nama_customer LIKE '%" + query + "%')";
                 // TAMBAH APA LAGI YANG BISA JADIIN KATA KUNCI
                 
         System.out.println("Mengambil data work order...");
@@ -319,4 +319,32 @@ public class WorkOrderDAO {
         }
         dbcon.closeConnection();
     }
+    
+    public void updateWorkOrder(WorkOrder wo, int id){
+        con = dbcon.makeConnection();
+        //NAMA CUSTOMER,BOBOT, TANGGAL MASUK, TANGGAL SELESAI, JENIS LAYANAN 
+        
+        String sql = "UPDATE work_order as wo join service as s on s.id_layanan = wo.id_layanan join employee as e on e.id_karyawan = wo.id_karyawan "
+                + " join customer as c on c.id_customer = wo.id_customer SET c.nama_customer = '" + wo.getCustomer().getNama_customer() + "', "
+                + "wo.bobot = '" + wo.getBobot() + "', "
+                + "wo.tanggal_masuk = '" + wo.getTanggal_masuk() + "', "
+                + "wo.tanggal_selesai = '" + wo.getTanggal_selesai() + "', "
+                + "s.nama_layanan = '" + wo.getLayanan().getNama_layanan() + "' "
+                + "WHERE wo.id_transaksi = '" + id + "'";
+        
+        System.out.println("Editing wo...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Edited "+result+" wo " + id);
+            statement.close();
+        } catch(Exception e){
+            System.out.println("Error editing wo...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+    }
+    
+    
 }

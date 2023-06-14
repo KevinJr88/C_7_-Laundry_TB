@@ -52,7 +52,6 @@ public class workorderView extends javax.swing.JFrame {
         initDTInput(inputTglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(2));
         
         inputTglMasuk.addDateTimeChangeListener((com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent event) -> {
-            // tgl masuk berubah, recheck tgl ambil
             setTglSelesai();
         });
         
@@ -166,27 +165,10 @@ public class workorderView extends javax.swing.JFrame {
             Service s = listService.get(selectedIndex2);
             inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusDays(s.getKecepatan()));
            
-            // cek tgl ambil < tgl selesai pas mau simpan saja
+           
         }
     }
-//    private void setTglSelesai() {
-//        if(ddKecepatan.getSelectedIndex() == -1 || getFullDateTime(inputTglMasuk) == null) {
-//            // Kecepatan belum dipilih ATAU (checkbox cuci dan checkbox setrika belum ada yang dicentang): belum bisa dihitung tanggal ambil
-//            outTotalHarga.setText("-");
-//        } else {
-//            // Dapatkan dulu kecepatannya express atau reguler?
-//            String kec = (String) ddKecepatan.getSelectedItem();
-//            if(kec.equalsIgnoreCase("EXPRESS")) {
-//                // 6 jam
-//                inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusHours(6));
-//            } else {
-//                // 2 hari
-//                inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusDays(2));
-//            }
-//            // cek tgl ambil < tgl selesai pas mau simpan saja
-//        }
-//    }
-    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -618,7 +600,7 @@ public class workorderView extends javax.swing.JFrame {
         deleteBtn.setEnabled(true);
         try{
             int clickedRow = workOrderTable.getSelectedRow();
-
+            selectedId = Integer.parseInt(workOrderTable.getValueAt(clickedRow, 0).toString());
             String nama = workOrderTable.getValueAt(clickedRow, 1).toString();
             for(Customer customer : listCustomer){
                 if(customer.getNama_customer().equals(nama)){
@@ -673,7 +655,8 @@ public class workorderView extends javax.swing.JFrame {
             if(action.equalsIgnoreCase("Tambah")){
                 wc.insertDataWorkOrder(wo);
             }else{
-                
+                wc.updateWorkOrder(wo,selectedId);
+                selectedId = -1;
             }
             
         
