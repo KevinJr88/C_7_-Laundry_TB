@@ -78,8 +78,9 @@ public class EmployeeDAO {
     public Employee searchUsernameEmployee(String username, String password){
         con = dbcon.makeConnection();
         
-        String sql = "SELECT * FROM Employee WHERE id_karyawan = '" + username + "'" +
-                "AND password = '" + password + "'";
+        String sql = "SELECT * FROM Employee WHERE id_karyawan = '" + username + "' " +
+                "AND password = '" + password + "' " +
+                "AND status = 'Aktif'";
         System.out.println("Searching employee...");
         Employee e = null;
         

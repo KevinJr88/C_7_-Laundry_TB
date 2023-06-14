@@ -46,7 +46,7 @@ public class TableWorkOrder extends AbstractTableModel{
                 return String.valueOf(list.get(rowIndex).getLayanan().getBiaya());
             default:
                 return null;
-        }
+        } 
     }
     
     //MASIH BISA BERUBAH TERGANTUNG SOURCE VIEW

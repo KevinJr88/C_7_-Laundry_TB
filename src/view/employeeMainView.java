@@ -37,6 +37,8 @@ public class employeeMainView extends javax.swing.JFrame {
     int selectedId;
     private WorkOrder selectedWorkOrder = null;
     String action2;
+    String diselesaikan;
+    String diantarkan;
     
     public void setEmployee(Employee employee){
         this.employee = employee;
@@ -838,6 +840,11 @@ public class employeeMainView extends javax.swing.JFrame {
         cancelBtn2.setText("Cancel");
 
         selesaiBtn.setText("Selesai");
+        selesaiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selesaiBtnActionPerformed(evt);
+            }
+        });
 
         setDateNowAmbilBtn.setText("Sekarang");
         setDateNowAmbilBtn.setBackground(new java.awt.Color(0, 255, 51));
@@ -1068,6 +1075,11 @@ public class employeeMainView extends javax.swing.JFrame {
         ));
         prosesTable.setBackground(new java.awt.Color(255, 255, 255));
         prosesTable.setForeground(new java.awt.Color(0, 0, 0));
+        prosesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prosesTableMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(prosesTable);
 
         label1.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -1256,6 +1268,11 @@ public class employeeMainView extends javax.swing.JFrame {
         addBtn2.setText("Tambah");
         addBtn2.setBackground(new java.awt.Color(255, 255, 255));
         addBtn2.setForeground(new java.awt.Color(0, 0, 0));
+        addBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtn2ActionPerformed(evt);
+            }
+        });
 
         editBtn2.setText("Ubah");
         editBtn2.setBackground(new java.awt.Color(255, 255, 255));
@@ -1491,6 +1508,11 @@ public class employeeMainView extends javax.swing.JFrame {
         ));
         prosesTable1.setBackground(new java.awt.Color(255, 255, 255));
         prosesTable1.setForeground(new java.awt.Color(0, 0, 0));
+        prosesTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prosesTable1MouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(prosesTable1);
 
         label2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -1527,6 +1549,11 @@ public class employeeMainView extends javax.swing.JFrame {
         servisDisplay1.setForeground(new java.awt.Color(0, 0, 0));
 
         selesaiBtn3.setText("Selesai");
+        selesaiBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selesaiBtn3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout donePanelLayout = new javax.swing.GroupLayout(donePanel);
         donePanel.setLayout(donePanelLayout);
@@ -1850,7 +1877,7 @@ public class employeeMainView extends javax.swing.JFrame {
 
 
     private void selesaiBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn2ActionPerformed
-        // TODO add your handling code here:
+       workOrderControl.updateStatusWorkOrder(Integer.parseInt(diantarkan), "Diambil");
     }//GEN-LAST:event_selesaiBtn2ActionPerformed
 
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
@@ -1874,6 +1901,7 @@ public class employeeMainView extends javax.swing.JFrame {
         int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
         int b = Integer.parseInt(table.getValueAt(clickedRow, 7).toString());
         int c = a*b;
+        diselesaikan = table.getValueAt(clickedRow, 0).toString();
         
         totInput.setText(String.valueOf(c));
     }//GEN-LAST:event_rincianTableMouseClicked
@@ -1885,6 +1913,38 @@ public class employeeMainView extends javax.swing.JFrame {
     private void totInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_totInputActionPerformed
+
+    private void selesaiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtnActionPerformed
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Diambil");
+    }//GEN-LAST:event_selesaiBtnActionPerformed
+
+    private void prosesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTableMouseClicked
+        int clickedRow = prosesTable.getSelectedRow();
+        TableModel table = prosesTable.getModel();
+       
+        diantarkan = table.getValueAt(clickedRow, 0).toString();
+        customerDisplay.setText(table.getValueAt(clickedRow, 1).toString());
+        bobotDisplay.setText(table.getValueAt(clickedRow, 3).toString());
+        servisDisplay.setText(table.getValueAt(clickedRow, 2).toString());
+    }//GEN-LAST:event_prosesTableMouseClicked
+
+    private void addBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtn2ActionPerformed
+
+    private void prosesTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTable1MouseClicked
+        int clickedRow = prosesTable1.getSelectedRow();
+        TableModel table = prosesTable1.getModel();
+        
+        diselesaikan = table.getValueAt(clickedRow, 0).toString();
+        customerDisplay1.setText(table.getValueAt(clickedRow, 1).toString());
+        bobotDisplay1.setText(table.getValueAt(clickedRow, 3).toString());
+        servisDisplay1.setText(table.getValueAt(clickedRow, 2).toString());
+    }//GEN-LAST:event_prosesTable1MouseClicked
+
+    private void selesaiBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn3ActionPerformed
+        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai");
+    }//GEN-LAST:event_selesaiBtn3ActionPerformed
 
     /**
      * @param args the command line arguments

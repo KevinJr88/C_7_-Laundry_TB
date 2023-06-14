@@ -346,5 +346,25 @@ public class WorkOrderDAO {
         dbcon.closeConnection();
     }
     
+    public void updateStatusWorkOrder(int id, String status){
+        con = dbcon.makeConnection();
+        
+        String sql = "UPDATE work_order SET status = '" + status + "' "
+                + "WHERE id_transaksi = '" + id + "'";
+        
+        System.out.println("Editing wo...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Edited "+result+" wo " + id);
+            statement.close();
+        } catch(Exception e){
+            System.out.println("Error editing wo...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        
+    }
     
 }
