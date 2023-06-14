@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
+import exeption.*;
 /**
  *
  * @author julia
@@ -15,12 +15,18 @@ public class Service {
     private String jasa_antar;
     private double biaya;
 
-    public Service(String id_layanan, String nama_layanan, int kecepatan, String jasa_antar, double biaya) {
-        this.id_layanan = id_layanan;
-        this.nama_layanan = nama_layanan;
-        this.kecepatan = kecepatan;
-        this.jasa_antar = jasa_antar;
-        this.biaya = biaya;
+    public Service(String id_layanan, String nama_layanan, int kecepatan, String jasa_antar, double biaya) throws inputKosongException, TidakBoleh0{
+        if(nama_layanan.isEmpty() || jasa_antar.isEmpty()){
+            throw new inputKosongException();
+        } else if(kecepatan==0 || biaya==0){
+            throw new TidakBoleh0();
+        } else{
+            this.id_layanan = id_layanan;
+            this.nama_layanan = nama_layanan;
+            this.kecepatan = kecepatan;
+            this.jasa_antar = jasa_antar;
+            this.biaya = biaya;
+        }
     }
 
     public Service(String nama_layanan, int kecepatan, String jasa_antar, double biaya) {

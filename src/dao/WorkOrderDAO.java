@@ -346,10 +346,33 @@ public class WorkOrderDAO {
         dbcon.closeConnection();
     }
     
-    public void updateStatusWorkOrder(int id, String status){
+    public void updateStatusWorkOrder(int id, String status, String tgl){
         con = dbcon.makeConnection();
         
-        String sql = "UPDATE work_order SET status = '" + status + "' "
+        String sql = "UPDATE work_order SET status = '" + status + "', "
+                + "tanggal_selesai = '" + tgl + "' "
+                + "WHERE id_transaksi = '" + id + "'";
+        
+        System.out.println("Editing wo...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Edited "+result+" wo " + id);
+            statement.close();
+        } catch(Exception e){
+            System.out.println("Error editing wo...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        
+    }
+    
+    public void updateStatusWorkOrder2(int id, String status, String tgl){
+        con = dbcon.makeConnection();
+        
+        String sql = "UPDATE work_order SET status = '" + status + "', "
+                + "tanggal_ambil = '" + tgl + "' "
                 + "WHERE id_transaksi = '" + id + "'";
         
         System.out.println("Editing wo...");

@@ -8,7 +8,7 @@ import java.awt.Color;
  */
 import control.CustomerControl;
 import control.EmployeeControl;
-
+import exeption.*;
 
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -34,6 +34,32 @@ public class OwnerMainView extends javax.swing.JFrame {
     
     private ServiceControl serviceControl;
     private String action2, jasaAntar, temp2;
+    
+    public void InputKosongException() throws inputKosongException{
+        if(namaInput.getText().equalsIgnoreCase("") 
+                || passInput.getText().equalsIgnoreCase("")){
+            throw new inputKosongException();
+        }
+    }
+    
+    public void InputKosongException2() throws inputKosongException{
+        if(namaInput1.getText().equalsIgnoreCase("")
+                || kecepatanInput.getText().equalsIgnoreCase("")){
+            throw new inputKosongException();
+        }
+    }
+    
+    public void bobotException() throws TidakBoleh0{
+        if(Integer.parseInt(biayaInput.getText())==0){
+            throw new TidakBoleh0();
+        }
+    }
+    
+    public void telpException() throws TidakBoleh0{
+        if(Integer.parseInt(telpInput.getText())==0){
+            throw new TidakBoleh0();
+        }
+    }
     /**
      * Creates new form OwnerMainView
      */
@@ -948,7 +974,11 @@ public class OwnerMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_tambahBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        
         try{
+           telpException();
+           InputKosongException();
            temp = statusDd.getSelectedIndex();
            switch(temp){
                case 0:
@@ -977,7 +1007,14 @@ public class OwnerMainView extends javax.swing.JFrame {
             clearText();
             showCustomer();
             setComponent(false);
-        }catch (Exception e){
+        }catch(inputKosongException e1){
+            System.out.println(e1.message());
+            JOptionPane.showConfirmDialog(rootPane, e1.message(), "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        } catch(TidakBoleh0 e){
+            JOptionPane.showConfirmDialog(rootPane, e.message(), "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            System.out.println(e.message());
+        }
+        catch (Exception e){
             System.out.println("Gagal menyimpan data");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1042,6 +1079,7 @@ public class OwnerMainView extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try{
+            bobotException();
             Service s = new Service(idInput1.getText(), namaInput1.getText(), Integer.parseInt(kecepatanInput.getText()), jasaAntar, Integer.parseInt(biayaInput.getText()));
            
             if(action2.equals("Tambah")){
@@ -1052,8 +1090,15 @@ public class OwnerMainView extends javax.swing.JFrame {
             clearText2();
             showService();
             setComponent2(false);
-        }catch (Exception e){
-            System.out.println("Gagal menyimpan data");
+        }catch (inputKosongException e){
+            System.out.println(e.message());
+            JOptionPane.showConfirmDialog(rootPane, e.message(), "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        } catch(TidakBoleh0 e){ 
+            System.out.println(e.message());
+            JOptionPane.showConfirmDialog(rootPane, e.message(), "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        } catch(Exception e){
+            System.out.println(e);
+            
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

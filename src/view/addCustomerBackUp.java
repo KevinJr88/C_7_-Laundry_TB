@@ -128,34 +128,34 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         registerPanel.setBackground(new java.awt.Color(255, 255, 255));
         registerPanel.setForeground(new java.awt.Color(255, 255, 255));
 
+        idLabel.setText("ID");
         idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         idLabel.setForeground(new java.awt.Color(0, 0, 0));
-        idLabel.setText("ID");
 
         idInput.setText("jTextField1");
 
+        namaLabel.setText("Nama");
         namaLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaLabel.setForeground(new java.awt.Color(0, 0, 0));
-        namaLabel.setText("Nama");
 
         namaInput.setText("jTextField1");
 
+        alamatLabel.setText("Alamat");
         alamatLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         alamatLabel.setForeground(new java.awt.Color(0, 0, 0));
-        alamatLabel.setText("Alamat");
 
         alamatInput.setText("jTextField1");
 
+        telpLabel.setText("Nomor Telepon");
         telpLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         telpLabel.setForeground(new java.awt.Color(0, 0, 0));
-        telpLabel.setText("Nomor Telepon");
 
         telpInput.setText("jTextField1");
 
         buttonGroup1.add(lakiBtn);
+        lakiBtn.setText("Laki-laki");
         lakiBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         lakiBtn.setForeground(new java.awt.Color(0, 0, 0));
-        lakiBtn.setText("Laki-laki");
         lakiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lakiBtnActionPerformed(evt);
@@ -163,9 +163,9 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(perempuanBtn);
+        perempuanBtn.setText("Perempuan");
         perempuanBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         perempuanBtn.setForeground(new java.awt.Color(0, 0, 0));
-        perempuanBtn.setText("Perempuan");
         perempuanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 perempuanBtnActionPerformed(evt);
@@ -186,9 +186,9 @@ public class addCustomerBackUp extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Jenis Kelamin");
         jLabel9.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Jenis Kelamin");
 
         javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
         registerPanel.setLayout(registerPanelLayout);
@@ -250,27 +250,27 @@ public class addCustomerBackUp extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(55, 121, 164));
 
+        addBtn.setText("Tambah");
         addBtn.setBackground(new java.awt.Color(255, 255, 255));
         addBtn.setForeground(new java.awt.Color(0, 0, 0));
-        addBtn.setText("Tambah");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
 
+        deleteBtn.setText("Hapus");
         deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setForeground(new java.awt.Color(0, 0, 0));
-        deleteBtn.setText("Hapus");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
             }
         });
 
+        editBtn.setText("Ubah");
         editBtn.setBackground(new java.awt.Color(255, 255, 255));
         editBtn.setForeground(new java.awt.Color(0, 0, 0));
-        editBtn.setText("Ubah");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editBtnActionPerformed(evt);
@@ -321,24 +321,26 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        searchInput.setBackground(new java.awt.Color(255, 255, 255));
         searchInput.setForeground(new java.awt.Color(0, 0, 0));
 
+        searchBtn.setText("Cari");
         searchBtn.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn.setForeground(new java.awt.Color(0, 0, 0));
-        searchBtn.setText("Cari");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
             }
         });
 
+        jLabel2.setText("Tambah Pelanggan");
         jLabel2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Tambah Pelanggan");
 
         back.setText("BACK");
+        back.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -355,30 +357,31 @@ public class addCustomerBackUp extends javax.swing.JFrame {
                     .addGroup(menuSaetuLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(menuSaetuLayout.createSequentialGroup()
-                        .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuSaetuLayout.createSequentialGroup()
+                        .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(menuSaetuLayout.createSequentialGroup()
-                                .addComponent(searchBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchInput))
-                            .addComponent(registerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(back))
+                            .addGroup(menuSaetuLayout.createSequentialGroup()
+                                .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(menuSaetuLayout.createSequentialGroup()
+                                        .addComponent(searchBtn)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(searchInput))
+                                    .addComponent(registerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(29, 29, 29))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuSaetuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(back)
-                .addGap(216, 216, 216))
         );
         menuSaetuLayout.setVerticalGroup(
             menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuSaetuLayout.createSequentialGroup()
                 .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(menuSaetuLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(38, 38, 38)
                         .addComponent(back)
-                        .addGap(40, 40, 40)
+                        .addGap(29, 29, 29)
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuSaetuLayout.createSequentialGroup()
                         .addGap(76, 76, 76)

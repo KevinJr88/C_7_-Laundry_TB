@@ -10,11 +10,13 @@ import control.ServiceControl;
 import control.WorkOrderControl;
 import java.time.LocalDate;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import model.Customer;
 import model.Employee;
 import model.Service;
 import model.WorkOrder;
+import table.TableWorkOrder;
 
 /**
  *
@@ -22,7 +24,6 @@ import model.WorkOrder;
  */
 public class antarBackUp extends javax.swing.JFrame {
     private CustomerControl customerControl;
-    private WorkOrderControl workOrderControl;
     private int menu = 0;
     private String action, id, jenisKelamin, temp;
     
@@ -291,6 +292,8 @@ public class antarBackUp extends javax.swing.JFrame {
         );
 
         back.setText("BACK");
+        back.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -301,25 +304,28 @@ public class antarBackUp extends javax.swing.JFrame {
         menuAmpadt.setLayout(menuAmpadtLayout);
         menuAmpadtLayout.setHorizontalGroup(
             menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(menuAmpadtLayout.createSequentialGroup()
-                            .addComponent(searchBtn3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(453, 453, 453))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuAmpadtLayout.createSequentialGroup()
-                            .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(deliPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap()))
+            .addGroup(menuAmpadtLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
+                        .addGap(0, 26, Short.MAX_VALUE)
+                        .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(menuAmpadtLayout.createSequentialGroup()
+                                .addComponent(searchBtn3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(453, 453, 453))
+                            .addGroup(menuAmpadtLayout.createSequentialGroup()
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(back)
+                                .addGap(82, 82, 82))))
                     .addGroup(menuAmpadtLayout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(back)
-                        .addGap(82, 82, 82))))
+                        .addComponent(deliPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(menuAmpadtLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5)
+                        .addContainerGap())))
         );
         menuAmpadtLayout.setVerticalGroup(
             menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,11 +338,11 @@ public class antarBackUp extends javax.swing.JFrame {
                 .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchBtn3)
                     .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deliPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -356,7 +362,7 @@ public class antarBackUp extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(menuAmpadt, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuAmpadt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -364,7 +370,18 @@ public class antarBackUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
-        // TODO add your handling code here:
+         try{
+            TableWorkOrder transaksi = wc.showWorkOrder(searchInput3.getText());
+
+            if(transaksi.getRowCount() == 0){
+                clearTextAntar();
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                prosesTable.setModel(transaksi);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
     }//GEN-LAST:event_searchBtn3ActionPerformed
 
     private void prosesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prosesTableMouseClicked
@@ -387,7 +404,8 @@ public class antarBackUp extends javax.swing.JFrame {
 
     private void selesaiBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn2ActionPerformed
         String tglAmbil = String.valueOf(tglDiambilAntar.getDateTimeStrict());
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diantarkan), "Diambil",tglAmbil);
+        wc.updateStatusWorkOrder2(Integer.parseInt(diantarkan), "Diambil",tglAmbil);
+        showAntar();
     }//GEN-LAST:event_selesaiBtn2ActionPerformed
 
     private void batalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalBtnActionPerformed

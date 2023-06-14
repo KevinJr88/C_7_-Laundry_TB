@@ -114,7 +114,11 @@ public class loginMainView extends javax.swing.JFrame {
         passwordField.setBackground(new java.awt.Color(255, 255, 255));
         passwordField.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         passwordField.setForeground(new java.awt.Color(0, 0, 0));
-        passwordField.setText("jPasswordField1");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         loginButton.setBackground(new java.awt.Color(255, 255, 204));
         loginButton.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -215,6 +219,10 @@ public class loginMainView extends javax.swing.JFrame {
    
         
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments

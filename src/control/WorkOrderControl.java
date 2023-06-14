@@ -75,9 +75,15 @@ public class WorkOrderControl {
         woDao.updateWorkOrder(wo, id);
     }
     
-    public void updateStatusWorkOrder(int id, String status){
+    public void updateStatusWorkOrder(int id, String status, String tgl){
         System.out.println("JJJJJJJJJJ");
-        woDao.updateStatusWorkOrder(id, status);
+        woDao.updateStatusWorkOrder(id, status, tgl);
         
     }
+    public void updateStatusWorkOrder2(int id, String status, String tgl){
+        System.out.println("JJJJJJJJJJ");
+        woDao.updateStatusWorkOrder2(id, status, tgl);
+        
+    }
+    
 }

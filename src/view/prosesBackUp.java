@@ -24,6 +24,7 @@ import table.TableWorkOrder;
  */
 public class prosesBackUp extends javax.swing.JFrame {
 private CustomerControl customerControl;
+ 
     private int menu = 0;
     private String action, id, jenisKelamin, temp;
     
@@ -49,14 +50,15 @@ private CustomerControl customerControl;
     public prosesBackUp(Employee employee) {
         try{
             initComponents();
-            setEmployee(employee);
-            wc = new WorkOrderControl();
-            cc = new CustomerControl();
-            sc = new ServiceControl();
-            initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
-            setComponentProses(false);
-            clearTextProses();
-            showProses();
+        setEmployee(employee);
+       
+        wc = new WorkOrderControl();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
+        initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+        setComponentProses(false);
+        clearTextProses();
+        showProses();
         }catch(Exception E){
             System.out.println(E);
         }
@@ -388,7 +390,7 @@ private CustomerControl customerControl;
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
         try{
 
-            TableWorkOrder wo = wc.showWorkOrderNotDone();
+            TableWorkOrder wo = wc.showWorkOrder(searchInput5.getText());
             //TableCustomer customer = customerControl.showCustomer(searchInput.getText());
             if(wo.getRowCount() == 0){
                 clearTextProses();
@@ -418,11 +420,10 @@ private CustomerControl customerControl;
 
     private void selesaiBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn3ActionPerformed
 
-        String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
-        
-        wc.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Proses");
-       
-        
+        String tglSelse  = String.valueOf(tglSelesai.getDateTimeStrict());
+        System.out.println(tglSelse);
+        wc.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai", tglSelse);
+        showProses();
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
 
     private void todayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todayBtnActionPerformed
