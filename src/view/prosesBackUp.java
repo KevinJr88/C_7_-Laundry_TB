@@ -24,7 +24,6 @@ import table.TableWorkOrder;
  */
 public class prosesBackUp extends javax.swing.JFrame {
 private CustomerControl customerControl;
-    private WorkOrderControl workOrderControl;
     private int menu = 0;
     private String action, id, jenisKelamin, temp;
     
@@ -389,7 +388,7 @@ private CustomerControl customerControl;
     private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
         try{
 
-            TableWorkOrder wo = workOrderControl.showWorkOrderNotDone();
+            TableWorkOrder wo = wc.showWorkOrderNotDone();
             //TableCustomer customer = customerControl.showCustomer(searchInput.getText());
             if(wo.getRowCount() == 0){
                 clearTextProses();
@@ -421,8 +420,8 @@ private CustomerControl customerControl;
 
         String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
         
-        
-        workOrderControl.updateWorkOrder(selectedWorkOrder, WIDTH);
+        wc.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Proses");
+       
         
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
 

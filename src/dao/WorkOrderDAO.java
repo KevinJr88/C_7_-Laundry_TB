@@ -346,11 +346,10 @@ public class WorkOrderDAO {
         dbcon.closeConnection();
     }
     
-    public void updateStatusWorkOrder(int id, String status, String tgl){
+    public void updateStatusWorkOrder(int id, String status){
         con = dbcon.makeConnection();
         
-        String sql = "UPDATE work_order SET status = '" + status + "', "
-                + "tanggal_ambil = '" + tgl + "' "
+        String sql = "UPDATE work_order SET status = '" + status + "' "
                 + "WHERE id_transaksi = '" + id + "'";
         
         System.out.println("Editing wo...");
