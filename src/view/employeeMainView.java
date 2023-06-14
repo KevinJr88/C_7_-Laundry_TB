@@ -88,6 +88,8 @@ public class employeeMainView extends javax.swing.JFrame {
         menu8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         menu9 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        menu10 = new javax.swing.JLabel();
         tabpeepee = new javax.swing.JTabbedPane();
         menuSaetu = new javax.swing.JPanel();
         registerPanel = new javax.swing.JPanel();
@@ -171,6 +173,21 @@ public class employeeMainView extends javax.swing.JFrame {
         searchInput4 = new javax.swing.JTextField();
         searchBtn4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        menuEightnam = new javax.swing.JPanel();
+        containerEightnam = new javax.swing.JPanel();
+        searchInput5 = new javax.swing.JTextField();
+        searchBtn5 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        prosesTable1 = new javax.swing.JTable();
+        label2 = new java.awt.Label();
+        donePanel = new javax.swing.JPanel();
+        customerLabel3 = new javax.swing.JLabel();
+        customerDisplay1 = new javax.swing.JTextField();
+        bobotLabel3 = new javax.swing.JLabel();
+        bobotDisplay1 = new javax.swing.JTextField();
+        servisLabel3 = new javax.swing.JLabel();
+        servisDisplay1 = new javax.swing.JTextField();
+        selesaiBtn3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -341,6 +358,34 @@ public class employeeMainView extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(menu9)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel11MouseClicked(evt);
+            }
+        });
+
+        menu10.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        menu10.setForeground(new java.awt.Color(0, 0, 0));
+        menu10.setText("Proses");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(menu10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(menu10)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -353,6 +398,7 @@ public class employeeMainView extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,7 +413,9 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 680));
@@ -623,7 +671,7 @@ public class employeeMainView extends javax.swing.JFrame {
                         .addGap(83, 83, 83)
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuSaetuLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addGap(76, 76, 76)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -631,7 +679,7 @@ public class employeeMainView extends javax.swing.JFrame {
                             .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(registerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(58, 58, 58))
         );
@@ -659,9 +707,9 @@ public class employeeMainView extends javax.swing.JFrame {
         setDateNowAmbilBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setText("Tanggal Ambil");
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Tanggal Ambil");
 
         javax.swing.GroupLayout pickupPanelLayout = new javax.swing.GroupLayout(pickupPanel);
         pickupPanel.setLayout(pickupPanelLayout);
@@ -749,7 +797,7 @@ public class employeeMainView extends javax.swing.JFrame {
         menuDoueaLayout.setVerticalGroup(
             menuDoueaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuDoueaLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pickupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -829,7 +877,7 @@ public class employeeMainView extends javax.swing.JFrame {
         menuTaigaLayout.setVerticalGroup(
             menuTaigaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuTaigaLayout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menuTaigaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -881,40 +929,40 @@ public class employeeMainView extends javax.swing.JFrame {
 
         deliPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        setDateNowAmbilBtn1.setText("Sekarang");
         setDateNowAmbilBtn1.setBackground(new java.awt.Color(0, 255, 51));
         setDateNowAmbilBtn1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        setDateNowAmbilBtn1.setText("Sekarang");
 
+        jLabel4.setText("Tanggal Antar");
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Tanggal Antar");
 
+        customerLabel2.setText("Customer");
         customerLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        customerLabel2.setText("Customer");
 
         customerDisplay.setEditable(false);
-        customerDisplay.setBackground(new java.awt.Color(255, 255, 255));
         customerDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerDisplay.setBackground(new java.awt.Color(255, 255, 255));
         customerDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
+        bobotLabel2.setText("Bobot");
         bobotLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        bobotLabel2.setText("Bobot");
 
         bobotDisplay.setEditable(false);
-        bobotDisplay.setBackground(new java.awt.Color(255, 255, 255));
         bobotDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotDisplay.setBackground(new java.awt.Color(255, 255, 255));
         bobotDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
+        servisLabel2.setText("Jenis Servis");
         servisLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         servisLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        servisLabel2.setText("Jenis Servis");
 
         servisDisplay.setEditable(false);
-        servisDisplay.setBackground(new java.awt.Color(255, 255, 255));
         servisDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisDisplay.setBackground(new java.awt.Color(255, 255, 255));
         servisDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
         selesaiBtn2.setText("Selesai");
@@ -1233,12 +1281,181 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addGroup(menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelBtn3)
                     .addComponent(saveBtn2))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         tabpeepee.addTab("tab5", menuLiejma);
 
-        jPanel1.add(tabpeepee, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 920, 720));
+        containerEightnam.setBackground(new java.awt.Color(55, 121, 164));
+
+        searchInput5.setBackground(new java.awt.Color(255, 255, 255));
+        searchInput5.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        searchInput5.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        searchBtn5.setBackground(new java.awt.Color(255, 255, 255));
+        searchBtn5.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn5.setText("Cari");
+        searchBtn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn5ActionPerformed(evt);
+            }
+        });
+
+        prosesTable1.setBackground(new java.awt.Color(255, 255, 255));
+        prosesTable1.setForeground(new java.awt.Color(0, 0, 0));
+        prosesTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+            }
+        ));
+        jScrollPane7.setViewportView(prosesTable1);
+
+        label2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
+        label2.setForeground(new java.awt.Color(255, 255, 255));
+        label2.setText("PROSES");
+
+        donePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        customerLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        customerLabel3.setText("Customer");
+
+        customerDisplay1.setEditable(false);
+        customerDisplay1.setBackground(new java.awt.Color(255, 255, 255));
+        customerDisplay1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerDisplay1.setForeground(new java.awt.Color(0, 0, 0));
+
+        bobotLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        bobotLabel3.setText("Bobot");
+
+        bobotDisplay1.setEditable(false);
+        bobotDisplay1.setBackground(new java.awt.Color(255, 255, 255));
+        bobotDisplay1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotDisplay1.setForeground(new java.awt.Color(0, 0, 0));
+
+        servisLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        servisLabel3.setText("Jenis Servis");
+
+        servisDisplay1.setEditable(false);
+        servisDisplay1.setBackground(new java.awt.Color(255, 255, 255));
+        servisDisplay1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisDisplay1.setForeground(new java.awt.Color(0, 0, 0));
+
+        selesaiBtn3.setText("Selesai");
+
+        javax.swing.GroupLayout donePanelLayout = new javax.swing.GroupLayout(donePanel);
+        donePanel.setLayout(donePanelLayout);
+        donePanelLayout.setHorizontalGroup(
+            donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(donePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(donePanelLayout.createSequentialGroup()
+                        .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(servisLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, donePanelLayout.createSequentialGroup()
+                        .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(servisDisplay1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                            .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(bobotLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                                .addComponent(bobotDisplay1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(selesaiBtn3)
+                        .addGap(30, 30, 30))))
+        );
+        donePanelLayout.setVerticalGroup(
+            donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(donePanelLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(customerLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(customerDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bobotLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bobotDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(servisLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(servisDisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selesaiBtn3))
+                .addGap(44, 44, 44))
+        );
+
+        javax.swing.GroupLayout containerEightnamLayout = new javax.swing.GroupLayout(containerEightnam);
+        containerEightnam.setLayout(containerEightnamLayout);
+        containerEightnamLayout.setHorizontalGroup(
+            containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEightnamLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(containerEightnamLayout.createSequentialGroup()
+                            .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(containerEightnamLayout.createSequentialGroup()
+                                    .addComponent(searchBtn5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(453, 453, 453))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerEightnamLayout.createSequentialGroup()
+                            .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(425, 425, 425)))))
+        );
+        containerEightnamLayout.setVerticalGroup(
+            containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEightnamLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBtn5)
+                    .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout menuEightnamLayout = new javax.swing.GroupLayout(menuEightnam);
+        menuEightnam.setLayout(menuEightnamLayout);
+        menuEightnamLayout.setHorizontalGroup(
+            menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 920, Short.MAX_VALUE)
+            .addGroup(menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menuEightnamLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(containerEightnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        menuEightnamLayout.setVerticalGroup(
+            menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 682, Short.MAX_VALUE)
+            .addGroup(menuEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menuEightnamLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(containerEightnam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        tabpeepee.addTab("tab6", menuEightnam);
+
+        jPanel1.add(tabpeepee, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 920, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1456,6 +1673,15 @@ public class employeeMainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_customerDd2ActionPerformed
 
+    private void searchBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn5ActionPerformed
+
+    private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
+        // TODO add your handling code here:
+        tabpeepee.setSelectedIndex(5);
+    }//GEN-LAST:event_jPanel11MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1498,16 +1724,21 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JTextField bobotDisplay;
+    private javax.swing.JTextField bobotDisplay1;
     private javax.swing.JTextField bobotInput;
     private javax.swing.JLabel bobotLabel;
     private javax.swing.JLabel bobotLabel2;
+    private javax.swing.JLabel bobotLabel3;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton cancelBtn2;
     private javax.swing.JButton cancelBtn3;
+    private javax.swing.JPanel containerEightnam;
     private javax.swing.JComboBox<String> customerDd2;
     private javax.swing.JTextField customerDisplay;
+    private javax.swing.JTextField customerDisplay1;
     private javax.swing.JLabel customerLabel;
     private javax.swing.JLabel customerLabel2;
+    private javax.swing.JLabel customerLabel3;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAmbil;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAntar;
@@ -1515,6 +1746,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton deleteBtn2;
     private javax.swing.JButton deleteBtn3;
     private javax.swing.JPanel deliPanel;
+    private javax.swing.JPanel donePanel;
     private javax.swing.JButton editBtn;
     private javax.swing.JButton editBtn2;
     private javax.swing.JTextField idInput;
@@ -1530,6 +1762,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1543,6 +1776,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
@@ -1550,14 +1784,17 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel jenisLayananLabel;
     private javax.swing.JLabel judulLabel;
     private java.awt.Label label1;
+    private java.awt.Label label2;
     private javax.swing.JRadioButton lakiBtn;
     private javax.swing.JLabel menu1;
+    private javax.swing.JLabel menu10;
     private javax.swing.JLabel menu6;
     private javax.swing.JLabel menu7;
     private javax.swing.JLabel menu8;
     private javax.swing.JLabel menu9;
     private javax.swing.JPanel menuAmpadt;
     private javax.swing.JPanel menuDouea;
+    private javax.swing.JPanel menuEightnam;
     private javax.swing.JPanel menuLiejma;
     private javax.swing.JPanel menuSaetu;
     private javax.swing.JPanel menuTaiga;
@@ -1566,6 +1803,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JRadioButton perempuanBtn;
     private javax.swing.JPanel pickupPanel;
     private javax.swing.JTable prosesTable;
+    private javax.swing.JTable prosesTable1;
     private javax.swing.JPanel registerPanel;
     private javax.swing.JTable rincianTable;
     private javax.swing.JButton saveBtn;
@@ -1574,15 +1812,20 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton searchBtn2;
     private javax.swing.JButton searchBtn3;
     private javax.swing.JButton searchBtn4;
+    private javax.swing.JButton searchBtn5;
     private javax.swing.JTextField searchInput;
     private javax.swing.JTextField searchInput2;
     private javax.swing.JTextField searchInput3;
     private javax.swing.JTextField searchInput4;
+    private javax.swing.JTextField searchInput5;
     private javax.swing.JButton selesaiBtn;
     private javax.swing.JButton selesaiBtn2;
+    private javax.swing.JButton selesaiBtn3;
     private javax.swing.JComboBox<String> servisDd;
     private javax.swing.JTextField servisDisplay;
+    private javax.swing.JTextField servisDisplay1;
     private javax.swing.JLabel servisLabel2;
+    private javax.swing.JLabel servisLabel3;
     private javax.swing.JButton setDateNowAmbilBtn;
     private javax.swing.JButton setDateNowAmbilBtn1;
     private javax.swing.JTabbedPane tabpeepee;
