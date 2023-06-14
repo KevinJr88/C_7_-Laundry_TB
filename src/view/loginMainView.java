@@ -3,18 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import control.CustomerControl;
+import control.EmployeeControl;
 
+
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import model.Employee;
 /**
  *
  * @author ACER
  */
 public class loginMainView extends javax.swing.JFrame {
-
-    /**
-     * Creates new form loginMainView
-     */
+    private EmployeeControl ec;
+    String username;
+    String Password;
+    Employee emp;
+    
+    
     public loginMainView() {
         initComponents();
+        ec = new EmployeeControl();
+       
     }
 
     /**
@@ -105,6 +116,11 @@ public class loginMainView extends javax.swing.JFrame {
         loginButton.setForeground(new java.awt.Color(0, 0, 0));
         loginButton.setText("LOGIN");
         loginButton.setBorder(null);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,6 +176,36 @@ public class loginMainView extends javax.swing.JFrame {
         creditMainView cmv = new creditMainView();
         cmv.setVisible(true);
     }//GEN-LAST:event_creditButtonMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        employeeMainView ev = new employeeMainView();
+        OwnerMainView ov  = new OwnerMainView();
+        //workorderView wv = new workorderView();
+        
+        
+        String username = usernameTextField.getText();
+        String password = passwordField.getText();
+        
+        if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
+            this.dispose();
+            ov.setVisible(true);
+        }else if (ec.showUserEmployee(username, password)!=null){
+            Employee E = ec.showUserEmployee(username, password);
+            workorderView wv = new workorderView(E);
+            this.dispose();
+            wv.setVisible(true);
+           
+        }else{
+            JOptionPane.showConfirmDialog(rootPane, "Login Gagal!!", "Baik", JOptionPane.DEFAULT_OPTION);
+        }
+            
+        
+        
+        
+        
+        
+        ;
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments

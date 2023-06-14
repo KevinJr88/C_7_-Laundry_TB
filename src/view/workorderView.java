@@ -50,13 +50,15 @@ public class workorderView extends javax.swing.JFrame {
         initComponents();
         initDTInput(inputTglMasuk, LocalDate.now().minusYears(1), LocalDate.now().plusMonths(1));
         initDTInput(inputTglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(2));
+        
         inputTglMasuk.addDateTimeChangeListener((com.github.lgooddatepicker.zinternaltools.DateTimeChangeEvent event) -> {
             // tgl masuk berubah, recheck tgl ambil
-            //this.setTglSelesai();
+            setTglSelesai();
         });
         
         setEmployee(employee);
         setComponent(false);
+        inputTglSelesai.setEnabled(false);
         cc = new CustomerControl();
         sc = new ServiceControl();
         wc = new WorkOrderControl();
@@ -76,8 +78,6 @@ public class workorderView extends javax.swing.JFrame {
        layananDd.setEnabled(value);
        bobotInput.setEnabled(value);
        inputTglMasuk.setEnabled(value);
-       inputTglSelesai.setEnabled(value);
-       
     }
     
     public void clearText(){
@@ -156,7 +156,19 @@ public class workorderView extends javax.swing.JFrame {
         inputTglMasuk.setDateTimeStrict(null);
     }   
     
-    
+    private void setTglSelesai() {
+        if(layananDd.getSelectedIndex() == -1 || getFullDateTime(inputTglMasuk) == null) {
+            // Kecepatan belum dipilih ATAU (checkbox cuci dan checkbox setrika belum ada yang dicentang): belum bisa dihitung tanggal ambil
+            
+        } else {
+            // Dapatkan dulu kecepatannya express atau reguler?
+            int selectedIndex2 =  layananDd.getSelectedIndex();
+            Service s = listService.get(selectedIndex2);
+            inputTglSelesai.setDateTimeStrict(inputTglMasuk.getDateTimeStrict().plusDays(s.getKecepatan()));
+           
+            // cek tgl ambil < tgl selesai pas mau simpan saja
+        }
+    }
 //    private void setTglSelesai() {
 //        if(ddKecepatan.getSelectedIndex() == -1 || getFullDateTime(inputTglMasuk) == null) {
 //            // Kecepatan belum dipilih ATAU (checkbox cuci dan checkbox setrika belum ada yang dicentang): belum bisa dihitung tanggal ambil
@@ -208,9 +220,10 @@ public class workorderView extends javax.swing.JFrame {
         inputTglMasuk = new com.github.lgooddatepicker.components.DateTimePicker();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
-        inputTglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         workOrderTable = new javax.swing.JTable();
+        inputTglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
+        sekarangBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,7 +233,7 @@ public class workorderView extends javax.swing.JFrame {
         sidebarPan.setLayout(sidebarPanLayout);
         sidebarPanLayout.setHorizontalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
+            .addGap(0, 69, Short.MAX_VALUE)
         );
         sidebarPanLayout.setVerticalGroup(
             sidebarPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +253,7 @@ public class workorderView extends javax.swing.JFrame {
             .addGroup(headerPanLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(596, Short.MAX_VALUE))
         );
         headerPanLayout.setVerticalGroup(
             headerPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,6 +404,42 @@ public class workorderView extends javax.swing.JFrame {
             }
         });
 
+        workOrderTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        workOrderTable.setBackground(new java.awt.Color(255, 255, 255));
+        workOrderTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        workOrderTable.setForeground(new java.awt.Color(0, 0, 0));
+        workOrderTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                workOrderTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(workOrderTable);
+
+        sekarangBtn.setText("Sekarang");
+        sekarangBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sekarangBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -403,28 +452,29 @@ public class workorderView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerDd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bobotInput, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(layananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(customerDd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bobotInput, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                            .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tanggalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(37, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(tanggalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sekarangBtn))
+                                .addComponent(inputTglMasuk, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(layananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(inputTglMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(saveBtn)
                         .addGap(18, 18, 18)
                         .addComponent(cancelBtn)
-                        .addGap(34, 34, 34))))
+                        .addGap(464, 464, 464)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,49 +484,36 @@ public class workorderView extends javax.swing.JFrame {
                 .addComponent(customerLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(customerDd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namaLabel)
-                    .addComponent(layananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(namaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bobotInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bobotInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tanggalLabel)
-                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(tanggalLabel)
+                                .addGap(27, 27, 27))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(sekarangBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(inputTglMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 16, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(layananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveBtn)
                             .addComponent(cancelBtn))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 6, Short.MAX_VALUE))))
         );
-
-        workOrderTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
-            }
-        ));
-        workOrderTable.setBackground(new java.awt.Color(255, 255, 255));
-        workOrderTable.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        workOrderTable.setForeground(new java.awt.Color(0, 0, 0));
-        workOrderTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                workOrderTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(workOrderTable);
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
@@ -484,23 +521,14 @@ public class workorderView extends javax.swing.JFrame {
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(containerPanelLayout.createSequentialGroup()
-                                .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)
-                                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(searchBtn))
-                            .addGroup(containerPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
+                        .addComponent(opPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(searchBtn)))
+                .addContainerGap(2333, Short.MAX_VALUE))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,10 +542,7 @@ public class workorderView extends javax.swing.JFrame {
                             .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -525,21 +550,25 @@ public class workorderView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(sidebarPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(headerPan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(694, 694, 694)
+                        .addComponent(headerPan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1859, 1859, 1859))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidebarPan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -584,35 +613,34 @@ public class workorderView extends javax.swing.JFrame {
         int indexCustomer = -1;
         int indexService = -1;
         
-        WorkOrder selectedW = (WorkOrder) getTableSelectedObject(workOrderTable);
-        
-         int clickedRow = workOrderTable.getSelectedRow();
-        // Set the selected id --> having `0` means that we will be adding new data, not updating
-        selectedId = selectedW.getId_transaksi();
-        
-        inputTglMasuk.setDateTimeStrict(selectedW.getTanggal_masuk());
-        inputTglSelesai.setDateTimeStrict(selectedW.getTanggal_selesai());
-        
-        String nama = workOrderTable.getValueAt(clickedRow, 1).toString();
-        for(Customer customer : listCustomer){
-               if(customer.getNama_customer().equals(nama)){
-                   indexCustomer = listCustomer.indexOf(customer);
-               }
-           }
-        customerDd.setSelectedIndex(indexCustomer);
+        setComponent(false);
+        editBtn.setEnabled(true);
+        deleteBtn.setEnabled(true);
+        try{
+            int clickedRow = workOrderTable.getSelectedRow();
 
-        String nama2 = workOrderTable.getValueAt(clickedRow, 2).toString();
-        for(Service service : listService){
-               if(String.valueOf(service.getNama_layanan()).equals(nama2)){
-                   indexService = listService.indexOf(service);
-               }
-           }
-        layananDd.setSelectedIndex(indexService);    
-        
-        bobotInput.setText(workOrderTable.getValueAt(clickedRow, 3).toString());
+            String nama = workOrderTable.getValueAt(clickedRow, 1).toString();
+            for(Customer customer : listCustomer){
+                if(customer.getNama_customer().equals(nama)){
+                    indexCustomer = listCustomer.indexOf(customer);
+                }
+             }
+            customerDd.setSelectedIndex(indexCustomer);
+
+            String nama2 = workOrderTable.getValueAt(clickedRow, 2).toString();
+            for(Service service : listService){
+                if(String.valueOf(service.getNama_layanan()).equals(nama2)){
+                    indexService = listService.indexOf(service);
+                }
+            }
+            layananDd.setSelectedIndex(indexService);    
+
+            bobotInput.setText(workOrderTable.getValueAt(clickedRow, 3).toString());
         
         // Display to input:
-      
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }//GEN-LAST:event_workOrderTableMouseClicked
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
@@ -631,46 +659,30 @@ public class workorderView extends javax.swing.JFrame {
                      
             double biaya = s.getBiaya() * Integer.parseInt(bobotInput.getText());
 
-            
-            WorkOrder wo = new WorkOrder(inputTglMasuk.getDateTimeStrict(), 
-                            inputTglSelesai.getDateTimeStrict(), 
-                            Integer.parseInt(bobotInput.getText()), 
-                            "Proses", 
-                            c, 
-                            employee, 
-                            s, 
+            WorkOrder wo = new WorkOrder(String.valueOf(inputTglMasuk.getDateTimeStrict()),
+                            String.valueOf(inputTglSelesai.getDateTimeStrict()),
+                            "-",
+                            Integer.parseInt(bobotInput.getText()),
+                            "Proses",
+                            c,
+                            employee,
+                            s,
                             biaya
-                            );
-                    
+            );
+ 
+            if(action.equalsIgnoreCase("Tambah")){
+                wc.insertDataWorkOrder(wo);
+            }else{
+                
+            }
             
-          
-            
-//            WorkOrder wo = new WorkOrder(inputTglMasuk.getDateTimeStrict(), 
-//                            inputTglSelesai.getDateTimeStrict(), 
-//                            bobotInput.getText(), 
-//                            "Proses", 
-//                            c, 
-//                            employee, 
-//                            s, 
-//                            biaya);
-            
-//            WorkOrder wo= new WorkOrder(inputTglMasuk.getDateTimeStrict().toString(), 
-//                        inputTglSelesai.getDateTimeStrict().toString(), 
-//                        Integer.parseInt(bobotInput.getText()), 
-//                        "Proses", 
-//                        c, 
-//                        employee, 
-//                        s, 
-//                        biaya);
-
-         
-            wc.insertDataWorkOrder(wo);
         
             clearText();
             showWorkOrder();
             setComponent(false);
         }catch(Exception e){
             System.out.println("Gagal save data");
+            System.out.println(e);
             clearText();
             showWorkOrder();
             setComponent(false);
@@ -710,6 +722,11 @@ public class workorderView extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void sekarangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sekarangBtnActionPerformed
+        inputTglMasuk.datePicker.setDateToToday();
+        inputTglMasuk.timePicker.setTimeToNow();
+    }//GEN-LAST:event_sekarangBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -770,6 +787,7 @@ public class workorderView extends javax.swing.JFrame {
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchInput;
+    private javax.swing.JButton sekarangBtn;
     private javax.swing.JPanel sidebarPan;
     private javax.swing.JLabel tanggalLabel;
     private javax.swing.JLabel titleLabel;

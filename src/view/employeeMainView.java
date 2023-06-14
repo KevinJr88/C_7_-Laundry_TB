@@ -659,9 +659,9 @@ public class employeeMainView extends javax.swing.JFrame {
         setDateNowAmbilBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setText("Tanggal Ambil");
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Tanggal Ambil");
 
         javax.swing.GroupLayout pickupPanelLayout = new javax.swing.GroupLayout(pickupPanel);
         pickupPanel.setLayout(pickupPanelLayout);
@@ -881,43 +881,48 @@ public class employeeMainView extends javax.swing.JFrame {
 
         deliPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        setDateNowAmbilBtn1.setText("Sekarang");
         setDateNowAmbilBtn1.setBackground(new java.awt.Color(0, 255, 51));
         setDateNowAmbilBtn1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        setDateNowAmbilBtn1.setText("Sekarang");
 
+        jLabel4.setText("Tanggal Antar");
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Tanggal Antar");
 
+        customerLabel2.setText("Customer");
         customerLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        customerLabel2.setText("Customer");
 
         customerDisplay.setEditable(false);
-        customerDisplay.setBackground(new java.awt.Color(255, 255, 255));
         customerDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerDisplay.setBackground(new java.awt.Color(255, 255, 255));
         customerDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
+        bobotLabel2.setText("Bobot");
         bobotLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        bobotLabel2.setText("Bobot");
 
         bobotDisplay.setEditable(false);
-        bobotDisplay.setBackground(new java.awt.Color(255, 255, 255));
         bobotDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotDisplay.setBackground(new java.awt.Color(255, 255, 255));
         bobotDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
+        servisLabel2.setText("Jenis Servis");
         servisLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         servisLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        servisLabel2.setText("Jenis Servis");
 
         servisDisplay.setEditable(false);
-        servisDisplay.setBackground(new java.awt.Color(255, 255, 255));
         servisDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisDisplay.setBackground(new java.awt.Color(255, 255, 255));
         servisDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
         selesaiBtn2.setText("Selesai");
+        selesaiBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selesaiBtn2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout deliPanelLayout = new javax.swing.GroupLayout(deliPanel);
         deliPanel.setLayout(deliPanelLayout);
@@ -1455,6 +1460,10 @@ public class employeeMainView extends javax.swing.JFrame {
     private void customerDd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerDd2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerDd2ActionPerformed
+
+    private void selesaiBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selesaiBtn2ActionPerformed
 
     /**
      * @param args the command line arguments

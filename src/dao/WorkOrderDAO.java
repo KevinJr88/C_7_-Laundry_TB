@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import model.WorkOrder;
@@ -79,9 +80,9 @@ public class WorkOrderDAO {
         con = dbcon.makeConnection();
         String sql = null;
         try{
-            sql = "INSERT INTO work_order(id_transaksi, tanggal_masuk, tanggal_selesai, bobot, status, id_customer, id_karyawan, id_layanan, biaya) values ('"
-              + wo.getId_transaksi() + "','" + String.valueOf(wo.getTanggal_masuk().format(WorkOrder.DEFAULT_DTF)) + "','" + String.valueOf(wo.getTanggal_selesai().format(WorkOrder.DEFAULT_DTF))  + "','"
-              + wo.getBobot() + "','" + wo.getStatus() + "','" + wo.getCustomer().getId_customer() + "','" + wo.getKaryawan().getId_karyawan() + "','"
+            sql = "INSERT INTO work_order(tanggal_masuk, tanggal_selesai, tanggal_ambil, bobot, status, id_customer, id_karyawan, id_layanan, biaya) values ('"
+              + wo.getTanggal_masuk() + "','" + wo.getTanggal_selesai() + "','"
+              + wo.getTanggal_ambil() + "','" + wo.getBobot() + "','" + wo.getStatus() + "','" + wo.getCustomer().getId_customer() + "','" + wo.getKaryawan().getId_karyawan() + "','"
               + wo.getLayanan().getId_layanan() + "','" + wo.getBiaya() + "')";
         
             System.out.println("Adding Work Order...");

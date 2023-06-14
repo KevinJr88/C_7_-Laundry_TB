@@ -29,19 +29,19 @@ public class TableWorkOrder extends AbstractTableModel{
     public String getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
             case 0:
-                return list.get(rowIndex).getCustomer().getNama_customer();
-            case 1:
-                return list.get(rowIndex).getLayanan().getNama_layanan();
-            case 2:
-                return String.valueOf(list.get(rowIndex).getBobot());
-            case 3:
-                return list.get(rowIndex).getStatus();
-            case 4:
-                return list.get(rowIndex).getTanggal_masuk().format(WorkOrder.LOCAL_DTF);
-            case 5:
-                return list.get(rowIndex).getTanggal_selesai().format(WorkOrder.LOCAL_DTF);
-            case 6:
                 return String.valueOf(list.get(rowIndex).getId_transaksi());
+            case 1:
+                return list.get(rowIndex).getCustomer().getNama_customer();
+            case 2:
+                return list.get(rowIndex).getLayanan().getNama_layanan();
+            case 3:
+                return String.valueOf(list.get(rowIndex).getBobot());
+            case 4:
+                return list.get(rowIndex).getStatus();
+            case 5:
+                return list.get(rowIndex).getTanggal_masuk();
+            case 6:
+                return list.get(rowIndex).getTanggal_selesai();
             default:
                 return null;
         }
@@ -51,19 +51,25 @@ public class TableWorkOrder extends AbstractTableModel{
     public String getColumnName(int column){
         switch(column){
             case 0:
-                return "Id_transaksi";
+                return "ID Transaksi";
+                
             case 1:
-                return "Tanggal_masuk";
+                return "Nama Customer";
+                
             case 2:
-                return "Tanggal_selesai";
+                return "Jenis Layanan";
+                
             case 3:
-                return "Bobot";
+                return "Berat Laundry (Kg)";
+                
             case 4:
-                return "Nama_customer";
-            case 5:
-                return "Nama_karyawan";
-            case 6:
                 return "Status";
+                
+            case 5:
+                return "Tanggal Masuk";
+                
+            case 6:
+                return "Tanggal Selesai";
             default:
                 return null;
                    
