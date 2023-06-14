@@ -48,12 +48,20 @@ private CustomerControl customerControl;
         this.employee = employee;
     }
     public prosesBackUp(Employee employee) {
-        initComponents();
-        setEmployee(employee);
-        showProses();
-        initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
-        setComponentProses(false);
-        clearTextProses();
+        try{
+            initComponents();
+            setEmployee(employee);
+            wc = new WorkOrderControl();
+            cc = new CustomerControl();
+            sc = new ServiceControl();
+            initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+            setComponentProses(false);
+            clearTextProses();
+            showProses();
+        }catch(Exception E){
+            System.out.println(E);
+        }
+        
     }
     
     
@@ -412,7 +420,10 @@ private CustomerControl customerControl;
     private void selesaiBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selesaiBtn3ActionPerformed
 
         String tglSelse  =   String.valueOf(tglSelesai.getDateTimeStrict());
-        workOrderControl.updateStatusWorkOrder(Integer.parseInt(diselesaikan), "Selesai", tglSelse);
+        
+        
+        workOrderControl.updateWorkOrder(selectedWorkOrder, WIDTH);
+        
     }//GEN-LAST:event_selesaiBtn3ActionPerformed
 
     private void todayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todayBtnActionPerformed

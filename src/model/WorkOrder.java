@@ -67,6 +67,10 @@ public class WorkOrder {
 //        this.biaya = biaya;
 //    }
 
+    
+    
+    
+    
     public WorkOrder(String tanggal_masuk, String tanggal_selesai, String tanggal_ambil, int bobot, String status, Customer customer, Employee karyawan, Service layanan, double biaya) {
         this.tanggal_masuk = tanggal_masuk;
         this.tanggal_selesai = tanggal_selesai;

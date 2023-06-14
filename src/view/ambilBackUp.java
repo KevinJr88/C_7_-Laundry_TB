@@ -50,6 +50,9 @@ public class ambilBackUp extends javax.swing.JFrame {
     public ambilBackUp(Employee employee) {
         initComponents();
         setEmployee(employee);
+        wc = new WorkOrderControl();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
         initDTInput(inputTglAmbil, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
         showSelesai();
         setComponentAmbil(false);
@@ -247,25 +250,25 @@ public class ambilBackUp extends javax.swing.JFrame {
                         .addComponent(sBobot, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pickupPanelLayout.createSequentialGroup()
-                        .addComponent(sTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pickupPanelLayout.createSequentialGroup()
-                        .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pickupPanelLayout.createSequentialGroup()
+                                .addComponent(sTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pickupPanelLayout.createSequentialGroup()
                                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(inputTglAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(setDateNowAmbilBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pickupPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(selesaiBtn)))
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelBtn2)
-                        .addGap(9, 9, 9))))
+                                    .addGroup(pickupPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(selesaiBtn)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cancelBtn2)))))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pickupPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchInput6, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,18 +300,16 @@ public class ambilBackUp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sTanggalJam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(selesaiBtn)
+                    .addComponent(cancelBtn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(setDateNowAmbilBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputTglAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selesaiBtn)
-                    .addComponent(cancelBtn2))
-                .addGap(9, 9, 9))
+                .addGap(49, 49, 49))
             .addGroup(pickupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pickupPanelLayout.createSequentialGroup()
                     .addContainerGap(120, Short.MAX_VALUE)
@@ -469,14 +470,17 @@ public class ambilBackUp extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtn6ActionPerformed
 
     private void rincianTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rincianTableMouseClicked
-
+        setDateNowAmbilBtn.setEnabled(true);
+        inputTglAmbil.setEnabled(true);
+        selesaiBtn.setEnabled(true);
+        cancelBtn2.setEnabled(true);
         int clickedRow = rincianTable.getSelectedRow();
         TableModel table = rincianTable.getModel();
-        int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
-        int b = Integer.parseInt(table.getValueAt(clickedRow, 7).toString());
-        int c = a*b;
+//        int a = Integer.parseInt(table.getValueAt(clickedRow, 3).toString());
+//        int b = Integer.parseInt(table.getValueAt(clickedRow, 7).toString());
+//        int c = a*b;
         diselesaikan = table.getValueAt(clickedRow, 0).toString();
-        totInput.setText(table.getValueAt(clickedRow, 7).toString());
+        //totInput.setText(table.getValueAt(clickedRow, 7).toString());
         sCustomer.setText(table.getValueAt(clickedRow, 1).toString());
         sTanggalJam.setText(table.getValueAt(clickedRow, 5).toString());
         sLayanan.setText(table.getValueAt(clickedRow, 2).toString());

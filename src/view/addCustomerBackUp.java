@@ -51,7 +51,9 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         setComponent(false);
         idInput.setEnabled(false);
         customerControl = new CustomerControl();
-            
+        wc = new WorkOrderControl();
+        cc = new CustomerControl();
+        sc = new ServiceControl();
         showCustomer();
         clearText();
     }
@@ -79,6 +81,8 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         alamatInput.setText("");
         idInput.setText("");
         searchInput.setText("");
+        lakiBtn.setSelected(false);
+        perempuanBtn.setSelected(true);
     }
 
     /**
@@ -90,6 +94,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         menuSaetu = new javax.swing.JPanel();
         registerPanel = new javax.swing.JPanel();
         idLabel = new javax.swing.JLabel();
@@ -123,42 +128,44 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         registerPanel.setBackground(new java.awt.Color(255, 255, 255));
         registerPanel.setForeground(new java.awt.Color(255, 255, 255));
 
-        idLabel.setText("ID");
         idLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         idLabel.setForeground(new java.awt.Color(0, 0, 0));
+        idLabel.setText("ID");
 
         idInput.setText("jTextField1");
 
-        namaLabel.setText("Nama");
         namaLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         namaLabel.setForeground(new java.awt.Color(0, 0, 0));
+        namaLabel.setText("Nama");
 
         namaInput.setText("jTextField1");
 
-        alamatLabel.setText("Alamat");
         alamatLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         alamatLabel.setForeground(new java.awt.Color(0, 0, 0));
+        alamatLabel.setText("Alamat");
 
         alamatInput.setText("jTextField1");
 
-        telpLabel.setText("Nomor Telepon");
         telpLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         telpLabel.setForeground(new java.awt.Color(0, 0, 0));
+        telpLabel.setText("Nomor Telepon");
 
         telpInput.setText("jTextField1");
 
-        lakiBtn.setText("Laki-laki");
+        buttonGroup1.add(lakiBtn);
         lakiBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         lakiBtn.setForeground(new java.awt.Color(0, 0, 0));
+        lakiBtn.setText("Laki-laki");
         lakiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lakiBtnActionPerformed(evt);
             }
         });
 
-        perempuanBtn.setText("Perempuan");
+        buttonGroup1.add(perempuanBtn);
         perempuanBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         perempuanBtn.setForeground(new java.awt.Color(0, 0, 0));
+        perempuanBtn.setText("Perempuan");
         perempuanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 perempuanBtnActionPerformed(evt);
@@ -179,9 +186,9 @@ public class addCustomerBackUp extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Jenis Kelamin");
         jLabel9.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Jenis Kelamin");
 
         javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
         registerPanel.setLayout(registerPanelLayout);
@@ -243,27 +250,27 @@ public class addCustomerBackUp extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(55, 121, 164));
 
-        addBtn.setText("Tambah");
         addBtn.setBackground(new java.awt.Color(255, 255, 255));
         addBtn.setForeground(new java.awt.Color(0, 0, 0));
+        addBtn.setText("Tambah");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
 
-        deleteBtn.setText("Hapus");
         deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setForeground(new java.awt.Color(0, 0, 0));
+        deleteBtn.setText("Hapus");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
             }
         });
 
-        editBtn.setText("Ubah");
         editBtn.setBackground(new java.awt.Color(255, 255, 255));
         editBtn.setForeground(new java.awt.Color(0, 0, 0));
+        editBtn.setText("Ubah");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editBtnActionPerformed(evt);
@@ -314,22 +321,22 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput.setBackground(new java.awt.Color(255, 255, 255));
+        searchInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput.setForeground(new java.awt.Color(0, 0, 0));
 
-        searchBtn.setText("Cari");
         searchBtn.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn.setText("Cari");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Tambah Pelanggan");
         jLabel2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Tambah Pelanggan");
 
         back.setText("BACK");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -450,6 +457,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         id = customerControl.generateIDCustomer();
         idInput.setText(id);
         action = "Tambah";
+        jenisKelamin = "Perempuan";
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
@@ -564,6 +572,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JLabel back;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
