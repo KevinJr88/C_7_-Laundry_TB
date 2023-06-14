@@ -391,13 +391,13 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="menu10">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="Proses"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Berlin Sans FB Demi" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Proses"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1697,39 +1697,38 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" pref="221" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="saveBtn2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" pref="221" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cancelBtn3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Component id="searchBtn4" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="searchInput4" min="-2" pref="226" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Component id="transPanel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="jScrollPane6" min="-2" pref="551" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="saveBtn2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cancelBtn3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1755,12 +1754,12 @@
                               <Component id="jScrollPane6" pref="0" max="32767" attributes="0"/>
                               <Component id="transPanel" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cancelBtn3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="saveBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cancelBtn3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="157" max="32767" attributes="0"/>
+                          <EmptySpace pref="110" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1779,6 +1778,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tanggalSelesai" min="-2" pref="97" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="addBtn2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1787,14 +1787,19 @@
                                       <Component id="deleteBtn2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="servisDd" max="32767" attributes="0"/>
+                                      <Component id="layananDd" max="32767" attributes="0"/>
                                       <Component id="jenisLayananLabel" min="-2" pref="97" max="-2" attributes="0"/>
                                       <Component id="customerLabel" min="-2" pref="97" max="-2" attributes="0"/>
                                       <Component id="bobotLabel" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                                      <Component id="Tanggal" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                                      <Component id="dateTimePicker1" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="tanggalMasuk" min="-2" pref="97" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btnSetDTMasukNow" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="inputTglMasuk" alignment="0" max="32767" attributes="0"/>
                                       <Component id="bobotInput" alignment="0" max="32767" attributes="0"/>
                                       <Component id="customerDd2" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                      <Component id="inputTglSelesai" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -1819,14 +1824,21 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="bobotInput" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="Tanggal" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="tanggalMasuk" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSetDTMasukNow" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="dateTimePicker1" min="-2" max="-2" attributes="0"/>
+                              <Component id="inputTglMasuk" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jenisLayananLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="tanggalSelesai" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="servisDd" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <Component id="inputTglSelesai" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <Component id="jenisLayananLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="layananDd" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1859,7 +1871,7 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="servisDd">
+                    <Component class="javax.swing.JComboBox" name="layananDd">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -1896,7 +1908,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="dateTimePicker1">
+                    <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="inputTglMasuk">
                     </Component>
                     <Component class="javax.swing.JLabel" name="customerLabel">
                       <Properties>
@@ -1931,9 +1943,9 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="Tanggal">
+                    <Component class="javax.swing.JLabel" name="tanggalMasuk">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Tanggal"/>
+                        <Property name="text" type="java.lang.String" value="Tanggal Masuk"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Berlin Sans FB" size="14" style="0"/>
                         </Property>
@@ -1979,6 +1991,36 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtn2ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="com.github.lgooddatepicker.components.DateTimePicker" name="inputTglSelesai">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="tanggalSelesai">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Berlin Sans FB" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Tanggal Selesai"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnSetDTMasukNow">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="ff" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Berlin Sans FB" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Today"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSetDTMasukNowActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -2223,31 +2265,31 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="searchInput5">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Berlin Sans FB" size="14" style="0"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                             <EtchetBorder/>
                           </Border>
                         </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="searchBtn5">
                       <Properties>
+                        <Property name="text" type="java.lang.String" value="Cari"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cari"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtn5ActionPerformed"/>
@@ -2347,11 +2389,9 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="servisDisplay1" pref="307" max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="bobotLabel3" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                                                  <Component id="customerDisplay1" alignment="0" pref="307" max="32767" attributes="0"/>
-                                                  <Component id="bobotDisplay1" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="bobotLabel3" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                              <Component id="customerDisplay1" alignment="0" pref="307" max="32767" attributes="0"/>
+                                              <Component id="bobotDisplay1" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace pref="48" max="32767" attributes="0"/>
                                           <Component id="selesaiBtn3" min="-2" max="-2" attributes="0"/>
@@ -2387,23 +2427,23 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="customerLabel3">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="Customer"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Berlin Sans FB" size="14" style="0"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Customer"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="customerDisplay1">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Berlin Sans FB" size="14" style="0"/>
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -2412,23 +2452,23 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="bobotLabel3">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="Bobot"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Berlin Sans FB" size="14" style="0"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Bobot"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="bobotDisplay1">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Berlin Sans FB" size="14" style="0"/>
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -2437,23 +2477,23 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="servisLabel3">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="Jenis Servis"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Berlin Sans FB" size="14" style="0"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Jenis Servis"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="servisDisplay1">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Berlin Sans FB" size="14" style="0"/>
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>

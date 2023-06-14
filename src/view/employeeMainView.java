@@ -155,16 +155,19 @@ public class employeeMainView extends javax.swing.JFrame {
         menuLiejma = new javax.swing.JPanel();
         transPanel = new javax.swing.JPanel();
         customerDd2 = new javax.swing.JComboBox<>();
-        servisDd = new javax.swing.JComboBox<>();
+        layananDd = new javax.swing.JComboBox<>();
         bobotInput = new javax.swing.JTextField();
-        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
+        inputTglMasuk = new com.github.lgooddatepicker.components.DateTimePicker();
         customerLabel = new javax.swing.JLabel();
         bobotLabel = new javax.swing.JLabel();
         jenisLayananLabel = new javax.swing.JLabel();
-        Tanggal = new javax.swing.JLabel();
+        tanggalMasuk = new javax.swing.JLabel();
         addBtn2 = new javax.swing.JButton();
         editBtn2 = new javax.swing.JButton();
         deleteBtn2 = new javax.swing.JButton();
+        inputTglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
+        tanggalSelesai = new javax.swing.JLabel();
+        btnSetDTMasukNow = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         saveBtn2 = new javax.swing.JButton();
@@ -368,9 +371,9 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
+        menu10.setText("Proses");
         menu10.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         menu10.setForeground(new java.awt.Color(0, 0, 0));
-        menu10.setText("Proses");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -1081,10 +1084,10 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
-        servisDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        servisDd.setBackground(new java.awt.Color(255, 255, 255));
-        servisDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        servisDd.setForeground(new java.awt.Color(0, 0, 0));
+        layananDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        layananDd.setBackground(new java.awt.Color(255, 255, 255));
+        layananDd.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        layananDd.setForeground(new java.awt.Color(0, 0, 0));
 
         bobotInput.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotInput.setBackground(new java.awt.Color(255, 255, 255));
@@ -1102,9 +1105,9 @@ public class employeeMainView extends javax.swing.JFrame {
         jenisLayananLabel.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jenisLayananLabel.setForeground(new java.awt.Color(0, 0, 0));
 
-        Tanggal.setText("Tanggal");
-        Tanggal.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        Tanggal.setForeground(new java.awt.Color(0, 0, 0));
+        tanggalMasuk.setText("Tanggal Masuk");
+        tanggalMasuk.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        tanggalMasuk.setForeground(new java.awt.Color(0, 0, 0));
 
         addBtn2.setText("Tambah");
         addBtn2.setBackground(new java.awt.Color(255, 255, 255));
@@ -1128,6 +1131,20 @@ public class employeeMainView extends javax.swing.JFrame {
             }
         });
 
+        tanggalSelesai.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        tanggalSelesai.setForeground(new java.awt.Color(0, 0, 0));
+        tanggalSelesai.setText("Tanggal Selesai");
+
+        btnSetDTMasukNow.setBackground(new java.awt.Color(0, 255, 0));
+        btnSetDTMasukNow.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        btnSetDTMasukNow.setForeground(new java.awt.Color(255, 255, 255));
+        btnSetDTMasukNow.setText("Today");
+        btnSetDTMasukNow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetDTMasukNowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout transPanelLayout = new javax.swing.GroupLayout(transPanel);
         transPanel.setLayout(transPanelLayout);
         transPanelLayout.setHorizontalGroup(
@@ -1135,6 +1152,7 @@ public class employeeMainView extends javax.swing.JFrame {
             .addGroup(transPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(transPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tanggalSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(transPanelLayout.createSequentialGroup()
                         .addComponent(addBtn2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1142,14 +1160,18 @@ public class employeeMainView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteBtn2))
                     .addGroup(transPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(servisDd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(layananDd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jenisLayananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bobotLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dateTimePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(transPanelLayout.createSequentialGroup()
+                            .addComponent(tanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSetDTMasukNow))
+                        .addComponent(inputTglMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bobotInput)
-                        .addComponent(customerDd2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(customerDd2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputTglSelesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         transPanelLayout.setVerticalGroup(
@@ -1169,14 +1191,20 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bobotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Tanggal)
+                .addGroup(transPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tanggalMasuk)
+                    .addComponent(btnSetDTMasukNow))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputTglMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jenisLayananLabel)
+                .addComponent(tanggalSelesai)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(servisDd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(inputTglSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jenisLayananLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(layananDd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -1239,20 +1267,13 @@ public class employeeMainView extends javax.swing.JFrame {
             menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLiejmaLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLiejmaLayout.createSequentialGroup()
-                .addGroup(menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuLiejmaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(saveBtn2)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelBtn3)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuLiejmaLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLiejmaLayout.createSequentialGroup()
                         .addGroup(menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(menuLiejmaLayout.createSequentialGroup()
                                 .addComponent(searchBtn4)
@@ -1262,8 +1283,14 @@ public class employeeMainView extends javax.swing.JFrame {
                             .addGroup(menuLiejmaLayout.createSequentialGroup()
                                 .addComponent(transPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(30, 30, 30))
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLiejmaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(saveBtn2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelBtn3)
+                .addGap(62, 62, 62))
         );
         menuLiejmaLayout.setVerticalGroup(
             menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1282,25 +1309,25 @@ public class employeeMainView extends javax.swing.JFrame {
                 .addGroup(menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(transPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
+                .addGap(19, 19, 19)
                 .addGroup(menuLiejmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelBtn3)
-                    .addComponent(saveBtn2))
-                .addContainerGap(157, Short.MAX_VALUE))
+                    .addComponent(saveBtn2)
+                    .addComponent(cancelBtn3))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         tabpeepee.addTab("tab5", menuLiejma);
 
         containerEightnam.setBackground(new java.awt.Color(55, 121, 164));
 
-        searchInput5.setBackground(new java.awt.Color(255, 255, 255));
         searchInput5.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        searchInput5.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput5.setBackground(new java.awt.Color(255, 255, 255));
         searchInput5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        searchInput5.setForeground(new java.awt.Color(0, 0, 0));
 
+        searchBtn5.setText("Cari");
         searchBtn5.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn5.setForeground(new java.awt.Color(0, 0, 0));
-        searchBtn5.setText("Cari");
         searchBtn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtn5ActionPerformed(evt);
@@ -1328,31 +1355,31 @@ public class employeeMainView extends javax.swing.JFrame {
 
         donePanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        customerLabel3.setText("Customer");
         customerLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        customerLabel3.setText("Customer");
 
         customerDisplay1.setEditable(false);
-        customerDisplay1.setBackground(new java.awt.Color(255, 255, 255));
         customerDisplay1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        customerDisplay1.setBackground(new java.awt.Color(255, 255, 255));
         customerDisplay1.setForeground(new java.awt.Color(0, 0, 0));
 
+        bobotLabel3.setText("Bobot");
         bobotLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        bobotLabel3.setText("Bobot");
 
         bobotDisplay1.setEditable(false);
-        bobotDisplay1.setBackground(new java.awt.Color(255, 255, 255));
         bobotDisplay1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        bobotDisplay1.setBackground(new java.awt.Color(255, 255, 255));
         bobotDisplay1.setForeground(new java.awt.Color(0, 0, 0));
 
+        servisLabel3.setText("Jenis Servis");
         servisLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         servisLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        servisLabel3.setText("Jenis Servis");
 
         servisDisplay1.setEditable(false);
-        servisDisplay1.setBackground(new java.awt.Color(255, 255, 255));
         servisDisplay1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        servisDisplay1.setBackground(new java.awt.Color(255, 255, 255));
         servisDisplay1.setForeground(new java.awt.Color(0, 0, 0));
 
         selesaiBtn3.setText("Selesai");
@@ -1372,10 +1399,9 @@ public class employeeMainView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, donePanelLayout.createSequentialGroup()
                         .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(servisDisplay1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                            .addGroup(donePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(bobotLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                                .addComponent(bobotDisplay1, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(bobotLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(customerDisplay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                            .addComponent(bobotDisplay1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(selesaiBtn3)
                         .addGap(30, 30, 30))))
@@ -1693,6 +1719,10 @@ public class employeeMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel11MouseClicked
 >>>>>>> a215d3017cbad271ba992810704cd8e46ab2e185
 
+    private void btnSetDTMasukNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetDTMasukNowActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSetDTMasukNowActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1729,7 +1759,6 @@ public class employeeMainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Tanggal;
     private javax.swing.JButton addBtn;
     private javax.swing.JButton addBtn2;
     private javax.swing.JTextField alamatInput;
@@ -1740,6 +1769,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel bobotLabel;
     private javax.swing.JLabel bobotLabel2;
     private javax.swing.JLabel bobotLabel3;
+    private javax.swing.JButton btnSetDTMasukNow;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton cancelBtn2;
     private javax.swing.JButton cancelBtn3;
@@ -1750,7 +1780,6 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JLabel customerLabel;
     private javax.swing.JLabel customerLabel2;
     private javax.swing.JLabel customerLabel3;
-    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAmbil;
     private com.github.lgooddatepicker.components.DateTimePicker dateTimePickerAntar;
     private javax.swing.JButton deleteBtn;
@@ -1762,6 +1791,8 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton editBtn2;
     private javax.swing.JTextField idInput;
     private javax.swing.JLabel idLabel;
+    private com.github.lgooddatepicker.components.DateTimePicker inputTglMasuk;
+    private com.github.lgooddatepicker.components.DateTimePicker inputTglSelesai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1797,6 +1828,7 @@ public class employeeMainView extends javax.swing.JFrame {
     private java.awt.Label label1;
     private java.awt.Label label2;
     private javax.swing.JRadioButton lakiBtn;
+    private javax.swing.JComboBox<String> layananDd;
     private javax.swing.JLabel menu1;
     private javax.swing.JLabel menu10;
     private javax.swing.JLabel menu6;
@@ -1832,7 +1864,6 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton selesaiBtn;
     private javax.swing.JButton selesaiBtn2;
     private javax.swing.JButton selesaiBtn3;
-    private javax.swing.JComboBox<String> servisDd;
     private javax.swing.JTextField servisDisplay;
     private javax.swing.JTextField servisDisplay1;
     private javax.swing.JLabel servisLabel2;
@@ -1840,6 +1871,8 @@ public class employeeMainView extends javax.swing.JFrame {
     private javax.swing.JButton setDateNowAmbilBtn;
     private javax.swing.JButton setDateNowAmbilBtn1;
     private javax.swing.JTabbedPane tabpeepee;
+    private javax.swing.JLabel tanggalMasuk;
+    private javax.swing.JLabel tanggalSelesai;
     private javax.swing.JTextField telpInput;
     private javax.swing.JLabel telpLabel;
     private javax.swing.JTextField totInput;

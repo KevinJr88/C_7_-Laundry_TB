@@ -5,6 +5,7 @@
         <group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/view/employeeMainView.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/table/TableWorkOrder.java</file>
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/view/loginMainView.java</file>
@@ -20,17 +21,22 @@
             <file>file:/D:/OneDrive%20-%20Universitas%20Atma%20Jaya%20Yogyakarta/D.%20MATA%20KULIAH%20SEMESTER%204/PEMROGRAMAN%20BERBASIS%20OBJEK/C_7_%20Laundry_TB/src/control/CustomerControl.java</file>
 =======
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/deliView.java</file>
+=======
+>>>>>>> da95d568119e9d4dcd7d1d518147a19f3bb704b8
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/checkoutView.java</file>
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/manageView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/OwnerMainView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/loginMainView.java</file>
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/serviceView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/historyView.java</file>
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/employeeMainView.java</file>
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/customerView.java</file>
-            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/creditMainView.java</file>
+            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/workorderView.java</file>
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/ownerView.java</file>
+            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/deliView.java</file>
+            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/OwnerMainView.java</file>
+            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/loginMainView.java</file>
+            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/historyView.java</file>
+            <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/creditMainView.java</file>
             <file>file:/C:/TBS/C_7_-Laundry_TB/src/view/creditView.java</file>
+<<<<<<< HEAD
 >>>>>>> a215d3017cbad271ba992810704cd8e46ab2e185
 =======
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/dao/EmployeeDAO.java</file>
@@ -54,6 +60,8 @@
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/view/checkoutView.java</file>
             <file>file:/D:/TUBES%20PBO/C_7_-Laundry_TB/src/control/EmployeeControl.java</file>
 >>>>>>> 9f3af4e8f602de230e4367a7ed4aaf5170a157ce
+=======
+>>>>>>> da95d568119e9d4dcd7d1d518147a19f3bb704b8
         </group>
     </open-files>
 </project-private>
