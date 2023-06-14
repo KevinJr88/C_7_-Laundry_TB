@@ -24,13 +24,10 @@ import table.TableWorkOrder;
  */
 public class ambilBackUp extends javax.swing.JFrame {
 
-  
-    private int menu = 0;
     private String action, id, jenisKelamin, temp;
     
     //WORK ORDER VIEW
-    private CustomerControl cc;
-    private ServiceControl sc;
+  
     private WorkOrderControl wc;
     private  static Employee employee = null;
     List<Customer> listCustomer;
@@ -51,8 +48,6 @@ public class ambilBackUp extends javax.swing.JFrame {
         initComponents();
         setEmployee(employee);
         wc = new WorkOrderControl();
-        cc = new CustomerControl();
-        sc = new ServiceControl();
         initDTInput(inputTglAmbil, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
         showSelesai();
         setComponentAmbil(false);

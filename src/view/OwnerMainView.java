@@ -6,11 +6,11 @@ import java.awt.Color;
  *
  * @author ACER
  */
-import control.CustomerControl;
+
 import control.EmployeeControl;
 import exeption.*;
 
-import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import model.Employee;
@@ -21,7 +21,7 @@ import table.TableEmployee;
 
 import control.ServiceControl;
 
-import model.Customer;
+
 import model.Service;
 
 import table.TableService;

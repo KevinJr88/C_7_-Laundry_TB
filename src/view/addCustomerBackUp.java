@@ -21,15 +21,12 @@ import table.TableCustomer;
  * @author Yeetman47
  */
 public class addCustomerBackUp extends javax.swing.JFrame {
-    private CustomerControl customerControl;
-    private WorkOrderControl workOrderControl;
+
     private int menu = 0;
     private String action, id, jenisKelamin, temp;
     
     //WORK ORDER VIEW
     private CustomerControl cc;
-    private ServiceControl sc;
-    private WorkOrderControl wc;
     private  static Employee employee = null;
     List<Customer> listCustomer;
     List<Service> listService;
@@ -50,10 +47,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         setEmployee(employee);
         setComponent(false);
         idInput.setEnabled(false);
-        customerControl = new CustomerControl();
-        wc = new WorkOrderControl();
         cc = new CustomerControl();
-        sc = new ServiceControl();
         showCustomer();
         clearText();
     }
@@ -72,7 +66,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
        cancelBtn.setEnabled(value);
     }
       public void showCustomer(){
-        jTable1.setModel(customerControl.showDataCustomer());
+        jTable1.setModel(cc.showDataCustomer());
     }
       
       public void clearText(){
@@ -439,9 +433,9 @@ public class addCustomerBackUp extends javax.swing.JFrame {
 
             Customer c = new Customer(idInput.getText(), namaInput.getText(), telpInput.getText() , alamatInput.getText(), jenisKelamin );
             if(action.equals("Tambah")){
-                customerControl.insertDataCustomer(c);
+                cc.insertDataCustomer(c);
             }else{
-                customerControl.updateDataCustomer(c, idInput.getText());
+                cc.updateDataCustomer(c, idInput.getText());
             }
             clearText();
             showCustomer();
@@ -457,7 +451,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         deleteBtn.setEnabled(false);
         clearText();
         searchInput.setText("");
-        id = customerControl.generateIDCustomer();
+        id = cc.generateIDCustomer();
         idInput.setText(id);
         action = "Tambah";
         jenisKelamin = "Perempuan";
@@ -469,7 +463,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         switch(getAnswer){
             case 0:
             try{
-                customerControl.deleteDataCustomer(idInput.getText());
+                cc.deleteDataCustomer(idInput.getText());
                 //customerControl.deleteCustomer(selectedId);
                 clearText();
                 showCustomer();
@@ -515,7 +509,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         setComponent(false);
 
         try{
-            TableCustomer customer = customerControl.showDataBySearch(searchInput.getText());
+            TableCustomer customer = cc.showDataBySearch(searchInput.getText());
             if(customer.getRowCount() == 0){
                 clearText();
                 editBtn.setEnabled(false);

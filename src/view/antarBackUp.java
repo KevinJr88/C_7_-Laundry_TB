@@ -23,14 +23,12 @@ import table.TableWorkOrder;
  * @author Yeetman47
  */
 public class antarBackUp extends javax.swing.JFrame {
-    private CustomerControl customerControl;
+    
     private int menu = 0;
     private double biaya;
-    private String action, id, jenisKelamin, temp;
     
     //WORK ORDER VIEW
-    private CustomerControl cc;
-    private ServiceControl sc;
+ 
     private WorkOrderControl wc;
     private  static Employee employee = null;
     List<Customer> listCustomer;
@@ -51,8 +49,6 @@ public class antarBackUp extends javax.swing.JFrame {
     public antarBackUp(Employee employee) {
         initComponents();
         wc = new WorkOrderControl();
-        cc = new CustomerControl();
-        sc = new ServiceControl();
         setEmployee(employee);
         showAntar();
         setComponentAntar(false);
