@@ -6,8 +6,34 @@ import java.awt.Color;
  *
  * @author ACER
  */
-public class OwnerMainView extends javax.swing.JFrame {
+import control.CustomerControl;
+import control.EmployeeControl;
 
+
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import model.Employee;
+
+
+import table.TableEmployee;
+
+
+import control.ServiceControl;
+
+import model.Customer;
+import model.Service;
+
+import table.TableService;
+
+public class OwnerMainView extends javax.swing.JFrame {
+    private EmployeeControl employeeControl;
+    private String action;
+    private String id, status, posisi, temp1;
+    private int temp;
+    
+    private ServiceControl serviceControl;
+    private String action2, jasaAntar, temp2;
     /**
      * Creates new form OwnerMainView
      */
@@ -15,11 +41,77 @@ public class OwnerMainView extends javax.swing.JFrame {
     Color defaultcolor, clickedcolor, white, black;
     public OwnerMainView() {
         initComponents();
+        //TABLE 1
+        setComponent(false);
+        idInput.setEnabled(false);
+        employeeControl = new EmployeeControl();
+        showCustomer();
+        clearText();
         
+        //TABLE2
+        setComponent2(false);
+        serviceControl = new ServiceControl();
+        showService();
+        clearText2();
         defaultcolor = new Color(255,255,204);
         clickedcolor = new Color(51,51,51);
         white = new Color(255,255,255);
         black = new Color(0,0,0); 
+    }
+    
+    public void setComponent(boolean value){
+       ubahBtn.setEnabled(value);
+       hapusBtn.setEnabled(value);
+      
+       namaInput.setEnabled(value);
+       telpInput.setEnabled(value);
+       passInput.setEnabled(value);
+       statusDd.setEnabled(value);
+       jabatanDd.setEnabled(value);
+       
+       jButton2.setEnabled(value);
+       jButton1.setEnabled(value);
+    }
+    
+    public void setComponent2(boolean value){
+       idInput1.setEnabled(value);
+       ubahBtn1.setEnabled(value);
+       hapusBtn1.setEnabled(value);
+       namaInput1.setEnabled(value);
+       kecepatanInput.setEnabled(value);
+       biayaInput.setEnabled(value);
+       yesRadBtn.setEnabled(value);
+       noRadBtn.setSelected(value);
+       yesRadBtn.setSelected(value);
+       noRadBtn.setSelected(value); 
+       jButton4.setEnabled(value);
+       jButton3.setEnabled(value);
+    }
+    
+     public void clearText(){
+        namaInput.setText("");
+        telpInput.setText("");
+        passInput.setText("");
+        idInput.setText("");
+        cariInput.setText("");
+    }
+     
+    public void clearText2(){
+        namaInput1.setText("");
+        kecepatanInput.setText("");
+        biayaInput.setText("");
+        idInput1.setText("");
+        yesRadBtn.setSelected(false);
+        noRadBtn.setSelected(false); 
+        
+    }
+     
+    public void showCustomer(){
+        jTable1.setModel(employeeControl.showDataEmployee());
+    }
+    
+    public void showService(){
+        jTable2.setModel(serviceControl.showDataService());
     }
 
     /**
@@ -267,13 +359,33 @@ public class OwnerMainView extends javax.swing.JFrame {
             }
         });
 
-        statusDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        statusDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif" }));
+        statusDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusDdActionPerformed(evt);
+            }
+        });
 
-        jabatanDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jabatanDd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senior", "Junior" }));
+        jabatanDd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jabatanDdActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Batal");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
@@ -358,14 +470,29 @@ public class OwnerMainView extends javax.swing.JFrame {
         tambahBtn.setBackground(new java.awt.Color(255, 255, 255));
         tambahBtn.setForeground(new java.awt.Color(0, 0, 0));
         tambahBtn.setText("Tambah");
+        tambahBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahBtnActionPerformed(evt);
+            }
+        });
 
         ubahBtn.setBackground(new java.awt.Color(255, 255, 255));
         ubahBtn.setForeground(new java.awt.Color(0, 0, 0));
         ubahBtn.setText("Ubah");
+        ubahBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubahBtnActionPerformed(evt);
+            }
+        });
 
         hapusBtn.setBackground(new java.awt.Color(255, 255, 255));
         hapusBtn.setForeground(new java.awt.Color(0, 0, 0));
         hapusBtn.setText("Hapus");
+        hapusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusBtnActionPerformed(evt);
+            }
+        });
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -379,6 +506,11 @@ public class OwnerMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         judulLabel.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
@@ -456,6 +588,11 @@ public class OwnerMainView extends javax.swing.JFrame {
         cariBtn1.setBackground(new java.awt.Color(255, 255, 255));
         cariBtn1.setForeground(new java.awt.Color(0, 0, 0));
         cariBtn1.setText("Cari");
+        cariBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariBtn1ActionPerformed(evt);
+            }
+        });
 
         cariInput1.setBackground(new java.awt.Color(255, 255, 255));
         cariInput1.setForeground(new java.awt.Color(0, 0, 0));
@@ -468,14 +605,29 @@ public class OwnerMainView extends javax.swing.JFrame {
         tambahBtn1.setBackground(new java.awt.Color(255, 255, 255));
         tambahBtn1.setForeground(new java.awt.Color(0, 0, 0));
         tambahBtn1.setText("Tambah");
+        tambahBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahBtn1ActionPerformed(evt);
+            }
+        });
 
         ubahBtn1.setBackground(new java.awt.Color(255, 255, 255));
         ubahBtn1.setForeground(new java.awt.Color(0, 0, 0));
         ubahBtn1.setText("Ubah");
+        ubahBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubahBtn1ActionPerformed(evt);
+            }
+        });
 
         hapusBtn1.setBackground(new java.awt.Color(255, 255, 255));
         hapusBtn1.setForeground(new java.awt.Color(0, 0, 0));
         hapusBtn1.setText("Hapus");
+        hapusBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusBtn1ActionPerformed(evt);
+            }
+        });
 
         containerPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -506,18 +658,38 @@ public class OwnerMainView extends javax.swing.JFrame {
         });
 
         jButton3.setText("Batal");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Simpan");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         yesNoGroup.add(yesRadBtn);
         yesRadBtn.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         yesRadBtn.setForeground(new java.awt.Color(0, 0, 0));
         yesRadBtn.setText("Yes");
+        yesRadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesRadBtnActionPerformed(evt);
+            }
+        });
 
         yesNoGroup.add(noRadBtn);
         noRadBtn.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         noRadBtn.setForeground(new java.awt.Color(0, 0, 0));
         noRadBtn.setText("No");
+        noRadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noRadBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout containerPanel1Layout = new javax.swing.GroupLayout(containerPanel1);
         containerPanel1.setLayout(containerPanel1Layout);
@@ -592,6 +764,11 @@ public class OwnerMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -716,8 +893,245 @@ public class OwnerMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_tllabelMouseClicked
 
     private void cariBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBtnActionPerformed
-        // TODO add your handling code here:
+        setComponent(false);
+        
+        try{
+           TableEmployee employee = employeeControl.showDataBySearch(cariInput.getText());
+            if(employee.getRowCount() == 0){
+                clearText();
+                ubahBtn.setEnabled(false);
+                hapusBtn.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                jTable1.setModel(employee);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
     }//GEN-LAST:event_cariBtnActionPerformed
+
+    private void hapusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusBtnActionPerformed
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    employeeControl.deleteDataEmployee(idInput.getText());
+                    clearText();
+                    showCustomer();
+                    setComponent(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_hapusBtnActionPerformed
+
+    private void ubahBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahBtnActionPerformed
+        setComponent(true);
+        action = "Ubah";
+        tambahBtn.setEnabled(false);
+        hapusBtn.setEnabled(false);
+    }//GEN-LAST:event_ubahBtnActionPerformed
+
+    private void tambahBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBtnActionPerformed
+        setComponent(true);
+        ubahBtn.setEnabled(false);
+        hapusBtn.setEnabled(false);
+        clearText();
+        cariInput.setText("");
+        id = employeeControl.generateIDKaryawan();
+        idInput.setText(id);
+        action = "Tambah";
+    }//GEN-LAST:event_tambahBtnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+           temp = statusDd.getSelectedIndex();
+           switch(temp){
+               case 0:
+                   status = "Aktif";
+                   break;
+               case 1:
+                   status = "Tidak Aktif";
+                   break;
+           }
+           temp = jabatanDd.getSelectedIndex();
+           switch(temp){
+               case 0:
+                   posisi = "Senior";
+                   break;
+               case 1:
+                   posisi = "Junior";
+                   break;
+           }
+            Employee e = new Employee(idInput.getText(), namaInput.getText(), passInput.getText(), Integer.parseInt(telpInput.getText()), status, posisi);
+           
+            if(action.equals("Tambah")){
+                employeeControl.insertDataEmployee(e);
+            }else{
+                employeeControl.updateDataEmployee(e, idInput.getText());
+            }
+            clearText();
+            showCustomer();
+            setComponent(false);
+        }catch (Exception e){
+            System.out.println("Gagal menyimpan data");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        setComponent(false);
+        clearText();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        setComponent(false);
+        ubahBtn.setEnabled(true);
+        hapusBtn.setEnabled(true);
+        
+        int clickedRow = jTable1.getSelectedRow();
+        TableModel table = jTable1.getModel();
+        
+        
+        idInput.setText(table.getValueAt(clickedRow, 0).toString());
+        namaInput.setText(table.getValueAt(clickedRow, 1).toString());
+        passInput.setText(table.getValueAt(clickedRow, 2).toString());
+        telpInput.setText(table.getValueAt(clickedRow, 3).toString());
+        temp1 = table.getValueAt(clickedRow, 4).toString();
+        
+        if(temp1.equalsIgnoreCase("Aktif")){
+            statusDd.setSelectedIndex(0);
+        }else{
+            statusDd.setSelectedIndex(1);
+        }
+        
+        temp1 = table.getValueAt(clickedRow, 5).toString();
+        
+        if(temp1.equalsIgnoreCase("Kurir")){
+            jabatanDd.setSelectedIndex(1);
+        }else{
+            jabatanDd.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void yesRadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesRadBtnActionPerformed
+        jasaAntar = "Ya";
+    }//GEN-LAST:event_yesRadBtnActionPerformed
+
+    private void noRadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noRadBtnActionPerformed
+        jasaAntar = "Tidak";
+    }//GEN-LAST:event_noRadBtnActionPerformed
+
+    private void ubahBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahBtn1ActionPerformed
+       setComponent2(true);
+        action2 = "Ubah";
+    }//GEN-LAST:event_ubahBtn1ActionPerformed
+
+    private void tambahBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBtn1ActionPerformed
+        setComponent2(true);
+        ubahBtn1.setEnabled(false);
+        hapusBtn1.setEnabled(false);
+        clearText2();
+        cariInput1.setText("");
+        action2 = "Tambah";
+        jasaAntar = "Tidak";
+    }//GEN-LAST:event_tambahBtn1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try{
+            Service s = new Service(idInput1.getText(), namaInput1.getText(), Integer.parseInt(kecepatanInput.getText()), jasaAntar, Integer.parseInt(biayaInput.getText()));
+           
+            if(action2.equals("Tambah")){
+                serviceControl.insertDataService(s);
+            }else{
+                serviceControl.updateDataService(s, idInput1.getText());
+            }
+            clearText2();
+            showService();
+            setComponent2(false);
+        }catch (Exception e){
+            System.out.println("Gagal menyimpan data");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        setComponent2(false);
+        clearText2();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cariBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBtn1ActionPerformed
+        setComponent2(false);
+         try{
+           TableService service = serviceControl.showDataBySearch(cariInput1.getText());
+            if(service.getRowCount() == 0){
+                clearText2();
+                ubahBtn1.setEnabled(false);
+                hapusBtn1.setEnabled(false);
+                JOptionPane.showConfirmDialog(rootPane, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                jTable2.setModel(service);
+            }
+        }catch(Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
+        
+    }//GEN-LAST:event_cariBtn1ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        setComponent2(false);
+        ubahBtn1.setEnabled(true);
+        hapusBtn1.setEnabled(true);
+        
+        int clickedRow = jTable2.getSelectedRow();
+        TableModel table = jTable2.getModel();
+        
+        
+        idInput1.setText(table.getValueAt(clickedRow, 0).toString());
+        namaInput1.setText(table.getValueAt(clickedRow, 1).toString());
+        kecepatanInput.setText(table.getValueAt(clickedRow, 2).toString());
+        temp2 = table.getValueAt(clickedRow, 3).toString();
+        if(temp2.equalsIgnoreCase("Ya")){
+            yesRadBtn.setSelected(true);
+            noRadBtn.setSelected(false);
+            jasaAntar = "Ya";
+        }else{
+            yesRadBtn.setSelected(false);
+            noRadBtn.setSelected(true);
+            jasaAntar = "Tidak";
+        }
+        biayaInput.setText(table.getValueAt(clickedRow, 4).toString());
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void hapusBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusBtn1ActionPerformed
+       int getAnswer = JOptionPane.showConfirmDialog(rootPane,"Apakah yaking ingin menghapus data ? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                try{
+                    serviceControl.deleteDataService(idInput.getText());
+                    
+                    clearText2();
+                    showService();
+                    setComponent2(false);
+                }catch(Exception e){
+                    System.out.println("Error : "+e.getMessage());
+                }
+                break;
+            case 1:
+                break;
+        }
+    }//GEN-LAST:event_hapusBtn1ActionPerformed
+
+    private void jabatanDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabatanDdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jabatanDdActionPerformed
+
+    private void statusDdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusDdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusDdActionPerformed
 
     /**
      * @param args the command line arguments

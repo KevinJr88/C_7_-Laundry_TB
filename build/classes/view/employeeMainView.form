@@ -506,27 +506,20 @@
                               <Component id="cancelBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="perempuanBtn" min="-2" pref="98" max="-2" attributes="0"/>
-                                          <Component id="lakiBtn" min="-2" pref="98" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <Component id="telpInput" min="-2" pref="191" max="-2" attributes="0"/>
-                                          <Component id="namaLabel" min="-2" pref="74" max="-2" attributes="0"/>
-                                          <Component id="idLabel" min="-2" pref="74" max="-2" attributes="0"/>
-                                          <Component id="idInput" min="-2" pref="191" max="-2" attributes="0"/>
-                                          <Component id="telpLabel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <Component id="alamatInput" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
-                                          <Component id="alamatLabel" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                      <Component id="namaInput" min="-2" pref="191" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="namaInput" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="perempuanBtn" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="lakiBtn" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="telpInput" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="namaLabel" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="idLabel" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="idInput" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="telpLabel" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="alamatInput" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="alamatLabel" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1181,11 +1174,11 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="searchInput6">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Berlin Sans FB" size="14" style="0"/>
+                        </Property>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
