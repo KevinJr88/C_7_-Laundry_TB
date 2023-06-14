@@ -23,8 +23,13 @@ public class loginMainView extends javax.swing.JFrame {
     
     
     public loginMainView() {
-        initComponents();
+        try{
+            initComponents();
         ec = new EmployeeControl();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
        
     }
 
@@ -185,26 +190,30 @@ public class loginMainView extends javax.swing.JFrame {
         
         String username = usernameTextField.getText();
         String password = passwordField.getText();
-        
-        if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
+        try{
+            if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
             this.dispose();
             ov.setVisible(true);
         }else if (ec.showUserEmployee(username, password)!=null){
             Employee E = ec.showUserEmployee(username, password);
-            employeeMainView ev = new employeeMainView(E);
+            MainMenuView ev = new MainMenuView(E);
             this.dispose();
             ev.setVisible(true);
            
         }else{
             JOptionPane.showConfirmDialog(rootPane, "Login Gagal!!", "Baik", JOptionPane.DEFAULT_OPTION);
         }
+        }catch(Exception E){
+            System.out.println(E);
+        }
+        
             
         
         
         
         
+   
         
-        ;
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

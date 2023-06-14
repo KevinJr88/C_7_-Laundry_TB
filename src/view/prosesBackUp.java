@@ -47,13 +47,13 @@ private CustomerControl customerControl;
     public void setEmployee(Employee employee){
         this.employee = employee;
     }
-    public prosesBackUp() {
+    public prosesBackUp(Employee employee) {
         initComponents();
         setEmployee(employee);
         showProses();
-                initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
-                setComponentProses(false);
-                clearTextProses();
+        initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+        setComponentProses(false);
+        clearTextProses();
     }
     
     
@@ -131,6 +131,7 @@ private CustomerControl customerControl;
         tglSelesai = new com.github.lgooddatepicker.components.DateTimePicker();
         todayBtn = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -285,27 +286,42 @@ private CustomerControl customerControl;
                 .addGap(44, 44, 44))
         );
 
+        back.setText("BACK");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout containerEightnamLayout = new javax.swing.GroupLayout(containerEightnam);
         containerEightnam.setLayout(containerEightnamLayout);
         containerEightnamLayout.setHorizontalGroup(
             containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEightnamLayout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(containerEightnamLayout.createSequentialGroup()
-                        .addComponent(searchBtn5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                        .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(containerEightnamLayout.createSequentialGroup()
+                                .addComponent(searchBtn5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(donePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19))
+                    .addGroup(containerEightnamLayout.createSequentialGroup()
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(back)
+                        .addGap(227, 227, 227))))
         );
         containerEightnamLayout.setVerticalGroup(
             containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEightnamLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(containerEightnamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchBtn5)
@@ -408,6 +424,12 @@ private CustomerControl customerControl;
         clearTextProses();
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+      MainMenuView mv = new MainMenuView(employee);
+        this.dispose();
+        mv.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -438,12 +460,13 @@ private CustomerControl customerControl;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new prosesBackUp().setVisible(true);
+                new prosesBackUp(employee).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JTextField bobotDisplay1;
     private javax.swing.JLabel bobotLabel3;
     private javax.swing.JButton cancel;

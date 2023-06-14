@@ -47,6 +47,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
     
     public addCustomerBackUp(Employee employee) {
         initComponents();
+        setEmployee(employee);
         setComponent(false);
         idInput.setEnabled(false);
         customerControl = new CustomerControl();
@@ -113,6 +114,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         searchInput = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,18 +147,18 @@ public class addCustomerBackUp extends javax.swing.JFrame {
 
         telpInput.setText("jTextField1");
 
+        lakiBtn.setText("Laki-laki");
         lakiBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         lakiBtn.setForeground(new java.awt.Color(0, 0, 0));
-        lakiBtn.setText("Laki-laki");
         lakiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lakiBtnActionPerformed(evt);
             }
         });
 
+        perempuanBtn.setText("Perempuan");
         perempuanBtn.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         perempuanBtn.setForeground(new java.awt.Color(0, 0, 0));
-        perempuanBtn.setText("Perempuan");
         perempuanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 perempuanBtnActionPerformed(evt);
@@ -329,6 +331,13 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
 
+        back.setText("BACK");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuSaetuLayout = new javax.swing.GroupLayout(menuSaetu);
         menuSaetu.setLayout(menuSaetuLayout);
         menuSaetuLayout.setHorizontalGroup(
@@ -350,13 +359,19 @@ public class addCustomerBackUp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuSaetuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(216, 216, 216))
         );
         menuSaetuLayout.setVerticalGroup(
             menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuSaetuLayout.createSequentialGroup()
                 .addGroup(menuSaetuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(menuSaetuLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
+                        .addGap(27, 27, 27)
+                        .addComponent(back)
+                        .addGap(40, 40, 40)
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuSaetuLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
@@ -503,6 +518,12 @@ public class addCustomerBackUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        MainMenuView mv = new MainMenuView(employee);
+        this.dispose();
+        mv.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -542,6 +563,7 @@ public class addCustomerBackUp extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField alamatInput;
     private javax.swing.JLabel alamatLabel;
+    private javax.swing.JLabel back;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;

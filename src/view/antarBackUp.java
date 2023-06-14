@@ -46,7 +46,7 @@ public class antarBackUp extends javax.swing.JFrame {
         this.employee = employee;
     }
     
-    public antarBackUp() {
+    public antarBackUp(Employee employee) {
         initComponents();
         setEmployee(employee);
         showAntar();
@@ -127,6 +127,7 @@ public class antarBackUp extends javax.swing.JFrame {
         servisDisplay = new javax.swing.JTextField();
         selesaiBtn2 = new javax.swing.JButton();
         batalBtn = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,7 +221,7 @@ public class antarBackUp extends javax.swing.JFrame {
             }
         });
 
-        batalBtn.setText("jButton1");
+        batalBtn.setText("Batal");
         batalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 batalBtnActionPerformed(evt);
@@ -286,32 +287,44 @@ public class antarBackUp extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
         );
 
+        back.setText("BACK");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuAmpadtLayout = new javax.swing.GroupLayout(menuAmpadt);
         menuAmpadt.setLayout(menuAmpadtLayout);
         menuAmpadtLayout.setHorizontalGroup(
             menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(menuAmpadtLayout.createSequentialGroup()
+                            .addComponent(searchBtn3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(453, 453, 453))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuAmpadtLayout.createSequentialGroup()
+                            .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(deliPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap()))
                     .addGroup(menuAmpadtLayout.createSequentialGroup()
-                        .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(menuAmpadtLayout.createSequentialGroup()
-                                .addComponent(searchBtn3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchInput3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(453, 453, 453))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuAmpadtLayout.createSequentialGroup()
-                        .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deliPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(back)
+                        .addGap(82, 82, 82))))
         );
         menuAmpadtLayout.setVerticalGroup(
             menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuAmpadtLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(menuAmpadtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchBtn3)
@@ -378,6 +391,12 @@ public class antarBackUp extends javax.swing.JFrame {
         clearTextAntar();
     }//GEN-LAST:event_batalBtnActionPerformed
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        MainMenuView mv = new MainMenuView(employee);
+        this.dispose();
+        mv.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -408,12 +427,13 @@ public class antarBackUp extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new antarBackUp().setVisible(true);
+                new antarBackUp(employee).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JButton batalBtn;
     private javax.swing.JTextField bobotDisplay;
     private javax.swing.JLabel bobotLabel2;

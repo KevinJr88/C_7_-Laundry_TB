@@ -53,6 +53,7 @@ public class employeeMainView extends javax.swing.JFrame {
         
         try{
             
+            setEmployee(employee);
         //TAB 1 Tambah Pelanggan
        // if(menu==0){
             setComponent(false);
@@ -75,20 +76,20 @@ public class employeeMainView extends javax.swing.JFrame {
         //}
             
             
-        //TAB 3 RIWAYAT
-             //if(menu ==2){
-//                showDiambil();
-//                searchInput2.setText("");
-            //}
+        TAB 3 RIWAYAT
+             if(menu ==2){
+                showDiambil();
+                searchInput2.setText("");
+            }
             
             
             
-        //TAB 4 ANTAR
-            //if(menu == 3){
-//                showAntar();
-//                setComponentAntar(false);
-//                 clearTextAntar();
-           // }
+        TAB 4 ANTAR
+            if(menu == 3){
+                showAntar();
+                setComponentAntar(false);
+                 clearTextAntar();
+            }
             
              
 
@@ -118,12 +119,12 @@ public class employeeMainView extends javax.swing.JFrame {
             
        //TAB 6 PROSES
             
-           // if(menu == 5){
-//                showProses();
-//                initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
-//                setComponentProses(false);
-//                clearTextProses();
-           // }
+            if(menu == 5){
+                showProses();
+                initDTInput(tglSelesai, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
+                setComponentProses(false);
+                clearTextProses();
+            }
             
             
             

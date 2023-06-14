@@ -49,6 +49,7 @@ public class ambilBackUp extends javax.swing.JFrame {
     
     public ambilBackUp(Employee employee) {
         initComponents();
+        setEmployee(employee);
         initDTInput(inputTglAmbil, LocalDate.now().minusMonths(1), LocalDate.now().plusMonths(3));
         showSelesai();
         setComponentAmbil(false);
@@ -134,6 +135,7 @@ public class ambilBackUp extends javax.swing.JFrame {
         rincianTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -218,8 +220,8 @@ public class ambilBackUp extends javax.swing.JFrame {
             }
         });
 
-        searchInput6.setBackground(new java.awt.Color(255, 255, 255));
         searchInput6.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        searchInput6.setBackground(new java.awt.Color(255, 255, 255));
         searchInput6.setForeground(new java.awt.Color(0, 0, 0));
         searchInput6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,13 +341,20 @@ public class ambilBackUp extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(rincianTable);
 
+        jLabel1.setText("Rincian");
         jLabel1.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Rincian");
 
+        jLabel10.setText("Ambil Laundry");
         jLabel10.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Ambil Laundry");
+
+        back.setText("BACK");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuDoueaLayout = new javax.swing.GroupLayout(menuDouea);
         menuDouea.setLayout(menuDoueaLayout);
@@ -355,16 +364,22 @@ public class ambilBackUp extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(menuDoueaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pickupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuDoueaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuDoueaLayout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(back))
+                        .addComponent(pickupPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         menuDoueaLayout.setVerticalGroup(
             menuDoueaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuDoueaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
+                .addGroup(menuDoueaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(back))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pickupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -470,6 +485,12 @@ public class ambilBackUp extends javax.swing.JFrame {
         selesaiBtn.setSelected(true);
     }//GEN-LAST:event_rincianTableMouseClicked
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        MainMenuView mv = new MainMenuView(employee);
+        this.dispose();
+        mv.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -506,6 +527,7 @@ public class ambilBackUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JButton cancelBtn2;
     private com.github.lgooddatepicker.components.DateTimePicker inputTglAmbil;
     private javax.swing.JLabel jLabel1;
