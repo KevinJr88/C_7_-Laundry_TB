@@ -49,14 +49,14 @@ public class antarBackUp extends javax.swing.JFrame {
 
         menuAmpadt.setBackground(new java.awt.Color(55, 121, 164));
 
-        searchInput3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput3.setBackground(new java.awt.Color(255, 255, 255));
-        searchInput3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        searchInput3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         searchInput3.setForeground(new java.awt.Color(0, 0, 0));
+        searchInput3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        searchBtn3.setText("Cari");
         searchBtn3.setBackground(new java.awt.Color(255, 255, 255));
         searchBtn3.setForeground(new java.awt.Color(0, 0, 0));
+        searchBtn3.setText("Cari");
         searchBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtn3ActionPerformed(evt);
@@ -89,45 +89,45 @@ public class antarBackUp extends javax.swing.JFrame {
 
         deliPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        setDateNowAmbilBtn1.setText("Sekarang");
         setDateNowAmbilBtn1.setBackground(new java.awt.Color(0, 255, 51));
         setDateNowAmbilBtn1.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         setDateNowAmbilBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        setDateNowAmbilBtn1.setText("Sekarang");
         setDateNowAmbilBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setDateNowAmbilBtn1ActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Tanggal Antar");
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Tanggal Antar");
 
-        customerLabel2.setText("Customer");
         customerLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        customerLabel2.setText("Customer");
 
         customerDisplay.setEditable(false);
-        customerDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        customerDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         customerDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
-        bobotLabel2.setText("Bobot");
         bobotLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        bobotLabel2.setText("Bobot");
 
         bobotDisplay.setEditable(false);
-        bobotDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        bobotDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         bobotDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
-        servisLabel2.setText("Jenis Servis");
         servisLabel2.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         servisLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        servisLabel2.setText("Jenis Servis");
 
         servisDisplay.setEditable(false);
-        servisDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         servisDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        servisDisplay.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         servisDisplay.setForeground(new java.awt.Color(0, 0, 0));
 
         selesaiBtn2.setText("Selesai");
@@ -137,7 +137,7 @@ public class antarBackUp extends javax.swing.JFrame {
             }
         });
 
-        batalBtn.setText("jButton1");
+        batalBtn.setText("Batal");
         batalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 batalBtnActionPerformed(evt);
