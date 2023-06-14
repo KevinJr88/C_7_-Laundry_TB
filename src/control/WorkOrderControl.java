@@ -63,4 +63,8 @@ public class WorkOrderControl {
     public void deleteDataWorkOrder(int id){
         woDao.deleteWorkOrder(id);
     }
+    
+    public void updateWorkOrder(WorkOrder wo, int id){
+        woDao.updateWorkOrder(wo, id);
+    }
 }
