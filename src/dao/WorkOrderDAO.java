@@ -205,6 +205,55 @@ public class WorkOrderDAO {
         return list;           
     }
     
+    public List<WorkOrder> showWorkOrderConditiondouble(String query, String jasa){
+        con = dbcon.makeConnection();
+        
+        String sql = "SELECT wo.*, c.*, e.*, s.* FROM work_order as wo "
+                + "JOIN Customer as c on c.id_customer = wo.id_customer "
+                + "JOIN employee as e ON e.id_karyawan = wo.id_karyawan "
+                + "JOIN service as s ON s.id_layanan = wo.id_layanan WHERE (wo.status LIKE "
+                + "'%" + query + "%' "
+                + "AND s.jasa_antar LIKE '%" + jasa + "%')";
+        
+        System.out.println("Mengambil data work order...");
+        List<WorkOrder> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs!=null){
+                while(rs.next()){
+                    Customer c = new Customer(rs.getString("c.id_customer"),
+                        rs.getString("c.nama_customer"), Integer.parseInt(rs.getString("c.no_telp")),
+                        rs.getString("c.alamat"), rs.getString("c.jenis_kelamin"));
+                    
+                    Employee e = new Employee(rs.getString("e.id_karyawan"),
+                        rs.getString("e.nama_karyawan"), rs.getString("e.password"),
+                        Integer.parseInt(rs.getString("e.no_telepon")), rs.getString("e.status"),
+                        rs.getString("e.posisi"));
+                    
+                    Service s = new Service(rs.getString("s.id_layanan"),
+                        rs.getString("s.nama_layanan"), Integer.parseInt(rs.getString("s.kecepatan")),
+                        rs.getString("s.jasa_antar"), Double.parseDouble(rs.getString("s.biaya")));
+                    
+                    WorkOrder wo = new WorkOrder(Integer.parseInt(rs.getString("wo.id_transaksi")), 
+                        rs.getString("wo.tanggal_masuk"), rs.getString("wo.tanggal_selesai"), rs.getString("wo.tanggal_ambil"),
+                        Integer.parseInt(rs.getString("wo.bobot")), rs.getString("wo.status"), c, e, s, Double.parseDouble(rs.getString("wo.biaya")));
+                    
+                    list.add(wo);
+                }
+            }
+            rs.close();
+            statement.close();
+        } catch(Exception e){
+            System.out.println("Erorr reading database...");
+            System.out.println(e);
+        }
+        dbcon.closeConnection();
+        return list;           
+    }
+    
     public List<WorkOrder> showWorkOrderCondition2(){
         con = dbcon.makeConnection();
         
